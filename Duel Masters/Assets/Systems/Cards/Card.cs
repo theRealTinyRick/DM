@@ -220,12 +220,12 @@ namespace DM.Systems.Cards
         /// </summary>
         private void Initialize()
         {
+            cardImage = data.cardImage;
             cardName = data.cardName;
+            cardType = data.cardType;
             civilization = data.civilization;
             manaCost = data.manaCost;
             mechanics = data.mechanics;
-            cardImage = data.cardImage;
-            cardType = data.cardType;
             creatureRace = data.creatureRace;
 
             foreach (var _pair in mechanics)

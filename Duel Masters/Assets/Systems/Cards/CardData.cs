@@ -18,7 +18,7 @@ namespace DM.Systems.Cards
         Spell
     }
 
-    [CreateAssetMenu(fileName = "New Card", menuName = Constants.CreateNewCardData, order = 1)]
+    [CreateAssetMenu(fileName = "New Card", menuName = Constants.CREATE_NEW_CARD_DATA, order = 1)]
     public class CardData : SerializedScriptableObject
     {
         [TabGroup(Tabs.PROPERTIES)]

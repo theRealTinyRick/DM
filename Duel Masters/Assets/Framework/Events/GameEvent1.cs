@@ -6,7 +6,7 @@
 using System;
 using UnityEngine.Events;
 
-namespace Assets.FuzzyCarnival.GameFramework.Events
+namespace GameFramework.Events
 {
     [Serializable]
     public class GameEvent<T1, T2> : UnityEvent<T2> // T is the source
