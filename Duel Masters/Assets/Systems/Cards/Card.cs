@@ -210,7 +210,7 @@ namespace DM.Systems.Cards
         } 
 
         [SerializeField]
-        public Image cardImage;
+        public Sprite cardImage;
 
         private bool overrideName = false;
         private bool overrideCost = false;

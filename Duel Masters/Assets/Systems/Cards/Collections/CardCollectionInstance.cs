@@ -1,41 +1,44 @@
 ﻿/*
  Author: Aaron Hines
- Description: Holds a collection of cards like an instance of a deck or hand or graveyard
+ Description: Holds a collection of cards like an instance of a deck or hand or graveyard or even sheilds
  */
 using System;
 using System.Linq;
 using System.Collections.Generic;
+
+using UnityEngine;
+using Sirenix.OdinInspector;
+
 using DM.Systems.Players;
 using GameFramework.Events;
-using UnityEngine;
 
 namespace DM.Systems.Cards
 {
     [Serializable]
-    public class CardAddedEvent : GameEvent<CardCollection, Card>
+    public class CardAddedEvent : GameEvent<CardCollectionInstance, Card>
     {
-        public CardAddedEvent(CardCollection source) : base(source)
+        public CardAddedEvent(CardCollectionInstance source) : base(source)
         {
         }
     }
 
     [Serializable]
-    public class CardRemovedEvent : GameEvent<CardCollection, Card>
+    public class CardRemovedEvent : GameEvent<CardCollectionInstance, Card>
     {
-        public CardRemovedEvent(CardCollection source) : base(source)
+        public CardRemovedEvent(CardCollectionInstance source) : base(source)
         {
         }
     }
 
     [Serializable]
-    public class CardCollection
+    public class CardCollectionInstance
     {
-        public CardCollection()
+        public CardCollectionInstance()
         {
             collection = new Dictionary<CardData, List<Card>>();
         }
 
-        public CardCollection(Dictionary<CardData, int> collection, Player owner)
+        public CardCollectionInstance(Dictionary<CardData, int> collection, Player owner)
         {
             this.owner = owner;
             this.collection = new Dictionary<CardData, List<Card>>();
@@ -52,27 +55,28 @@ namespace DM.Systems.Cards
         }
 
         [SerializeField]
-        private Player _owner;
-        public Player owner
-        {
-            get => _owner;
-            private set => _owner = value;
-        }
-
-        [SerializeField]
         private Dictionary<CardData, List<Card>> _collection;
         public Dictionary<CardData, List<Card>> collection
         {
             get => _collection;
             private set => _collection = value;
         }
-
+        
+        [ShowInInspector]
         private List<Card> cards
         {
             get
             {
                 return collection.Values.ToList().SelectMany(x => x).ToList();
             }
+        }
+
+        [SerializeField]
+        private Player _owner;
+        public Player owner
+        {
+            get => _owner;
+            private set => _owner = value;
         }
 
         private CardAddedEvent _cardAddedEvent;
@@ -103,7 +107,7 @@ namespace DM.Systems.Cards
             private set => _cardRemovedEvent = value;
         }
 
-        public void Add(Card card)
+        private void Add(Card card)
         {
             if (collection.ContainsKey(card.data))
             {
@@ -117,7 +121,7 @@ namespace DM.Systems.Cards
             cardAddedEvent?.Invoke(card);
         }
 
-        public bool Remove(Card card)
+        private bool Remove(Card card)
         {
             if (collection.ContainsKey(card.data))
             {
@@ -164,7 +168,7 @@ namespace DM.Systems.Cards
             return _result;
         }
 
-        public void Transfer(Card card, CardCollection from, CardCollection to)
+        public static void Transfer(Card card, CardCollectionInstance from, CardCollectionInstance to)
         {
             if(from.Contains(card))
             {

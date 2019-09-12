@@ -23,7 +23,7 @@ namespace DM.Systems.Cards
     {
         [TabGroup(Tabs.PROPERTIES)]
         [SerializeField]
-        public Image cardImage;
+        public Sprite cardImage;
 
         [TabGroup(Tabs.PROPERTIES)]
         [SerializeField]

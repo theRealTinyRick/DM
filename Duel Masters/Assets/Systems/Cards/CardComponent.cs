@@ -15,15 +15,8 @@ namespace DM.Systems.Cards
         [SerializeField]
         public Card card;
 
-        public override void DisableComponent()
-        {
-            //throw new System.NotImplementedException();
-        }
-
-        public override void InitializeComponent()
-        {
-            //throw new System.NotImplementedException();
-        }
+        public override void DisableComponent() { }
+        public override void InitializeComponent() { }
     }
 }
 
