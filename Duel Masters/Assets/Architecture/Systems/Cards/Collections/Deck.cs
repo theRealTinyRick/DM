@@ -32,11 +32,11 @@ namespace DM.Systems.Cards
         ///     Requires you to pass in an owning player. 
         /// </param>
         /// <returns></returns>
-        public CardCollectionInstance GenerateDeckInstance(Player owner)
+        public CardCollection GenerateDeckInstance(Player owner)
         {
             //if(GetDeckCount() >= Constants.MIN_DECK_COUNT)
             {
-                return new CardCollectionInstance( collection, owner );
+                return new CardCollection( collection, owner );
             }
             //return null;
         }

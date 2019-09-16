@@ -18,8 +18,9 @@ namespace DM.Systems.Gameplay.Components
         [SerializeField]
         private LayerMask boardLayer;
 
-        //[TabGroup(Tabs.PROPERTIES)]
-        //[SerializeField]
+        [TabGroup( Tabs.PROPERTIES )]
+        [SerializeField]
+        private Transform playerCamera;
 
         private bool holdingInput = false;
 
@@ -29,7 +30,6 @@ namespace DM.Systems.Gameplay.Components
         public void InputDown()
         {
             holdingInput = true;
-
         }
 
         public void InputHeld()

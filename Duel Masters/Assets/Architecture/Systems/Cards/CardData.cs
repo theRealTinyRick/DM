@@ -33,6 +33,16 @@ namespace DM.Systems.Cards
         [SerializeField]
         public CardType cardType;
 
+        [ShowIf( "IsCreature" )]
+        [TabGroup(Tabs.PROPERTIES)]
+        [SerializeField]
+        public int power;
+
+        [ShowIf( "IsCreature" )]
+        [TabGroup( Tabs.PROPERTIES )]
+        [SerializeField]
+        public int numberOfShieldsBroken = 1;
+
         [TabGroup(Tabs.PROPERTIES)]
         [SerializeField]
         public Civilization civilization = new Civilization();
@@ -41,6 +51,7 @@ namespace DM.Systems.Cards
         [SerializeField]
         public int manaCost;
 
+        [ShowIf( "IsCreature" )]
         [TabGroup(Tabs.PROPERTIES)]
         [SerializeField]
         public List<Race> creatureRace = new List<Race>();
@@ -49,6 +60,14 @@ namespace DM.Systems.Cards
         [SerializeField]
         public Dictionary<IMechanicTrigger, Effect> mechanics = new Dictionary<IMechanicTrigger, Effect>();
 
+
+
+
+
+        private bool IsCreature()
+        {
+            return cardType == CardType.Creature;
+        }
     }
 }
 

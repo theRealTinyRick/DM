@@ -35,5 +35,11 @@ namespace GameFramework.Events
             base.Invoke(); // invoke the normal event
             globalAction?.Invoke(source); // invoke the static one
         }
+
+
+        public void InvokeGlobal()
+        {
+            globalAction?.Invoke( source );
+        }
     }
 }

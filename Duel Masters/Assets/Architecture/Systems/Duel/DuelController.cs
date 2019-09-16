@@ -68,8 +68,8 @@ namespace Systems.Duel
         [Button]
         public void StartDuel()
         {
-            playerArray[0] = new Player( player1Deck );
-            playerArray[1] = new Player( player2Deck );
+            playerArray[0] = new Player( player1Deck, 0 );
+            playerArray[1] = new Player( player2Deck, 1 );
 
             GameObject _player1Actor = ActorManager.SpawnActor( playerIdentity, player1SpawnPoint );
             GameObject _player2Actor = ActorManager.SpawnActor( playerIdentity, player2SpawnPoint );

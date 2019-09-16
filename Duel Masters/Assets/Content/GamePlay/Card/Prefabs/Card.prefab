@@ -58,13 +58,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5110682844900838679}
-  m_LocalRotation: {x: 0.000000003621452, y: 0.7071067, z: -0.7071069, w: -0.000000021114865}
+  m_LocalRotation: {x: -0.006841217, y: 0.7070736, z: -0.7070738, w: -0.006841246}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.08824614, y: 1, z: 0.1284802}
   m_Children: []
   m_Father: {fileID: 5110682843773453644}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -270, y: -180, z: 0}
+  m_LocalEulerAnglesHint: {x: -270, y: -180, z: -1.1090088}
 --- !u!33 &5110682844900838683
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -321,693 +321,1643 @@ MonoBehaviour:
   card:
     _data: {fileID: 0}
     _owner:
+      playerNumber: 0
       deckData: {fileID: 0}
       deck:
         _owner:
+          playerNumber: 0
           deckData: {fileID: 0}
           deck:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           hand:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           graveyard:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           sheildZone:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           manaZone:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           battleZone:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
       hand:
         _owner:
+          playerNumber: 0
           deckData: {fileID: 0}
           deck:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           hand:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           graveyard:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           sheildZone:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           manaZone:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           battleZone:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
       graveyard:
         _owner:
+          playerNumber: 0
           deckData: {fileID: 0}
           deck:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           hand:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           graveyard:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           sheildZone:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           manaZone:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           battleZone:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
       sheildZone:
         _owner:
+          playerNumber: 0
           deckData: {fileID: 0}
           deck:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           hand:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           graveyard:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           sheildZone:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           manaZone:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           battleZone:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
       manaZone:
         _owner:
+          playerNumber: 0
           deckData: {fileID: 0}
           deck:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           hand:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           graveyard:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           sheildZone:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           manaZone:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           battleZone:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
       battleZone:
         _owner:
+          playerNumber: 0
           deckData: {fileID: 0}
           deck:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           hand:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           graveyard:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           sheildZone:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           manaZone:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           battleZone:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
     _overrideOwner:
+      playerNumber: 0
       deckData: {fileID: 0}
       deck:
         _owner:
+          playerNumber: 0
           deckData: {fileID: 0}
           deck:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           hand:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           graveyard:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           sheildZone:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           manaZone:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           battleZone:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
       hand:
         _owner:
+          playerNumber: 0
           deckData: {fileID: 0}
           deck:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           hand:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           graveyard:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           sheildZone:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           manaZone:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           battleZone:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
       graveyard:
         _owner:
+          playerNumber: 0
           deckData: {fileID: 0}
           deck:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           hand:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           graveyard:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           sheildZone:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           manaZone:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           battleZone:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
       sheildZone:
         _owner:
+          playerNumber: 0
           deckData: {fileID: 0}
           deck:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           hand:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           graveyard:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           sheildZone:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           manaZone:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           battleZone:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
       manaZone:
         _owner:
+          playerNumber: 0
           deckData: {fileID: 0}
           deck:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           hand:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           graveyard:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           sheildZone:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           manaZone:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           battleZone:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
       battleZone:
         _owner:
+          playerNumber: 0
           deckData: {fileID: 0}
           deck:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           hand:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           graveyard:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           sheildZone:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           manaZone:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
           battleZone:
             _owner:
+              playerNumber: 0
               deckData: {fileID: 0}
-              deck: {}
-              hand: {}
-              graveyard: {}
-              sheildZone: {}
-              manaZone: {}
-              battleZone: {}
+              deck:
+                _owner:
+                  playerNumber: 0
+              hand:
+                _owner:
+                  playerNumber: 0
+              graveyard:
+                _owner:
+                  playerNumber: 0
+              sheildZone:
+                _owner:
+                  playerNumber: 0
+              manaZone:
+                _owner:
+                  playerNumber: 0
+              battleZone:
+                _owner:
+                  playerNumber: 0
     _cardName: 
     _nameOverride: 
     _cardType: 0
@@ -1019,4 +1969,5 @@ MonoBehaviour:
     _manaCost: 0
     _manaCostOverride: 0
     cardImage: {fileID: 0}
+    _currentLocation: {fileID: 0}
   cardFace: {fileID: 5110682844900838676}

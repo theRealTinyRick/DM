@@ -14,31 +14,31 @@ using GameFramework.Events;
 namespace DM.Systems.Cards
 {
     [Serializable]
-    public class CardAddedEvent : GameEvent<CardCollectionInstance, Card>
+    public class CardAddedEvent : GameEvent<CardCollection, Card>
     {
-        public CardAddedEvent(CardCollectionInstance source) : base(source)
+        public CardAddedEvent(CardCollection source) : base(source)
         {
         }
     }
 
     [Serializable]
-    public class CardRemovedEvent : GameEvent<CardCollectionInstance, Card>
+    public class CardRemovedEvent : GameEvent<CardCollection, Card>
     {
-        public CardRemovedEvent(CardCollectionInstance source) : base(source)
+        public CardRemovedEvent(CardCollection source) : base(source)
         {
         }
     }
 
     [Serializable]
-    public class CardCollectionInstance
+    public class CardCollection
     {
-        public CardCollectionInstance()
+        public CardCollection()
         {
             collection = new Dictionary<CardData, List<Card>>();
             cards = new List<Card>();
         }
 
-        public CardCollectionInstance(Dictionary<CardData, int> collection, Player owner)
+        public CardCollection(Dictionary<CardData, int> collection, Player owner)
         {
             this.owner = owner;
             this.collection = new Dictionary<CardData, List<Card>>();
@@ -128,11 +128,11 @@ namespace DM.Systems.Cards
             return false;
         }
 
-        public static void Transfer(Card card, CardCollectionInstance from, CardCollectionInstance to)
+        public void Transfer(Card card, CardCollection to)
         {
-            if(from.Contains(card))
+            if(Contains(card))
             {
-                from.Remove(card);
+                Remove(card);
                 to.Add(card);
             }
         }

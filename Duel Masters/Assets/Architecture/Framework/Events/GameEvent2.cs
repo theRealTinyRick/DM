@@ -30,7 +30,7 @@ namespace GameFramework.Events
             globalAction -= listener;
         }
 
-        public new void Invoke(T2 arg1, T3 arg2)
+        public new void Invoke( T2 arg1, T3 arg2)
         {
             base.Invoke(arg1, arg2);
             globalAction?.Invoke(source, arg1, arg2);

@@ -11,30 +11,35 @@ namespace DM.Systems.Players
     [System.Serializable]
     public class Player
     {
-        public Player(Deck deck)
+        public Player(Deck deck, int playerNumber = 0)
         {
             deckData = deck;
             this.deck = deck.GenerateDeckInstance(this);
+            this.playerNumber = playerNumber;
         }
 
+        [SerializeField]
+        public int playerNumber;
+
+        [SerializeField]
         public Deck deckData;
 
         [SerializeField]
-        public CardCollectionInstance deck;
+        public CardCollection deck;
 
         [SerializeField]
-        public CardCollectionInstance hand;
+        public CardCollection hand;
 
         [SerializeField]
-        public CardCollectionInstance graveyard;
+        public CardCollection graveyard;
 
         [SerializeField]
-        public CardCollectionInstance sheildZone;
+        public CardCollection sheildZone;
 
         [SerializeField]
-        public CardCollectionInstance manaZone;
+        public CardCollection manaZone;
 
         [SerializeField]
-        public CardCollectionInstance battleZone;
+        public CardCollection battleZone;
     }
 }
