@@ -19,13 +19,17 @@ namespace DM.Systems.Cards
         [SerializeField]
         public MeshRenderer cardFace;
 
+        public override void InitializeComponent()
+        {
+            cardFace = GetComponentInChildren<MeshRenderer>();
+        }
         public override void DisableComponent() { }
-        public override void InitializeComponent() { }
 
-        public void AssignCard(Card card)
+        public void AssignCard( Card card )
         {
             this.card = card;
-            cardFace.sharedMaterials[0].mainTexture = card.cardImage.texture;
+            cardFace.sharedMaterials[0] = card.cardMaterial;
+            gameObject.name = string.Format( "Card: {0}", card.cardName );
         }
     }
 }

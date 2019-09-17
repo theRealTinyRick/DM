@@ -36,7 +36,7 @@ namespace GameFramework.Events
             globalAction?.Invoke(source, arg);
         }
 
-        public void InvokeGlobal( T2 arg )
+        public static void InvokeGlobal(T1 source, T2 arg )
         {
             globalAction?.Invoke(source, arg);
         }

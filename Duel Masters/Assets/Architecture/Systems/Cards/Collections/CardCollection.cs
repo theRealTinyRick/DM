@@ -56,27 +56,29 @@ namespace DM.Systems.Cards
             cards = this.collection.Values.ToList().SelectMany( _card => _card ).ToList(); 
         }
 
+        private Dictionary<CardData, List<Card>> collection;
+        
         [SerializeField]
-        private Dictionary<CardData, List<Card>> _collection;
-        public Dictionary<CardData, List<Card>> collection
-        {
-            get => _collection;
-            private set => _collection = value;
-        }
-
-        [SerializeField]
+        private List<Card> _cards;
         public List<Card> cards
         {
-            get;
-            private set;
+            get => _cards;
+            private set => _cards = value;
         }
 
-        [SerializeField]
         private Player _owner;
         public Player owner
         {
             get => _owner;
             private set => _owner = value;
+        }
+
+        public int Count
+        {
+            get
+            {
+                return cards.Count;
+            }
         }
 
         private CardAddedEvent _cardAddedEvent;
@@ -150,6 +152,27 @@ namespace DM.Systems.Cards
         public List<Card> GetAll(CardData data)
         {
             return cards.FindAll( _card => _card.data == data );
+        }
+
+        public void Shuffle()
+        {
+            int _randomNumberOfTimesToShuffle = UnityEngine.Random.Range( 5, 10 );
+
+            for ( int _i = 0; _i < _randomNumberOfTimesToShuffle; _i++ )
+            {
+                List<Card> _oldList = new List<Card>( cards );
+                List<Card> _newCardList = new List<Card>();
+                while(_oldList.Count > 0)
+                {
+                    int _rando = UnityEngine.Random.Range( 0, _oldList.Count );
+                    Card _card = _oldList[_rando];
+
+                    _oldList.Remove(_card);
+                    _newCardList.Add( _card );
+                }
+
+                cards = _newCardList;
+            }
         }
     }
 }

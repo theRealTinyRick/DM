@@ -42,9 +42,11 @@ MonoBehaviour:
       Entry: 8
       Data: 
   cardImage: {fileID: 21300000, guid: c634cdef8447d83409eb9cb20c9c14fa, type: 3}
+  cardMaterial: {fileID: 2100000, guid: 95b7376d34986734e9d6d68da8f86082, type: 2}
   cardName: Terror Pit
   cardType: 1
   power: 6
+  numberOfShieldsBroken: 1
   civilization:
     civilitations: 02000000
   manaCost: 6

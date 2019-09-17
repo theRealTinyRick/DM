@@ -4,6 +4,7 @@
 */
 using DM.Systems.Cards;
 using DM.Systems.GameEvents;
+using DM.Systems.Players;
 
 namespace DM.Systems.CardMechanics.Triggers
 {
@@ -25,7 +26,7 @@ namespace DM.Systems.CardMechanics.Triggers
             CreatureSummonedEvent.RemoveGlobalListener(OnTrigger);
         }
 
-        public void OnTrigger(Card card)
+        public void OnTrigger(Player player, Card card)
         {
             if(this.card == card)
             {

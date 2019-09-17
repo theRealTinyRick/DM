@@ -22,16 +22,23 @@ namespace DM.Systems.GameEvents
         }
     }
 
-    public class ShieldBroken : GameEvent<Player, Card>
+    public class ShieldAddedEvent : GameEvent<Player, Card>
     {
-        public ShieldBroken( Player source ) : base( source )
+        public ShieldAddedEvent ( Player source ) : base( source )
         {
         }
     }
 
-    public class ManaAdded : GameEvent<Player, Card>
+    public class ShieldBrokenEvent : GameEvent<Player, Card>
     {
-        public ManaAdded( Player source ) : base( source )
+        public ShieldBrokenEvent( Player source ) : base( source )
+        {
+        }
+    }
+
+    public class ManaAddedEvent : GameEvent<Player, Card>
+    {
+        public ManaAddedEvent( Player source ) : base( source )
         {
         }
     }

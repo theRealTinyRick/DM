@@ -27,6 +27,10 @@ namespace DM.Systems.Cards
 
         [TabGroup(Tabs.PROPERTIES)]
         [SerializeField]
+        public Material cardMaterial;
+
+        [TabGroup(Tabs.PROPERTIES)]
+        [SerializeField]
         public string cardName;
 
         [TabGroup(Tabs.PROPERTIES)]

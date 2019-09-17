@@ -18,28 +18,28 @@ namespace DM.Systems.Players
             this.playerNumber = playerNumber;
         }
 
-        [SerializeField]
-        public int playerNumber;
+        [HideInInspector]
+        public Deck deckData;
 
         [SerializeField]
-        public Deck deckData;
+        public int playerNumber;
 
         [SerializeField]
         public CardCollection deck;
 
         [SerializeField]
-        public CardCollection hand;
+        public CardCollection hand = new CardCollection();
 
         [SerializeField]
-        public CardCollection graveyard;
+        public CardCollection graveyard = new CardCollection();
 
         [SerializeField]
-        public CardCollection sheildZone;
+        public CardCollection sheildZone = new CardCollection();
 
         [SerializeField]
-        public CardCollection manaZone;
+        public CardCollection manaZone = new CardCollection();
 
         [SerializeField]
-        public CardCollection battleZone;
+        public CardCollection battleZone = new CardCollection();
     }
 }

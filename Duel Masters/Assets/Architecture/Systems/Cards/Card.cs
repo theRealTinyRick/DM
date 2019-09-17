@@ -12,7 +12,7 @@ using DM.Systems.Gameplay.Locations;
 
 namespace DM.Systems.Cards
 {
-    [System.Serializable]
+    [Serializable]
     public class Card   
     {
         public Card(CardData data, Player owner)
@@ -23,7 +23,6 @@ namespace DM.Systems.Cards
             Initialize();
         }
 
-        [SerializeField]
         private Guid _id;
         public Guid id
         {
@@ -45,8 +44,8 @@ namespace DM.Systems.Cards
             }
         }
 
-        [SerializeField]
         private Player _owner;
+        [HideInInspector]
         public Player owner
         {
             get
@@ -63,8 +62,8 @@ namespace DM.Systems.Cards
             }
         }
 
-        [SerializeField]
         private Player _overrideOwner;
+        [HideInInspector]
         public Player overrideOwner
         {
             get
@@ -77,8 +76,8 @@ namespace DM.Systems.Cards
             }
         }
 
-        [SerializeField]
         private string _cardName;
+        [HideInInspector]
         public string cardName
         {
             get
@@ -95,8 +94,8 @@ namespace DM.Systems.Cards
             }
         }
 
-        [SerializeField]
         private string _nameOverride;
+        [HideInInspector]
         public string nameOverride
         {
             get
@@ -109,8 +108,8 @@ namespace DM.Systems.Cards
             }
         }
 
-        [SerializeField]
         private CardType _cardType;
+        [HideInInspector]
         public CardType cardType
         {
             get
@@ -123,8 +122,8 @@ namespace DM.Systems.Cards
             }
         }
 
-        [SerializeField]
         private List<Race> _creatureRace;
+        [HideInInspector]
         public List<Race> creatureRace
         {
             get
@@ -137,8 +136,8 @@ namespace DM.Systems.Cards
             }
         }
 
-        [SerializeField]
         private Civilization _civilization;
+        [HideInInspector]
         public Civilization civilization
         {
             get
@@ -156,8 +155,8 @@ namespace DM.Systems.Cards
             }
         }
 
-        [SerializeField]
         private Civilization _civilizationOverride;
+        [HideInInspector]
         public Civilization civilizationOverride
         {
             get
@@ -170,8 +169,8 @@ namespace DM.Systems.Cards
             }
         }
 
-        [SerializeField]
         private int _manaCost;
+        [HideInInspector]
         public int manaCost
         {
             get
@@ -189,8 +188,8 @@ namespace DM.Systems.Cards
             }
         }
 
-        [SerializeField]
         private int _manaCostOverride;
+        [HideInInspector]
         public int manaCostOverride
         {
             get
@@ -203,8 +202,8 @@ namespace DM.Systems.Cards
             }
         }
 
-        [SerializeField]
         private Dictionary<IMechanicTrigger, Effect> _mechanics = new Dictionary<IMechanicTrigger, Effect>();
+        [HideInInspector]
         public Dictionary<IMechanicTrigger, Effect> mechanics
         {
             get
@@ -217,11 +216,14 @@ namespace DM.Systems.Cards
             }
         } 
 
-        [SerializeField]
+        [HideInInspector]
         public Sprite cardImage;
 
-        [SerializeField]
+        [HideInInspector]
+        public Material cardMaterial;
+
         private CardLocation _currentLocation;
+        [HideInInspector]
         public CardLocation currentLocation
         {
             get => _currentLocation;
@@ -237,6 +239,7 @@ namespace DM.Systems.Cards
         private void Initialize()
         {
             cardImage = data.cardImage;
+            cardMaterial = data.cardMaterial;
             cardName = data.cardName;
             cardType = data.cardType;
             civilization = data.civilization;
