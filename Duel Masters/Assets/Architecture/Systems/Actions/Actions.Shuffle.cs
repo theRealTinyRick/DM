@@ -8,7 +8,7 @@ using DM.Systems.Cards;
 
 namespace DM.Systems.Actions
 {
-    public partial class Actions
+    public partial class Action
     {
         public static void Shuffle(CardCollection collection)
         {

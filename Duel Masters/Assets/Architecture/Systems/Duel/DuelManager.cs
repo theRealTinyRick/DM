@@ -3,14 +3,14 @@ using Sirenix.OdinInspector;
 
 using GameFramework;
 
-using DM.Systems;
 using DM.Systems.Players;
-using DM.Systems.Actions;
 using DM.Systems.Cards;
+using DM.Systems.GameEvents;
+using DM.Systems.Actions;
 
-namespace Systems.Duel
+namespace DM.Systems
 {
-    public class DuelManager: SerializedMonoBehaviour
+    public class DuelManager : Singleton_SerializedMonobehaviour<DuelManager>
     {
         [TabGroup( Tabs.PROPERTIES )]
         [SerializeField]
@@ -35,6 +35,28 @@ namespace Systems.Duel
         [TabGroup(Tabs.PROPERTIES)]
         [SerializeField]
         private Player[] players = new Player[2];
+
+
+        [TabGroup( Tabs.EVENTS )]
+        [SerializeField]
+        public CreatureSummonedEvent creatureSummonedEvent = new CreatureSummonedEvent();
+
+        [TabGroup( Tabs.EVENTS )]
+        [SerializeField]
+        public CardDrawnEvent cardDrawnEvent = new CardDrawnEvent();
+
+        [TabGroup( Tabs.EVENTS )]
+        [SerializeField]
+        public ShieldAddedEvent shieldAddedEvent = new ShieldAddedEvent();
+
+        [TabGroup( Tabs.EVENTS )]
+        [SerializeField]
+        public ShieldBrokenEvent shieldBrokenEvent = new ShieldBrokenEvent();
+
+        [TabGroup( Tabs.EVENTS )]
+        [SerializeField]
+        public ManaAddedEvent manaAddedEvent = new ManaAddedEvent();
+
 
         private PlayerComponent_DM[] playerComponentArray = new PlayerComponent_DM[2];
 
@@ -76,11 +98,31 @@ namespace Systems.Duel
             players = new Player[]{ player1, player2};
             playerComponentArray = new PlayerComponent_DM[] { player1Component, player2Component };
 
+            // go through each collection individually
+
             foreach(Player _player in players)
             {
+                // hand
+
+                // shields
+
+                // battle zone
+
+                // graveyard - maybe despawn once they get there????
+
+                // mana
+
                 _player.deck.Shuffle();
-                Actions.AddToShieldsFromTopOfDeck( _player, DM.Systems.Constants.STARTING_SHIELD_COUNT + 2 );
-                Actions.Draw( _player, DM.Systems.Constants.STARTING_HAND_COUNT );
+
+                Action.AddToShieldsFromTopOfDeck( _player, Constants.STARTING_SHIELD_COUNT );
+                Action.Draw( _player, /*Constants.STARTING_HAND_COUNT*/ 7);
+
+
+                // test code - remove later
+                //for(int i = 0; i < 5; i++ )
+                //{
+                //    Action.AddToManaFromHand( _player, _player.hand.cards[0] );
+                //}
             }
         }
     }

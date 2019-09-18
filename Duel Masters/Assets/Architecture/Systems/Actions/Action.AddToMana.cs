@@ -3,59 +3,44 @@
  Description: Core actions to be carried out in the game - adding to mana
 */
 using DM.Systems.Players;
-using DM.Systems.GameEvents;
 using DM.Systems.Cards;
 
 namespace DM.Systems.Actions
 {
-    public partial class Actions
+    public partial class Action
     {
+        private static void AddToMana(Player targetPlayer, Card card, CardCollection collection)
+        {
+            if( card != null )
+            {
+                collection.Transfer( card, targetPlayer.manaZone );
+                DuelManager.instance.manaAddedEvent.Invoke( targetPlayer, card );
+            }
+        }
+
         public static void AddToManaFromHand( Player targetPlayer, Card card)
         {
-            if(card != null)
-            {
-                targetPlayer.hand.Transfer( card, targetPlayer.manaZone );
-                ManaAddedEvent.InvokeGlobal( targetPlayer, card );
-            }
+            AddToMana( targetPlayer, card, targetPlayer.hand );
         }
 
         public static void AddToManaFromDeck( Player targetPlayer, Card card )
         {
-            if ( card != null )
-            {
-
-                targetPlayer.deck.Transfer( card, targetPlayer.manaZone );
-                ManaAddedEvent.InvokeGlobal( targetPlayer, card );
-            }
+            AddToMana( targetPlayer, card, targetPlayer.deck );
         }
-
 
         public static void AddToManaFromBattleZone( Player targetPlayer, Card card )
         {
-            if ( card != null )
-            {
-                targetPlayer.battleZone.Transfer( card, targetPlayer.manaZone );
-                ManaAddedEvent.InvokeGlobal( targetPlayer, card );
-            }
+            AddToMana( targetPlayer, card, targetPlayer.battleZone );
         }
 
         public static void AddToManaFromGraveyard( Player targetPlayer, Card card )
         {
-            if ( card != null )
-            {
-
-                targetPlayer.graveyard.Transfer( card, targetPlayer.manaZone );
-                ManaAddedEvent.InvokeGlobal( targetPlayer, card );
-            }
+            AddToMana( targetPlayer, card, targetPlayer.graveyard );
         }
 
         public static void AddToManaFromShields( Player targetPlayer, Card card )
         {
-            if ( card != null )
-            {
-                targetPlayer.sheildZone.Transfer( card, targetPlayer.manaZone );
-                ManaAddedEvent.InvokeGlobal( targetPlayer, card );
-            }
+            AddToMana( targetPlayer, card, targetPlayer.sheildZone );
         }
     }
 }

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5110682843773453644}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 5110682844900838683}
   - component: {fileID: 5110682844900838676}
   - component: {fileID: 5110682844900838677}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 5110682845340973080}
   - component: {fileID: 5110682845340973081}
   - component: {fileID: 5110682845340973082}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 5110682845487962596}
   - component: {fileID: 5110682845487962597}
   - component: {fileID: 5110682845487962598}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,14 +264,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 0
-    SerializedBytes: 2900080000005f6163746f72496400000000000000000000000000000000
+    SerializedFormat: 2
+    SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes: []
+    SerializationNodes:
+    - Name: _actorId
+      Entry: 2
+      Data: 00000000000000000000000000000000
   _identity: {fileID: 11400000, guid: 7cacd158414b3e54c922e8c036f25383, type: 2}
   dontDestroyOnLoad: 0
   enableEvent:
@@ -307,7 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 0
+    SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -316,7 +319,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   card:
-    _data: {fileID: 0}
     cardImage: {fileID: 0}
     cardMaterial: {fileID: 0}
+    _currentLocation: 0
   cardFace: {fileID: 5110682844900838676}

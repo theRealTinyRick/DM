@@ -1,9 +1,13 @@
-﻿using UnityEngine;
-
+﻿
 namespace DM.Systems.Gameplay.Locations
 {
-    [CreateAssetMenu(fileName = "New Location", menuName = Constants.CREATE_CARDLOCATION, order = 2)]
-    public class CardLocation : ScriptableObject
+    public enum CardLocation : int
     {
+        Deck,
+        Hand,
+        BattleZone,
+        ShieldZone,
+        ManaZone,
+        Graveyard
     }
 }

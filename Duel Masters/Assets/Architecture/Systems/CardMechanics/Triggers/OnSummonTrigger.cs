@@ -18,12 +18,12 @@ namespace DM.Systems.CardMechanics.Triggers
 
         public void Initialize(Card card)
         {
-            CreatureSummonedEvent.AddGlobalListener(OnTrigger);
+            //DuelManager.instance.creatureSummonedEvent.AddListener( OnTrigger );
         }
 
         public void DeInitialize()
         {
-            CreatureSummonedEvent.RemoveGlobalListener(OnTrigger);
+           // DuelManager.instance.creatureSummonedEvent.RemoveListener( OnTrigger );
         }
 
         public void OnTrigger(Player player, Card card)

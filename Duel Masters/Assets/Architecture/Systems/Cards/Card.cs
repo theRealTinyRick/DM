@@ -2,12 +2,12 @@
  Author: Aaron Hines
  Description: The instance of a card in the game
 */
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 using DM.Systems.Players;
 using DM.Systems.CardMechanics;
-using System;
 using DM.Systems.Gameplay.Locations;
 
 namespace DM.Systems.Cards
@@ -23,6 +23,8 @@ namespace DM.Systems.Cards
             Initialize();
         }
 
+        [SerializeField]
+
         private Guid _id;
         public Guid id
         {
@@ -30,7 +32,6 @@ namespace DM.Systems.Cards
             private set => _id = value;
         }
 
-        [SerializeField]
         private CardData _data;
         public CardData data
         {
@@ -45,7 +46,6 @@ namespace DM.Systems.Cards
         }
 
         private Player _owner;
-        [HideInInspector]
         public Player owner
         {
             get
@@ -63,7 +63,6 @@ namespace DM.Systems.Cards
         }
 
         private Player _overrideOwner;
-        [HideInInspector]
         public Player overrideOwner
         {
             get
@@ -76,8 +75,8 @@ namespace DM.Systems.Cards
             }
         }
 
+        [SerializeField]
         private string _cardName;
-        [HideInInspector]
         public string cardName
         {
             get
@@ -95,7 +94,6 @@ namespace DM.Systems.Cards
         }
 
         private string _nameOverride;
-        [HideInInspector]
         public string nameOverride
         {
             get
@@ -109,7 +107,6 @@ namespace DM.Systems.Cards
         }
 
         private CardType _cardType;
-        [HideInInspector]
         public CardType cardType
         {
             get
@@ -123,7 +120,6 @@ namespace DM.Systems.Cards
         }
 
         private List<Race> _creatureRace;
-        [HideInInspector]
         public List<Race> creatureRace
         {
             get
@@ -137,7 +133,6 @@ namespace DM.Systems.Cards
         }
 
         private Civilization _civilization;
-        [HideInInspector]
         public Civilization civilization
         {
             get
@@ -156,7 +151,6 @@ namespace DM.Systems.Cards
         }
 
         private Civilization _civilizationOverride;
-        [HideInInspector]
         public Civilization civilizationOverride
         {
             get
@@ -170,7 +164,6 @@ namespace DM.Systems.Cards
         }
 
         private int _manaCost;
-        [HideInInspector]
         public int manaCost
         {
             get
@@ -189,7 +182,6 @@ namespace DM.Systems.Cards
         }
 
         private int _manaCostOverride;
-        [HideInInspector]
         public int manaCostOverride
         {
             get
@@ -203,7 +195,6 @@ namespace DM.Systems.Cards
         }
 
         private Dictionary<IMechanicTrigger, Effect> _mechanics = new Dictionary<IMechanicTrigger, Effect>();
-        [HideInInspector]
         public Dictionary<IMechanicTrigger, Effect> mechanics
         {
             get
@@ -222,12 +213,23 @@ namespace DM.Systems.Cards
         [HideInInspector]
         public Material cardMaterial;
 
+        [SerializeField]
         private CardLocation _currentLocation;
-        [HideInInspector]
         public CardLocation currentLocation
         {
-            get => _currentLocation;
-            private set => _currentLocation = value;
+            get
+            {
+                return _currentLocation;
+            }
+            private set
+            {
+                if(_currentLocation != value)
+                {
+                    _currentLocation = value;
+
+                    // TODO: add event
+                }
+            }
         }
 
         private bool overrideName = false;
@@ -255,10 +257,10 @@ namespace DM.Systems.Cards
 
             id = Guid.NewGuid();
         }
-        
-        public void SetCurrentLocation(CardLocation newLocation)
+
+        public void UpdateCardLocation(CardLocation location)
         {
-            currentLocation = newLocation;
+            currentLocation = location;
         }
     }
 }

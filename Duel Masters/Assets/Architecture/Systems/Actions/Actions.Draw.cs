@@ -3,12 +3,12 @@
  Description: Core actions to be carried out in the game - drawing
 */
 using DM.Systems.Players;
-using DM.Systems.GameEvents;
 using DM.Systems.Cards;
+using DM.Systems.Gameplay.Locations;
 
 namespace DM.Systems.Actions
 {
-    public partial class Actions
+    public partial class Action
     {
         public static void Draw(Player targetPlayer, int amountToDraw = 1)
         {
@@ -17,10 +17,10 @@ namespace DM.Systems.Actions
                 if(targetPlayer.deck.cards.Count > 0)
                 {
                     Card _targetCard = targetPlayer.deck.cards[0];
-                    targetPlayer.deck.Transfer(_targetCard, targetPlayer.hand);
+                    targetPlayer.deck.Transfer( _targetCard, targetPlayer.hand );
+                    _targetCard.UpdateCardLocation( CardLocation.Hand );
 
-                    CardDrawnEvent _event = new CardDrawnEvent( targetPlayer );
-                    _event.Invoke( _targetCard );
+                    DuelManager.instance.cardDrawnEvent.Invoke( targetPlayer, _targetCard );
                 }
             }
         }

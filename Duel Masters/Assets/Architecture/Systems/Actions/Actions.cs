@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace DM.Systems.Actions
 {
-    public partial class Actions
+    public partial class Action
     {
     }
 }

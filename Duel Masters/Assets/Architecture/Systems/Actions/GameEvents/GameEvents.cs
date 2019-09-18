@@ -2,44 +2,25 @@
  Author: Aaron Hines
  Description: Core events that happen in the game
 */
+using UnityEngine.Events;
+
 using DM.Systems.Cards;
 using DM.Systems.Players;
-using GameFramework.Events;
 
 namespace DM.Systems.GameEvents
 {
-    public class CreatureSummonedEvent : GameEvent<Player, Card>
-    {
-        public CreatureSummonedEvent( Player source ) : base( source )
-        {
-        }
-    }
+    [System.Serializable]
+    public class CreatureSummonedEvent : UnityEvent<Player, Card> { }
 
-    public class CardDrawnEvent : GameEvent<Player, Card>
-    {
-        public CardDrawnEvent( Player source ) : base( source )
-        {
-        }
-    }
+    [System.Serializable]
+    public class CardDrawnEvent : UnityEvent<Player, Card> { }
 
-    public class ShieldAddedEvent : GameEvent<Player, Card>
-    {
-        public ShieldAddedEvent ( Player source ) : base( source )
-        {
-        }
-    }
+    [System.Serializable]
+    public class ShieldAddedEvent : UnityEvent<Player, Card> { }
 
-    public class ShieldBrokenEvent : GameEvent<Player, Card>
-    {
-        public ShieldBrokenEvent( Player source ) : base( source )
-        {
-        }
-    }
+    [System.Serializable]
+    public class ShieldBrokenEvent : UnityEvent<Player, Card> { }
 
-    public class ManaAddedEvent : GameEvent<Player, Card>
-    {
-        public ManaAddedEvent( Player source ) : base( source )
-        {
-        }
-    }
+    [System.Serializable]
+    public class ManaAddedEvent : UnityEvent<Player, Card> { }
 }

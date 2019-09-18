@@ -8,10 +8,11 @@ using UnityEngine;
 using DM.Systems.Players;
 using DM.Systems.GameEvents;
 using DM.Systems.Cards;
+using DM.Systems.Gameplay.Locations;
 
 namespace DM.Systems.Actions
 {
-    public partial class Actions
+    public partial class Action
     {
         #region Adding
         private static void AddToShields( Player targetPlayer, CardCollection collection, Card card )
@@ -19,10 +20,9 @@ namespace DM.Systems.Actions
             if ( card != null )
             {
                 collection.Transfer( card, targetPlayer.sheildZone );
-                //ShieldAddedEvent.InvokeGlobal( targetPlayer, card );
+                card.UpdateCardLocation( CardLocation.ShieldZone );
 
-                CardDrawnEvent _event = new CardDrawnEvent( targetPlayer );
-                _event.Invoke( card );
+                DuelManager.instance.shieldAddedEvent.Invoke( targetPlayer, card );
             }
         }
 
@@ -65,7 +65,8 @@ namespace DM.Systems.Actions
         public static void BreakShield(Player targetPlayer, Card card)
         {
             targetPlayer.sheildZone.Transfer( card, targetPlayer.hand );
-            ShieldBrokenEvent.InvokeGlobal( targetPlayer, card );
+            card.UpdateCardLocation( CardLocation.Hand );
+            DuelManager.instance.shieldAddedEvent.Invoke( targetPlayer, card );
         }
 
         public static void BreakRandom(Player targetPlayer, int amount = 1)
