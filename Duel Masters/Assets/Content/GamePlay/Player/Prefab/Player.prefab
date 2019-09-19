@@ -4612,7 +4612,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7765952408328007620}
   m_Layer: 11
-  m_Name: Hand 1
+  m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4631,7 +4631,7 @@ Transform:
   m_Children:
   - {fileID: 7623717840894276809}
   m_Father: {fileID: 8076153296741603535}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!1 &740941678531671276
 GameObject:
@@ -4721,7 +4721,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4933215883810685777}
   m_Layer: 11
-  m_Name: Hand (1)
+  m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4740,7 +4740,7 @@ Transform:
   m_Children:
   - {fileID: 5733435064916562232}
   m_Father: {fileID: 8076153296741603535}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!1 &1525706612388045483
 GameObject:
@@ -4752,7 +4752,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8731223100041746434}
   m_Layer: 11
-  m_Name: Hand (2)
+  m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4771,7 +4771,7 @@ Transform:
   m_Children:
   - {fileID: 6056616896798081585}
   m_Father: {fileID: 8076153296741603535}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!1 &1744703709750536639
 GameObject:
@@ -4879,9 +4879,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 453845510497241346}
-  - {fileID: 4933215883810685777}
   - {fileID: 8731223100041746434}
-  - {fileID: 4776198952712912720}
+  - {fileID: 4933215883810685777}
   - {fileID: 2666316933086323609}
   - {fileID: 7765952408328007620}
   - {fileID: 6841503285002331330}
@@ -4979,7 +4978,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4451586742458597349}
   m_Layer: 11
-  m_Name: Hand (7)
+  m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4998,86 +4997,8 @@ Transform:
   m_Children:
   - {fileID: 5801731613994189771}
   m_Father: {fileID: 8076153296741603535}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
---- !u!1 &2182161969165460487
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6308940802923956389}
-  - component: {fileID: 3573597588434447227}
-  - component: {fileID: 1515064209160319483}
-  m_Layer: 11
-  m_Name: mesh
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6308940802923956389
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2182161969165460487}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.08824614, y: 1, z: 0.1284802}
-  m_Children: []
-  m_Father: {fileID: 4776198952712912720}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!33 &3573597588434447227
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2182161969165460487}
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1515064209160319483
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2182161969165460487}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!1 &3658763778143205708
 GameObject:
   m_ObjectHideFlags: 0
@@ -5166,7 +5087,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4231065470915367352}
   m_Layer: 11
-  m_Name: Hand (8)
+  m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5185,7 +5106,7 @@ Transform:
   m_Children:
   - {fileID: 4038051324298450400}
   m_Father: {fileID: 8076153296741603535}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!1 &4473233434449519905
 GameObject:
@@ -5384,7 +5305,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2666316933086323609}
   m_Layer: 11
-  m_Name: Hand (4)
+  m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5403,7 +5324,7 @@ Transform:
   m_Children:
   - {fileID: 5494796336296601309}
   m_Father: {fileID: 8076153296741603535}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!1 &7200024265252398332
 GameObject:
@@ -5415,7 +5336,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1254860163249071407}
   m_Layer: 11
-  m_Name: Hand (9)
+  m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5434,38 +5355,7 @@ Transform:
   m_Children:
   - {fileID: 84691817999919445}
   m_Father: {fileID: 8076153296741603535}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
---- !u!1 &7620899645199924855
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4776198952712912720}
-  m_Layer: 11
-  m_Name: Hand (3)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4776198952712912720
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7620899645199924855}
-  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: -4.14, y: -0.044, z: -7.9}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 6308940802923956389}
-  m_Father: {fileID: 8076153296741603535}
-  m_RootOrder: 3
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!1 &7658202461562064786
 GameObject:
@@ -5851,9 +5741,8 @@ MonoBehaviour:
     ReferencedUnityObjects:
     - {fileID: 1975636711}
     - {fileID: 453845510497241346}
-    - {fileID: 4933215883810685777}
     - {fileID: 8731223100041746434}
-    - {fileID: 4776198952712912720}
+    - {fileID: 4933215883810685777}
     - {fileID: 2666316933086323609}
     - {fileID: 7765952408328007620}
     - {fileID: 6841503285002331330}
@@ -5962,7 +5851,7 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 10
+      Data: 9
     - Name: 
       Entry: 10
       Data: 1
@@ -5991,9 +5880,6 @@ MonoBehaviour:
       Entry: 10
       Data: 9
     - Name: 
-      Entry: 10
-      Data: 10
-    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -6017,7 +5903,7 @@ MonoBehaviour:
       Data: 1
     - Name: 
       Entry: 10
-      Data: 11
+      Data: 10
     - Name: 
       Entry: 13
       Data: 
@@ -6040,6 +5926,9 @@ MonoBehaviour:
     - Name: 
       Entry: 12
       Data: 14
+    - Name: 
+      Entry: 10
+      Data: 11
     - Name: 
       Entry: 10
       Data: 12
@@ -6080,9 +5969,6 @@ MonoBehaviour:
       Entry: 10
       Data: 24
     - Name: 
-      Entry: 10
-      Data: 25
-    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -6104,6 +5990,9 @@ MonoBehaviour:
     - Name: 
       Entry: 12
       Data: 12
+    - Name: 
+      Entry: 10
+      Data: 25
     - Name: 
       Entry: 10
       Data: 26
@@ -6138,9 +6027,6 @@ MonoBehaviour:
       Entry: 10
       Data: 36
     - Name: 
-      Entry: 10
-      Data: 37
-    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -6162,6 +6048,9 @@ MonoBehaviour:
     - Name: 
       Entry: 12
       Data: 12
+    - Name: 
+      Entry: 10
+      Data: 37
     - Name: 
       Entry: 10
       Data: 38
@@ -6195,9 +6084,6 @@ MonoBehaviour:
     - Name: 
       Entry: 10
       Data: 48
-    - Name: 
-      Entry: 10
-      Data: 49
     - Name: 
       Entry: 13
       Data: 
@@ -6382,7 +6268,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6841503285002331330}
   m_Layer: 11
-  m_Name: Hand (6)
+  m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6401,5 +6287,5 @@ Transform:
   m_Children:
   - {fileID: 4666537316136566616}
   m_Father: {fileID: 8076153296741603535}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
