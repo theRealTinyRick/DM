@@ -96,19 +96,30 @@ namespace DM.Systems.Players
 
         private void Update()
         {
-            for ( int _i = 0; _i < spawnedCards.Count; _i++ )
+            if(spawnedCards.Count == 0)
             {
-                Debug.Log( _i );
+                return;
+            }
 
-                CardComponent _card = spawnedCards[_i];
+            Dictionary<CardLocation, int> locationIndexMap = new Dictionary<CardLocation, int>()
+            {
+                { CardLocation.Hand, 0 },
+                { CardLocation.Deck, 0 },
+                { CardLocation.BattleZone, 0 },
+                { CardLocation.ShieldZone, 0 },
+                { CardLocation.Graveyard, 0 },
+                { CardLocation.ManaZone, 0 },
+            };
 
-                if ( cardLocations.ContainsKey( _card.card.currentLocation ) )
+            foreach ( CardComponent _card in spawnedCards )
+            {
+                int _index = locationIndexMap[_card.card.currentLocation];
+                if ( cardLocations[_card.card.currentLocation].Count > _index)
                 {
-                    if ( cardLocations[_card.card.currentLocation].Count > _i )
-                    {
-                        _card.transform.position = Vector3.Lerp( _card.transform.position, cardLocations[_card.card.currentLocation][_i].position, 0.5f );
-                        _card.transform.rotation = Quaternion.Lerp( _card.transform.rotation, cardLocations[_card.card.currentLocation][_i].rotation, 0.5f );
-                    }
+                    _card.transform.position = Vector3.Lerp( _card.transform.position, cardLocations[_card.card.currentLocation][_index].position, 0.5f );
+                    _card.transform.rotation = Quaternion.Lerp( _card.transform.rotation, cardLocations[_card.card.currentLocation][_index].rotation, 0.5f );
+
+                    locationIndexMap[_card.card.currentLocation]++;
                 }
             }
         }

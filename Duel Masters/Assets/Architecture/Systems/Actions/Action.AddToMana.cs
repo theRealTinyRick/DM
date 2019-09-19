@@ -4,6 +4,7 @@
 */
 using DM.Systems.Players;
 using DM.Systems.Cards;
+using DM.Systems.Gameplay.Locations;
 
 namespace DM.Systems.Actions
 {
@@ -14,6 +15,7 @@ namespace DM.Systems.Actions
             if( card != null )
             {
                 collection.Transfer( card, targetPlayer.manaZone );
+                card.UpdateCardLocation( CardLocation.ManaZone );
                 DuelManager.instance.manaAddedEvent.Invoke( targetPlayer, card );
             }
         }

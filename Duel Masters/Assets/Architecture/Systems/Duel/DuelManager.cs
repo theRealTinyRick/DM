@@ -98,31 +98,12 @@ namespace DM.Systems
             players = new Player[]{ player1, player2};
             playerComponentArray = new PlayerComponent_DM[] { player1Component, player2Component };
 
-            // go through each collection individually
-
             foreach(Player _player in players)
             {
-                // hand
-
-                // shields
-
-                // battle zone
-
-                // graveyard - maybe despawn once they get there????
-
-                // mana
-
                 _player.deck.Shuffle();
 
                 Action.AddToShieldsFromTopOfDeck( _player, Constants.STARTING_SHIELD_COUNT );
-                Action.Draw( _player, /*Constants.STARTING_HAND_COUNT*/ 7);
-
-
-                // test code - remove later
-                //for(int i = 0; i < 5; i++ )
-                //{
-                //    Action.AddToManaFromHand( _player, _player.hand.cards[0] );
-                //}
+                Action.Draw( _player, Constants.STARTING_HAND_COUNT );
             }
         }
     }
