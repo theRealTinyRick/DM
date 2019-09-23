@@ -1,7 +1,7 @@
 ﻿/*
  Author: Aaron Hines
  Edits By: 
- Description: General Inpout events that will be used by the PlayerInputComponent
+ Description: An object that can load levels in groups and dynamically add themselves to build settings
  */
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,9 +17,30 @@ namespace GameFramework.Manifest
     public class Manifest : SerializedScriptableObject
     {
         [SerializeField]
-        [InlineEditor]
-        private List<ContentCollection> contents = new List<ContentCollection>();
+        private SceneAsset _startupScene;
+        public SceneAsset startupScene
+        {
+            get
+            {
+                if(_startupScene == null)
+                {
+                    _startupScene = (SceneAsset)Resources.Load( "Startup" );
+                }
+                return _startupScene;
+            }
+            private set
+            {
+                _startupScene = value;
+            }
+        }
 
+        [SerializeField]
+        [InlineEditor]
+        private List<ContentCollection> _contents = new List<ContentCollection>();
+        public List<ContentCollection> contents
+        {
+            get => _contents;
+        }
 
 #if UNITY_EDITOR
         [Button]
@@ -30,7 +51,13 @@ namespace GameFramework.Manifest
 
         private void Populate()
         {
-            List<EditorBuildSettingsScene> _editorBuildSettingsScenes = new List<EditorBuildSettingsScene>();
+            if(startupScene == null)
+            {
+                Debug.LogError( "MANIFEST ACTIVATE FAILED: Startup scene could not be dynamically loaded", this );
+            }
+
+            List<EditorBuildSettingsScene> _editorBuildSettingsScenes =
+                new List<EditorBuildSettingsScene>() { new EditorBuildSettingsScene( AssetDatabase.GetAssetPath( startupScene ), true ) };
 
             foreach(var _content in contents)
             {

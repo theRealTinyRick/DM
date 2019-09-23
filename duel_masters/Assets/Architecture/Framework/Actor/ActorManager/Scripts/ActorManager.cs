@@ -6,6 +6,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using Photon.Pun;
 
 namespace GameFramework.Actors
 {
@@ -127,12 +128,11 @@ namespace GameFramework.Actors
                 Debug.LogError("The prefab for " + identity.identityName + " is null");
                 return null;
             }
-
             Actor _prefab = GetPrefab(identity);
 
-            if (_prefab == null)
+            if (_prefab == null || identity.isReplicated)
             {
-                return SpawnNewActor(identity.prefab, position, rotation, parent);
+                return SpawnNewActor(identity.prefab, position, rotation, parent, identity.isReplicated);
             }
 
             return RespawnActor(_prefab, position, rotation, parent).gameObject;
@@ -146,11 +146,12 @@ namespace GameFramework.Actors
         /// <param name="rotation"></param>
         /// <param name="parent"></param>
         /// <returns></returns>
-        private static GameObject SpawnNewActor(GameObject prefab, Vector3 position, Quaternion rotation, Transform parent = null)
+        private static GameObject SpawnNewActor(GameObject prefab, Vector3 position, Quaternion rotation, Transform parent = null, bool replicate = false)
         {
-            GameObject _spawnedActor = Instantiate(prefab, position, rotation, parent);
-            _spawnedActor.transform.SetParent(parent);
+            GameObject _spawnedActor = null;
+            _spawnedActor = Instantiate(prefab, position, rotation, parent);
 
+            _spawnedActor.transform.SetParent(parent);
             FinishSpawn(_spawnedActor.GetComponent<Actor>());
 
             return _spawnedActor;

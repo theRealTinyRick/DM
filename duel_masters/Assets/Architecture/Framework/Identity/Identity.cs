@@ -40,6 +40,13 @@ namespace GameFramework
             get => _parent;
         }
 
+        [SerializeField]
+        private bool _isReplicated;
+        public bool isReplicated
+        {
+            get => _isReplicated;
+        }
+
         /// <summary>
         /// Determines if the child identity is a descendant of the parent
         /// </summary>

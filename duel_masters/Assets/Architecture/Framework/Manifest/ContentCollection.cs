@@ -11,6 +11,9 @@ using UnityEditor;
 
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
+using Photon.Pun;
+using Photon.Realtime;
 
 namespace GameFramework.Manifest
 {
@@ -43,6 +46,24 @@ namespace GameFramework.Manifest
         {
             get;
             private set;
+        }
+
+        public void Load()
+        {
+            foreach(string _scene in sceneNames)
+            {
+                //if(PhotonNetwork.IsConnected)
+                //{
+                //    PhotonNetwork.LoadLevel( _scene ); // this may actuall need to be handled in a custom solution, maybe load levels additively??
+                //    // TODO: Make a manifest singleton to load levels additively with photon. This way we can use rpcs
+                //}
+                //else
+                {
+                    SceneManager.LoadScene( _scene, LoadSceneMode.Additive );
+                }
+
+                Debug.Log( "Loading scene: " + _scene + " from content collection: " + name);
+            }
         }
     }
 }
