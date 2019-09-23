@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 661abb65fa27ef84abb62e09a6729302
+ScriptedImporter:
+  fileIDToRecycleName:
+    11400000: <root>
+    11400002: Gameplay/Fire_1
+    11400004: Gameplay/Fire_2
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: e2fdc6edf8744b38b702a2a5ee3541b2, type: 3}
+  generateWrapperCode: 1
+  wrapperCodePath: 
+  wrapperClassName: 
+  wrapperCodeNamespace: GameFramework.Input
+  generateActionEvents: 0
+  generateInterfaces: 0
+  actionGuids: []
+  actionMapGuids: []

@@ -1,0 +1,64 @@
+{
+    "name": "InputActionMain",
+    "maps": [
+        {
+            "name": "Gameplay",
+            "id": "321d10f6-1da1-4115-9dfa-de6a4dea37d6",
+            "actions": [
+                {
+                    "name": "Fire_1",
+                    "id": "aefb211a-bdc5-4f7a-9cf3-70eb7ddec870",
+                    "expectedControlLayout": "",
+                    "continuous": false,
+                    "passThrough": false,
+                    "processors": "",
+                    "interactions": "",
+                    "bindings": []
+                },
+                {
+                    "name": "Fire_2",
+                    "id": "a9b30920-6778-415c-806c-c23c4ed612af",
+                    "expectedControlLayout": "",
+                    "continuous": false,
+                    "passThrough": false,
+                    "processors": "",
+                    "interactions": "",
+                    "bindings": []
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire_1",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire_2",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                }
+            ]
+        },
+        {
+            "name": "Menu",
+            "id": "eae0064e-5957-459d-8537-46ad628d56d2",
+            "actions": [],
+            "bindings": []
+        }
+    ],
+    "controlSchemes": []
+}
