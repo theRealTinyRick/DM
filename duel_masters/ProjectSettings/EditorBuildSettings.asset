@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Content/Levels/DuelScene/Scenes/TestScene.unity
-    guid: 8c206889b35a8ff4db630070d7ffcd1d
+    path: Assets/Architecture/Framework/Networking/TestStuff/scenes/networktestscene.unity
+    guid: 82bfe1218931b4343bf207584462eff9
+  - enabled: 1
+    path: Assets/Architecture/Framework/Networking/TestStuff/scenes/TEST.unity
+    guid: fa9944a7c50ac52418e30f9bef5d53fc
   m_configObjects: {}

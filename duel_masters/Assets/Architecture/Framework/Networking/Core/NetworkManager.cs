@@ -205,7 +205,6 @@ namespace GameFramework.Netorking.Photon
         {
             Debug.Log( "Network Manager:  OnJoinedRoom() called by PUN. Now this client is in a room." );
             roomJoinedEvent?.Invoke();
-
         }
 
         public override void OnLeftRoom()
