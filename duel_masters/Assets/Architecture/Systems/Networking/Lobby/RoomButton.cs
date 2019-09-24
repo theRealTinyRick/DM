@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class RoomButton : MonoBehaviour
 {
-    public Text nameText;
-    public Text sizeText;
+    public TextMeshProUGUI nameText;
 
     public string roomName;
     public int roomSize;
@@ -15,7 +15,6 @@ public class RoomButton : MonoBehaviour
     public void SetRoom()
     {
         nameText.text = roomName;
-        sizeText.text = roomSize.ToString();
     }
 
     public void JoinRoomOnClick()

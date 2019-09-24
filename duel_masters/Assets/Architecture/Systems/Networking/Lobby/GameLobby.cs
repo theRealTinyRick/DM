@@ -18,14 +18,6 @@ namespace DM.Systems.Networking.Lobby
             PhotonNetwork.ConnectUsingSettings();
         }
 
-        private void Update()
-        {
-            if(PhotonNetwork.IsConnected &&  PhotonNetwork.InLobby)
-            {
-                Debug.Log( PhotonNetwork.CurrentLobby.Name );
-            }
-        }
-
         public void OnRoomNameChanged( string name )
         {
             roomName = name;
@@ -43,7 +35,6 @@ namespace DM.Systems.Networking.Lobby
         {
             if(room.IsOpen && room.IsVisible)
             {
-                Debug.Log( "room: " + room.Name );
                 GameObject _listing = Instantiate( roomListingsprefab, roomsPanel );
                 RoomButton _button = _listing.GetComponent<RoomButton>();
                 _button.roomName = room.Name;
@@ -53,14 +44,22 @@ namespace DM.Systems.Networking.Lobby
             }
         }
 
-        public void StartGame()
+        public void OnFindGamesClick()
+        {
+            if(!PhotonNetwork.InLobby)
+            {
+                PhotonNetwork.JoinLobby();
+            }
+        }
+
+        public void OnStartGameClick()
         {
             PhotonNetwork.LoadLevel( "Duel_Standard" ); // TODO: change to use the manifest system
         }
 
-        public void CreateRoom()
+        public void OnCreateRoomClick()
         {
-            RoomOptions _roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = (byte)2 };
+            RoomOptions _roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = (byte)5 };
             PhotonNetwork.CreateRoom( roomName, _roomOps );
         }
 
@@ -73,18 +72,10 @@ namespace DM.Systems.Networking.Lobby
         {
             PhotonNetwork.AutomaticallySyncScene = true;
             Debug.Log( "Network Manager:  OnConnectedToMaster() was called by PUN" );
-
-            if ( !PhotonNetwork.InLobby )
-            {
-                PhotonNetwork.JoinLobby( new TypedLobby( "default", LobbyType.Default ) );
-            }
         }
 
         public override void OnRoomListUpdate( List<RoomInfo> roomList )
         {
-            Debug.Log( "test" );
-
-            //RemoveRoomListings();
             foreach ( RoomInfo _room in roomList )
             {
                 ListRoom( _room );
@@ -99,6 +90,8 @@ namespace DM.Systems.Networking.Lobby
             {
                 Debug.LogFormat( "OnPlayerEnteredRoom IsMasterClient {0}", PhotonNetwork.IsMasterClient ); // called before OnPlayerLeftRoom
             }
+
+            OnStartGameClick();
         }
 
         public override void OnPlayerLeftRoom( Player other )

@@ -42,7 +42,7 @@ namespace GameFramework.Manifest
         }
 #endif
         [SerializeField]
-        private List<string> _sceneNames = new List<string>();
+        private List<string> _sceneNames;
         public List<string> sceneNames
         {
             get =>_sceneNames;
@@ -51,6 +51,11 @@ namespace GameFramework.Manifest
 
         public void Load()
         {
+            if(_sceneNames == null)
+            {
+                return;
+            }
+
             int _index = 0;
             foreach(string _scene in sceneNames)
             {
