@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isEnabled: 1
   _defaultTab: 0
-  _triggerEnableMode: 0
+  _triggerEnableMode: 3
   _triggerBehaviour: 0
   _enableKeyboardShortcuts: 1
   _keyboardShortcuts: []
   _newKeyboardShortcuts:
   - Action: 1
     Alt: 0
-    Control: 1
+    Control: 0
     Key: 282
-    Shift: 1
+    Shift: 0
   - Action: 2
     Alt: 0
     Control: 1

@@ -23,8 +23,3 @@ MonoBehaviour:
     SerializationNodes: []
   _scenes:
   - {fileID: 102900000, guid: 82bfe1218931b4343bf207584462eff9, type: 3}
-  - {fileID: 102900000, guid: 3e9386f2cf1fc5a448afa2c05097fb00, type: 3}
-  - {fileID: 102900000, guid: b38f6fa0707b98548a1a30e88fe45439, type: 3}
-  - {fileID: 102900000, guid: 741de3c798e7fd848af0b69be78f0476, type: 3}
-  - {fileID: 102900000, guid: e3e9104427b10db40b9a6a6587846aa5, type: 3}
-  - {fileID: 102900000, guid: 80056ca322b268c4dbcdc9797723bb8e, type: 3}

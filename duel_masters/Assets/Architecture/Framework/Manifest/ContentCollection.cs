@@ -41,26 +41,36 @@ namespace GameFramework.Manifest
             }
         }
 #endif
-
+        [SerializeField]
+        private List<string> _sceneNames = new List<string>();
         public List<string> sceneNames
         {
-            get;
-            private set;
+            get =>_sceneNames;
+            private set =>_sceneNames = value;
         }
 
         public void Load()
         {
+            int _index = 0;
             foreach(string _scene in sceneNames)
             {
+                if(_index == 0)
+                {
+                    SceneManager.LoadScene( _scene );
+                    _index++;
+                }
+                else
+                {
+                    SceneManager.LoadScene( _scene, LoadSceneMode.Additive );
+                }
                 //if(PhotonNetwork.IsConnected)
                 //{
                 //    PhotonNetwork.LoadLevel( _scene ); // this may actuall need to be handled in a custom solution, maybe load levels additively??
                 //    // TODO: Make a manifest singleton to load levels additively with photon. This way we can use rpcs
                 //}
                 //else
-                {
-                    SceneManager.LoadScene( _scene, LoadSceneMode.Additive );
-                }
+                //{
+                //}
 
                 Debug.Log( "Loading scene: " + _scene + " from content collection: " + name);
             }

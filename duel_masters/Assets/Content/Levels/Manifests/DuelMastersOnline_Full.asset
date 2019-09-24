@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DuelMastersOnline_Full
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -21,7 +21,8 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  _startupScene: {fileID: 0}
   _contents:
+  - {fileID: 11400000, guid: fecd4fa0eaaead64fb482a1db3c65a5f, type: 2}
   - {fileID: 11400000, guid: 39d8eabe30ccdfc43a4e5900c44942d2, type: 2}
   - {fileID: 11400000, guid: eea541d31b7cafb47b02218b04e11bb2, type: 2}
+  _startupScene: {fileID: 102900000, guid: 09288329e9685fc4d96d1aea18e9378a, type: 3}

@@ -17,6 +17,15 @@ namespace GameFramework.Manifest
     public class Manifest : SerializedScriptableObject
     {
         [SerializeField]
+        [InlineEditor]
+        private List<ContentCollection> _contents = new List<ContentCollection>();
+        public List<ContentCollection> contents
+        {
+            get => _contents;
+        }
+
+#if UNITY_EDITOR
+        [SerializeField]
         private SceneAsset _startupScene;
         public SceneAsset startupScene
         {
@@ -33,16 +42,6 @@ namespace GameFramework.Manifest
                 _startupScene = value;
             }
         }
-
-        [SerializeField]
-        [InlineEditor]
-        private List<ContentCollection> _contents = new List<ContentCollection>();
-        public List<ContentCollection> contents
-        {
-            get => _contents;
-        }
-
-#if UNITY_EDITOR
         [Button]
         public void Activate()
         {
