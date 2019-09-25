@@ -42,16 +42,16 @@ namespace GameFramework.Manifest
         }
 #endif
         [SerializeField]
-        private List<string> _sceneNames;
+        public List<string> _sceneNames;
         public List<string> sceneNames
         {
-            get =>_sceneNames;
-            private set =>_sceneNames = value;
+            get => _sceneNames;
+            private set => _sceneNames = value;
         }
 
         public void Load()
         {
-            if(_sceneNames == null)
+            if(sceneNames == null)
             {
                 return;
             }

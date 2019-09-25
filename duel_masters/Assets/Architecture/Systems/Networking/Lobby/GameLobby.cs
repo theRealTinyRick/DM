@@ -8,9 +8,16 @@ namespace DM.Systems.Networking.Lobby
 {
     public class GameLobby : Singleton_MonobehaviourPunCallbacks<GameLobby>, ILobbyCallbacks
     {
-        public string roomName;   
-        public GameObject roomListingsprefab;
-        public Transform roomsPanel;
+        [SerializeField]
+        private GameObject roomListingsprefab;
+
+        [SerializeField]
+        private Transform roomsPanel;
+
+        [SerializeField]
+        private int maxPlayerCount = 2;
+
+        private string roomName;
 
         public void Start()
         {
@@ -44,14 +51,6 @@ namespace DM.Systems.Networking.Lobby
             }
         }
 
-        public void OnFindGamesClick()
-        {
-            if(!PhotonNetwork.InLobby)
-            {
-                PhotonNetwork.JoinLobby();
-            }
-        }
-
         public void OnStartGameClick()
         {
             PhotonNetwork.LoadLevel( "Duel_Standard" ); // TODO: change to use the manifest system
@@ -59,19 +58,32 @@ namespace DM.Systems.Networking.Lobby
 
         public void OnCreateRoomClick()
         {
-            RoomOptions _roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = (byte)5 };
-            PhotonNetwork.CreateRoom( roomName, _roomOps );
-        }
-
-        public void ClearName()
-        {
-            roomName = "";
+            if(PhotonNetwork.IsConnected && !PhotonNetwork.InRoom)
+            {
+                RoomOptions _roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = (byte)2 };
+                PhotonNetwork.CreateRoom( roomName, _roomOps );
+            }
         }
 
         public override void OnConnectedToMaster()
         {
             PhotonNetwork.AutomaticallySyncScene = true;
             Debug.Log( "Network Manager:  OnConnectedToMaster() was called by PUN" );
+
+            if ( !PhotonNetwork.InLobby )
+            {
+                PhotonNetwork.JoinLobby();
+            }
+        }
+
+        public override void OnJoinedRoom()
+        {
+            Debug.Log( "Network Manager:  OnJoinedRoom() called by PUN. Now this client is in a room." );
+        }
+
+        public override void OnJoinedLobby()
+        {
+            Debug.Log( "Network Manager:  OnJoinedLobby() called by PUN. Now this client is in a lobby." );
         }
 
         public override void OnRoomListUpdate( List<RoomInfo> roomList )
@@ -91,6 +103,9 @@ namespace DM.Systems.Networking.Lobby
                 Debug.LogFormat( "OnPlayerEnteredRoom IsMasterClient {0}", PhotonNetwork.IsMasterClient ); // called before OnPlayerLeftRoom
             }
 
+            PhotonNetwork.CurrentRoom.IsOpen = false;
+            PhotonNetwork.CurrentRoom.IsVisible = false;
+
             OnStartGameClick();
         }
 
@@ -106,18 +121,7 @@ namespace DM.Systems.Networking.Lobby
 
         public override void OnCreateRoomFailed( short returnCode, string message )
         {
-            Debug.Log( "room could not be created: " + message );
-        }
-
-
-        public override void OnJoinedRoom()
-        {
-            Debug.Log( "Network Manager:  OnJoinedRoom() called by PUN. Now this client is in a room." );
-        }
-
-        public override void OnJoinedLobby()
-        {
-            Debug.Log( "Network Manager:  OnJoinedLobby() called by PUN. Now this client is in a lobby." );
+            Debug.Log( "Room could not be created: " + message );
         }
     }
 }

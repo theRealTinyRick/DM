@@ -264,7 +264,7 @@ PrefabInstance:
     - target: {fileID: 1774096683590047464, guid: f5dcab94125c52943a9f45ef11370040,
         type: 3}
       propertyPath: viewIdField
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1774096683600732177, guid: f5dcab94125c52943a9f45ef11370040,
         type: 3}

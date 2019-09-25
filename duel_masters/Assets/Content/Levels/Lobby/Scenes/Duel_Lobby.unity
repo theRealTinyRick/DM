@@ -415,7 +415,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 60.005005, y: 10.400002}
+  m_AnchoredPosition: {x: 60.005005, y: 10.400024}
   m_SizeDelta: {x: 120.01001, y: 20.800003}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &372879499
@@ -544,7 +544,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -60.005005, y: 10.400002}
+  m_AnchoredPosition: {x: -60.005005, y: 10.400024}
   m_SizeDelta: {x: 120.01001, y: 20.800003}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &446089861
@@ -745,7 +745,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23618bafc09b014592083b1a34d3d30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomName: 
   roomListingsprefab: {fileID: 3718182229574474605, guid: b655c27140aa7d94d85a685fa93426a1,
     type: 3}
   roomsPanel: {fileID: 1060657412}
@@ -1544,8 +1543,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -112.229996}
-  m_SizeDelta: {x: 720.2, y: 224.46}
+  m_AnchoredPosition: {x: 0, y: -114.23}
+  m_SizeDelta: {x: 720, y: 228.46}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1060657413
 MonoBehaviour:
@@ -1593,7 +1592,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1060657411}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1297475563, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: -2095666955, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
@@ -1601,12 +1600,13 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 1
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 1
-  m_ChildControlHeight: 1
+  m_ChildAlignment: 0
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 720, y: 20}
+  m_Spacing: {x: 0, y: 0}
+  m_Constraint: 0
+  m_ConstraintCount: 2
 --- !u!1 &1130317970
 GameObject:
   m_ObjectHideFlags: 0
