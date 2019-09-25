@@ -5,7 +5,7 @@
  */
 using UnityEngine.Events;
 
-namespace GameFramework.Netorking
+namespace GameFramework.Networking
 {
     public class ConnectedToMasterEvent : UnityEvent
     {

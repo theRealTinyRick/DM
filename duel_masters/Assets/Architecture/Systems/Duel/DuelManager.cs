@@ -231,11 +231,5 @@ namespace DM.Systems
             currentTurnPlayer = player;
             turnChangedEvent?.Invoke( player );
         }
-
-        [Button] // TODO: remove thiss
-        public void AddMana()
-        {
-            Action.AddToManaFromHand( player1, player1.hand.cards[0] );
-        }
     }
 }

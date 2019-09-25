@@ -727,7 +727,7 @@ GameObject:
   - component: {fileID: 683152397}
   - component: {fileID: 683152396}
   m_Layer: 0
-  m_Name: GameLobby
+  m_Name: NetworkManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -745,9 +745,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23618bafc09b014592083b1a34d3d30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugLevel: 0
   roomListingsprefab: {fileID: 3718182229574474605, guid: b655c27140aa7d94d85a685fa93426a1,
     type: 3}
   roomsPanel: {fileID: 1060657412}
+  gameSceneName: 
+  maxPlayerCount: 2
+  autoStartGame: 0
 --- !u!4 &683152397
 Transform:
   m_ObjectHideFlags: 0
