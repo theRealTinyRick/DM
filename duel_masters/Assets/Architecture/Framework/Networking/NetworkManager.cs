@@ -118,6 +118,16 @@ namespace GameFramework.Networking
             get => playerLoadedInCount >= maxPlayerCount;
         }
 
+        public bool connectedToMaster
+        {
+            get => PhotonNetwork.IsConnected;
+        }
+
+        public bool isHost
+        {
+            get => PhotonNetwork.IsMasterClient;
+        }
+
         public List<Player> playerList
         {
             get

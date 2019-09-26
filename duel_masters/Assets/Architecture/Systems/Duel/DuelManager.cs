@@ -191,29 +191,56 @@ namespace DM.Systems
 
         public void StartDuel()
         {
-            players.Add(PhotonNetwork.Instantiate( playerPrefabName, Vector3.zero, Quaternion.identity).GetComponent<DuelistComponent>());
-        }
+            DuelistComponent _localPlayer = PhotonNetwork.Instantiate( playerPrefabName, Vector3.zero, Quaternion.identity ).GetComponent<DuelistComponent>();
 
-        public void RegisterRemotePlayer(DuelistComponent duelistComponent)
-        {
-            //foreach( DuelistComponent _player in players)
-            //{
-            //    _player.deck.Shuffle();
-            //    Action.AddToShieldsFromTopOfDeck( _player, Constants.STARTING_SHIELD_COUNT );
-            //    Action.Draw( _player, Constants.STARTING_HAND_COUNT );
-            //}
-
-            if(!players.Contains(duelistComponent))
+            if(NetworkManager.instance.isHost)
             {
-                players.Add( duelistComponent );
+                _localPlayer.playerNumber = 1;
             }
             else
             {
-                Debug.LogError( "WHAT" );
+                _localPlayer.playerNumber = 2;
+            }
+
+            players.Add(_localPlayer);
+        }
+
+        public void RegisterRemotePlayer(DuelistComponent remotePlayer)
+        {
+            PhotonView _view = remotePlayer.GetComponent<PhotonView>();
+            if(_view != null)
+            {
+                if(!_view.IsMine)
+                {
+                    players.Add( remotePlayer );
+
+                    if ( NetworkManager.instance.isHost )
+                    {
+                        remotePlayer.playerNumber = 2;
+                    }
+                    else
+                    {
+                        remotePlayer.playerNumber = 1;
+                    }
+                }
             }
 
             gameStartedEvent?.Invoke();
             phaseManager?.StartPhases();
         }
+
+        
+        
+        
+        
+        
+        
+        
+        //foreach( DuelistComponent _player in players)
+        //{
+        //    _player.deck.Shuffle();
+        //    Action.AddToShieldsFromTopOfDeck( _player, Constants.STARTING_SHIELD_COUNT );
+        //    Action.Draw( _player, Constants.STARTING_HAND_COUNT );
+        //}
     }
 }

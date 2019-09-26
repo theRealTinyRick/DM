@@ -157,12 +157,11 @@ namespace DM.Systems.CardManipulation
                     if( phaseManager.currentPhase.identifier == mainPhase )
                     {
                         // TODO: make main phase 
-
-                        //ManaPhase _manaPhase = phaseManager.currentPhase as ManaPhase;
-                        //if(_manaPhase == null)
-                        //{
-
-                        //}
+                        MainPhase _mainPhase = phaseManager.currentPhase as MainPhase;
+                        if ( _mainPhase != null )
+                        {
+                            // cast/summon card
+                        }
                     }
                 }
             }
@@ -185,13 +184,13 @@ namespace DM.Systems.CardManipulation
         {
             if(phaseManager == null)
             {
-                Debug.LogError( "Phase manager is null", gameObject );
+                //Debug.LogError( "Phase manager is null", gameObject );
                 return false;
             }
 
             if(phaseManager.currentPhase == null)
             {
-                Debug.LogError( "current Phase is null", gameObject );
+                //Debug.LogError( "current Phase is null", gameObject );
                 return false;
             }
 

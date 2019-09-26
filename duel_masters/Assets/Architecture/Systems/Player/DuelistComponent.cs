@@ -33,13 +33,6 @@ namespace DM.Systems.Players
         [SerializeField]
         public Dictionary<CardLocation, List<Transform>> cardLocations = new Dictionary<CardLocation, List<Transform>>();
 
-        public void SetupDuelist( Deck deck, int playerNumber = 0 )
-        {
-            deckData = deck;
-            this.deck = deck.GenerateDeckInstance( this );
-            this.playerNumber = playerNumber;
-        }
-
         [HideInInspector]
         public Deck deckData;
 
@@ -79,7 +72,14 @@ namespace DM.Systems.Players
         {
             DuelManager.instance.cardDrawnEvent.RemoveListener( SpawnNewCard );
             DuelManager.instance.shieldAddedEvent.RemoveListener( SpawnNewCard );
-        } 
+        }
+
+        public void SetupDuelist( Deck deck, int playerNumber = 0 )
+        {
+            deckData = deck;
+            this.deck = deck.GenerateDeckInstance( this );
+            this.playerNumber = playerNumber;
+        }
 
         public void SpawnCard( Card card )
         {
