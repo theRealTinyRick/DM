@@ -1,24 +1,39 @@
-﻿using Photon.Pun;
-using System.Collections;
-using System.Collections.Generic;
+﻿/*
+ Author: Aaron Hines
+ Edits By: 
+ Description: defines a room button in the lobby menu
+ */
 using UnityEngine;
-using UnityEngine.UI;
+using Photon.Pun;
 using TMPro;
 
-public class RoomButton : MonoBehaviour
+namespace DM.Systems.Networking.UI
 {
-    public TextMeshProUGUI nameText;
-
-    public string roomName;
-    public int roomSize;
-
-    public void SetRoom()
+    public class RoomButton : MonoBehaviour
     {
-        nameText.text = roomName;
-    }
+        [SerializeField]
+        private TextMeshProUGUI nameText;
 
-    public void JoinRoomOnClick()
-    {
-        PhotonNetwork.JoinRoom( roomName );
+        [SerializeField]
+        private TextMeshProUGUI descriptionText;
+
+        [SerializeField]
+        private TextMeshProUGUI hostNameText;
+
+        private string roomName;
+
+        public void SetRoom(string roomName, string description, string hostName)
+        {
+            this.roomName = roomName;
+
+            nameText.text = roomName;
+            descriptionText.text = description;
+            hostNameText.text = hostName;
+        }
+
+        public void JoinRoomOnClick()
+        {
+            PhotonNetwork.JoinRoom( roomName );
+        }
     }
 }

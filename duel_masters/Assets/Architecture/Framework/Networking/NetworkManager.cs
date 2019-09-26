@@ -1,7 +1,7 @@
 ﻿/*
  Author: Aaron Hines
  Edits By: 
- Description: holder for all network events
+ Description: manages primary connection. Other classes should listen to this scripts events rather than photon to prevent unnessisay coupling to a thirdparty system.
  */
 using System.Collections.Generic;
 
@@ -9,6 +9,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using Sirenix.OdinInspector;
+using UnityEngine.SceneManagement;
 
 namespace GameFramework.Networking
 {
@@ -19,17 +20,23 @@ namespace GameFramework.Networking
         [SerializeField]
         private DebugLevel debugLevel;
 
-        [TabGroup(Tabs.PROPERTIES)]
+        [TabGroup( Tabs.PROPERTIES )]
+        [Tooltip("Connection to master will be made on start")]
         [SerializeField]
-        private GameObject roomListingsprefab;
-
-        [TabGroup(Tabs.PROPERTIES)]
-        [SerializeField]
-        private Transform roomsPanel;
+        private bool connectOnLoad;
 
         [TabGroup( Tabs.PROPERTIES )]
+        [Tooltip("When the max number of players in the room is reached, go ahead and start the game (load the scene)")]
+        [SerializeField]
+        private bool autoStartGame;
+
+        [TabGroup( "Scenes" )]
         [SerializeField]
         private string gameSceneName = "";
+
+        [TabGroup( "Scenes" )]
+        [SerializeField]
+        private string lobbyScene = "";
 
         [TabGroup(Tabs.PROPERTIES)]
         [SerializeField]
@@ -37,7 +44,7 @@ namespace GameFramework.Networking
 
         [TabGroup( Tabs.PROPERTIES )]
         [SerializeField]
-        private bool autoStartGame;
+        private int minPlayerCount = 2;
         #endregion
 
         #region NETWORK EVENTS
@@ -72,6 +79,14 @@ namespace GameFramework.Networking
         [TabGroup( Tabs.EVENTS )]
         [SerializeField]
         public PlayerExitedRoomEvent playerExitedRoomEvent = new PlayerExitedRoomEvent();
+
+        [TabGroup( Tabs.EVENTS )]
+        [SerializeField]
+        public RoomListUpdateEvent roomListUpdateEvent = new RoomListUpdateEvent();
+
+        [TabGroup( Tabs.EVENTS )]
+        [SerializeField]
+        public AllPlayerLevelsLoadedEvent allPlayerLevelsLoadedEvent = new AllPlayerLevelsLoadedEvent();
         #endregion
 
         #region PROPERTIES
@@ -80,8 +95,29 @@ namespace GameFramework.Networking
             get;
             private set;
         }
+
+        public int playerLoadedInCount
+        {
+            get;
+            private set;
+        } = 0;
+
+        public bool allPlayersLoadedIn
+        {
+            get => playerLoadedInCount >= maxPlayerCount;
+        }
         #endregion
 
+        private void Start()
+        {
+            if(connectOnLoad)
+            {
+                Connect();
+            }
+        }
+
+        // call these to functions to 
+        #region PUBLIC FUNCIONS 
         public void Connect()
         {
             if(!PhotonNetwork.IsConnected)
@@ -91,37 +127,11 @@ namespace GameFramework.Networking
             }
         }
 
-        // call these to functions to 
-        #region PUBLIC FUNCIONS 
-        public void OnRoomNameChanged( string name ) // TODO: move this somewhere else to handle ui changes - then call create room and joing room with the string passed in
-        {
-            roomName = name;
-        }
-
-        private void RemoveRoomListings()
-        {
-            while(roomsPanel.childCount != 0)
-            {
-                Destroy( roomsPanel.GetChild(0).gameObject );
-            }
-        }
-
-        private void ListRoom( RoomInfo room )
-        {
-            if(room.IsOpen && room.IsVisible)
-            {
-                GameObject _listing = Instantiate( roomListingsprefab, roomsPanel );
-                RoomButton _button = _listing.GetComponent<RoomButton>();
-                _button.roomName = room.Name;
-                _button.roomSize = room.MaxPlayers;
-
-                _button.SetRoom();
-            }
-        }
-
         public void StartGame()
         {
-            PhotonNetwork.LoadLevel( gameSceneName );
+            PhotonNetwork.CurrentRoom.IsOpen = false;
+            PhotonNetwork.CurrentRoom.IsVisible = false;
+            PhotonNetwork.LoadLevel( gameSceneName ); 
         }
 
         public void CreateRoom(string roomName = "")
@@ -132,6 +142,21 @@ namespace GameFramework.Networking
                 PhotonNetwork.CreateRoom( string.IsNullOrEmpty(roomName) ? this.roomName : roomName, _roomOps );
             }
         }
+
+        public void LeaveRoom()
+        {
+            PhotonNetwork.LeaveRoom();
+            SceneManager.LoadScene( lobbyScene ); // display some UI here later
+            playerLoadedInCount = 0;
+        }
+
+        public void OnLevelInitialized()
+        {
+            GetComponent<PhotonView>().RPC( "RegisterLevelLoadedRPC", RpcTarget.All );
+        }
+        #endregion
+
+        #region PRIVATE FUNCTIONS
         #endregion
 
         #region PUN CALLBACKS
@@ -148,6 +173,8 @@ namespace GameFramework.Networking
             {
                 PhotonNetwork.JoinLobby();
             }
+
+            connectedToMasterEvent?.Invoke();
         }
 
         public override void OnJoinedRoom()
@@ -156,21 +183,23 @@ namespace GameFramework.Networking
             {
                 Debug.Log( "Network Manager:  OnJoinedRoom() called by PUN. Now this client is in a room." );
             }
+
+            roomJoinedEvent?.Invoke();
         }
 
         public override void OnJoinedLobby()
         {
+            if ( debugLevel > DebugLevel.None )
             {
                 Debug.Log( "Network Manager:  OnJoinedLobby() called by PUN. Now this client is in a lobby." );
             }
+
+            lobbyJoinedEvent?.Invoke();
         }
 
         public override void OnRoomListUpdate( List<RoomInfo> roomList )
         {
-            foreach ( RoomInfo _room in roomList )
-            {
-                ListRoom( _room );
-            }
+            roomListUpdateEvent?.Invoke( roomList );
         }
 
         public override void OnPlayerEnteredRoom( Player other )
@@ -184,12 +213,14 @@ namespace GameFramework.Networking
                 }
             }
 
-            PhotonNetwork.CurrentRoom.IsOpen = false;
-            PhotonNetwork.CurrentRoom.IsVisible = false;
+            playerEnteredRoomEvent?.Invoke( other );
 
-            if(autoStartGame)
+            if ( PhotonNetwork.PlayerList.Length >= maxPlayerCount )
             {
-                StartGame();
+                if(autoStartGame) /// TODO: count players
+                {
+                    StartGame();
+                }
             }
         }
 
@@ -202,6 +233,12 @@ namespace GameFramework.Networking
                 {
                     Debug.LogFormat( "OnPlayerLeftRoom IsMasterClient {0}", PhotonNetwork.IsMasterClient ); // called before OnPlayerLeftRoom
                 }
+                playerExitedRoomEvent?.Invoke( other );
+
+                if (PhotonNetwork.PlayerList.Length <= minPlayerCount)
+                {
+                    LeaveRoom();
+                }
             }
         }
 
@@ -210,6 +247,18 @@ namespace GameFramework.Networking
             if ( debugLevel > DebugLevel.None )
             {
                 Debug.Log( "Room could not be created: " + message );
+            }
+        }
+        #endregion
+
+        #region RPCs
+        [PunRPC]
+        private void RegisterLevelLoadedRPC()
+        {
+            playerLoadedInCount++;
+            if(playerLoadedInCount >= maxPlayerCount)
+            {
+                allPlayerLevelsLoadedEvent?.Invoke();
             }
         }
         #endregion

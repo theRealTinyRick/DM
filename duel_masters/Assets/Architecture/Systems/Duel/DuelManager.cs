@@ -186,6 +186,9 @@ namespace DM.Systems
         {
         }
 
+
+
+
         [Button]
         public void StartDuel()
         {
@@ -214,6 +217,41 @@ namespace DM.Systems
             gameStartedEvent?.Invoke();
             phaseManager?.StartPhases();
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         public void NextPlayersTurn()
         {

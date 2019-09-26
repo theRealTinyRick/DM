@@ -1,21 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-using Photon.Pun;
-
-namespace GameFramework.Netorking.Photon
+namespace GameFramework.Networking
 {
-    public class GameInitializer : MonoBehaviourPunCallbacks
+    public class GameInitializer : MonoBehaviour
     {
         void Start()
         {
-            RegisterLevelLoaded();
-        }
-
-        private void RegisterLevelLoaded()
-        {
-
+            NetworkManager.instance.OnLevelInitialized();
         }
     }
 }
