@@ -5,7 +5,7 @@
 
 namespace DM.Systems.Players
 {
-    public enum PlayerSelection
+    public enum DuelistSelection
     {
         Owner,
         Opponent

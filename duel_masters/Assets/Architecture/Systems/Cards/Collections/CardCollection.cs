@@ -38,7 +38,7 @@ namespace DM.Systems.Cards
             cards = new List<Card>();
         }
 
-        public CardCollection(Dictionary<CardData, int> collection, Player owner)
+        public CardCollection(Dictionary<CardData, int> collection, DuelistComponent owner )
         {
             this.owner = owner;
             this.collection = new Dictionary<CardData, List<Card>>();
@@ -66,8 +66,8 @@ namespace DM.Systems.Cards
             private set => _cards = value;
         }
 
-        private Player _owner;
-        public Player owner
+        private DuelistComponent _owner;
+        public DuelistComponent owner
         {
             get => _owner;
             private set => _owner = value;

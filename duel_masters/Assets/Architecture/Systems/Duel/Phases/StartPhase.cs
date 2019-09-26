@@ -30,7 +30,6 @@ namespace DM.Systems.Duel.Phases
         public void EnterPhase()
         {
             DuelManager.instance.startPhaseEnteredEvent.Invoke( DuelManager.instance.currentTurnPlayer );
-            DuelManager.instance.currentTurnPlayer.OnTurnStart();
         }
 
         public void RunPhase( float deltaTime )

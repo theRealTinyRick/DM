@@ -3,6 +3,7 @@
  Edits By: 
  Description: manages primary connection. Other classes should listen to this scripts events rather than photon to prevent unnessisay coupling to a thirdparty system.
  */
+using System.Linq;
 using System.Collections.Generic;
 
 using UnityEngine;
@@ -29,6 +30,16 @@ namespace GameFramework.Networking
         [Tooltip("When the max number of players in the room is reached, go ahead and start the game (load the scene)")]
         [SerializeField]
         private bool autoStartGame;
+
+        [TabGroup( Tabs.PROPERTIES )]
+        [Tooltip( "Close the room off to new players when the game is starting (good for 2 players only excetera)." )]
+        [SerializeField]
+        private bool closeRoomWhenGameStarts;
+
+        [TabGroup( Tabs.PROPERTIES )]
+        [Tooltip( "if true, this will reopen the room to new players when someone leaves the game. Good for fps." )]
+        [SerializeField]
+        private bool repopenRoomWhenPlayersLeave;
 
         [TabGroup( "Scenes" )]
         [SerializeField]
@@ -106,6 +117,19 @@ namespace GameFramework.Networking
         {
             get => playerLoadedInCount >= maxPlayerCount;
         }
+
+        public List<Player> playerList
+        {
+            get
+            {
+                if(PhotonNetwork.InRoom)
+                {
+                    return PhotonNetwork.PlayerList.ToList();
+                }
+
+                return null;
+            }
+        }
         #endregion
 
         private void Start()
@@ -127,10 +151,18 @@ namespace GameFramework.Networking
             }
         }
 
-        public void StartGame()
+        /// <summary>
+        ///     Loads the rooms starting level. Optional: close the room off to new players (good for 2 players only excetera).
+        /// </summary>
+        /// <param name="closeRoom"></param>
+        public void StartGame(bool closeRoom = false)
         {
-            PhotonNetwork.CurrentRoom.IsOpen = false;
-            PhotonNetwork.CurrentRoom.IsVisible = false;
+            if(closeRoom)
+            {
+                PhotonNetwork.CurrentRoom.IsOpen = false;
+                PhotonNetwork.CurrentRoom.IsVisible = false;
+            }
+
             PhotonNetwork.LoadLevel( gameSceneName ); 
         }
 
@@ -141,6 +173,12 @@ namespace GameFramework.Networking
                 RoomOptions _roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = (byte)maxPlayerCount };
                 PhotonNetwork.CreateRoom( string.IsNullOrEmpty(roomName) ? this.roomName : roomName, _roomOps );
             }
+        }
+
+        public void ReopenRoom()
+        {
+            PhotonNetwork.CurrentRoom.IsOpen = true;
+            PhotonNetwork.CurrentRoom.IsVisible = true;
         }
 
         public void LeaveRoom()
@@ -238,6 +276,13 @@ namespace GameFramework.Networking
                 if (PhotonNetwork.PlayerList.Length <= minPlayerCount)
                 {
                     LeaveRoom();
+                }
+                else
+                {
+                    if( repopenRoomWhenPlayersLeave )
+                    {
+                        ReopenRoom();
+                    }
                 }
             }
         }

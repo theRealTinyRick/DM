@@ -5426,6 +5426,7 @@ GameObject:
   - component: {fileID: 7658202462092130353}
   - component: {fileID: 7658202462092130351}
   - component: {fileID: 242501075}
+  - component: {fileID: 3947815539389235977}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -6119,6 +6120,20 @@ MonoBehaviour:
   cardIdentity: {fileID: 11400000, guid: 7cacd158414b3e54c922e8c036f25383, type: 2}
   cardSpawnPoint: {fileID: 1975636711}
   cardSpeed: 0.3
+  deckData: {fileID: 0}
+  playerNumber: 0
+  deck:
+    _cards: []
+  hand:
+    _cards: []
+  graveyard:
+    _cards: []
+  sheildZone:
+    _cards: []
+  manaZone:
+    _cards: []
+  battleZone:
+    _cards: []
   spawnedCards: []
 --- !u!114 &242501075
 MonoBehaviour:
@@ -6154,6 +6169,28 @@ MonoBehaviour:
   dragDistance: 3
   manaPhase: {fileID: 11400000, guid: 605738ebafb306d47b5411b4248e8f11, type: 2}
   mainPhase: {fileID: 11400000, guid: 8255f08bc4e05c2499ece767a146bad6, type: 2}
+--- !u!114 &3947815539389235977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7658202462092130348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &8040073020845247805
 GameObject:
   m_ObjectHideFlags: 0

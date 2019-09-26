@@ -14,7 +14,7 @@ namespace DM.Systems.CardMechanics.Mechanics
         private int amountToDraw;
 
         [SerializeField]
-        private PlayerSelection targetPlayer;
+        private DuelistSelection targetPlayer;
 
         public void Use(Card card)
         {

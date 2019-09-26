@@ -10,7 +10,7 @@ namespace DM.Systems.Actions
 {
     public partial class Action
     {
-        public static void Draw(Player targetPlayer, int amountToDraw = 1)
+        public static void Draw(DuelistComponent targetPlayer, int amountToDraw = 1)
         {
             for( int _i = 0; _i < amountToDraw; _i++ )
             {

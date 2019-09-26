@@ -29,7 +29,6 @@ namespace DM.Systems.Duel.Phases
 
         public void EnterPhase()
         {
-            DuelManager.instance.currentTurnPlayer.OnDrawPhase();
             DuelManager.instance.drawPhaseEnteredEvent.Invoke( DuelManager.instance.currentTurnPlayer );
         }
 

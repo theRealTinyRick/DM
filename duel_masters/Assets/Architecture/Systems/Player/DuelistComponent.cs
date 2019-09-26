@@ -15,7 +15,7 @@ using DM.Systems.Gameplay.Locations;
 
 namespace DM.Systems.Players
 {
-    public class PlayerComponent_DM : ActorComponent
+    public class DuelistComponent : ActorComponent
     {
         [TabGroup(Tabs.PROPERTIES)]
         [SerializeField]
@@ -33,11 +33,36 @@ namespace DM.Systems.Players
         [SerializeField]
         public Dictionary<CardLocation, List<Transform>> cardLocations = new Dictionary<CardLocation, List<Transform>>();
 
-        public Player player
+        public void SetupDuelist( Deck deck, int playerNumber = 0 )
         {
-            get;
-            private set;
+            deckData = deck;
+            this.deck = deck.GenerateDeckInstance( this );
+            this.playerNumber = playerNumber;
         }
+
+        [HideInInspector]
+        public Deck deckData;
+
+        [SerializeField]
+        public int playerNumber;
+
+        [SerializeField]
+        public CardCollection deck;
+
+        [SerializeField]
+        public CardCollection hand = new CardCollection();
+
+        [SerializeField]
+        public CardCollection graveyard = new CardCollection();
+
+        [SerializeField]
+        public CardCollection sheildZone = new CardCollection();
+
+        [SerializeField]
+        public CardCollection manaZone = new CardCollection();
+
+        [SerializeField]
+        public CardCollection battleZone = new CardCollection();
 
         [SerializeField]
         private List<CardComponent> spawnedCards = new List<CardComponent>();
@@ -46,18 +71,15 @@ namespace DM.Systems.Players
         {
             DuelManager.instance.cardDrawnEvent.AddListener( SpawnNewCard );
             DuelManager.instance.shieldAddedEvent.AddListener( SpawnNewCard );
+
+            DuelManager.instance.RegisterRemotePlayer(this);
         }
 
         public override void DisableComponent()
         {
             DuelManager.instance.cardDrawnEvent.RemoveListener( SpawnNewCard );
             DuelManager.instance.shieldAddedEvent.RemoveListener( SpawnNewCard );
-        }
-
-        public void AssignPlayer(Player player)
-        {
-            this.player = player;
-        }
+        } 
 
         public void SpawnCard( Card card )
         {
@@ -94,9 +116,9 @@ namespace DM.Systems.Players
         }
 
         // Event callbacks
-        private void SpawnNewCard(Player player, Card card)
+        private void SpawnNewCard(DuelistComponent player, Card card)
         {
-            if (player == this.player)
+            if (player == this)
             {
                 SpawnCard( card );
             }

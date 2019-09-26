@@ -4,15 +4,19 @@
  Description: Manages the duel
  */
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 using Sirenix.OdinInspector;
 
 using GameFramework;
+using GameFramework.Networking;
 using GameFramework.Phases;
 
 using DM.Systems.Players;
 using DM.Systems.Cards;
 using DM.Systems.GameEvents;
 using DM.Systems.Actions;
+using System.Collections.Generic;
 
 namespace DM.Systems
 {
@@ -20,28 +24,24 @@ namespace DM.Systems
     {
         [TabGroup( Tabs.PROPERTIES )]
         [SerializeField]
-        private Identity playerIdentity;
+        private string playerPrefabName;
 
         [TabGroup(Tabs.PROPERTIES)]
         [SerializeField]
-        public Deck player1Deck;
-
-        [TabGroup(Tabs.PROPERTIES)]
-        [SerializeField]
-        public Deck player2Deck;
+        public Deck playerDeck;
 
         [TabGroup( "Setup" )]
         [SerializeField]
-        private PlayerComponent_DM player1Component;
+        private DuelistComponent player1Component;
 
         [TabGroup( "Setup" )]
         [SerializeField]
-        private PlayerComponent_DM player2Component;
+        private DuelistComponent player2Component;
 
-        [TabGroup(Tabs.PROPERTIES)]
+        [TabGroup( Tabs.PROPERTIES )]
         [SerializeField]
-        private Player[] players = new Player[2];
-        private PlayerComponent_DM[] playerComponentArray = new PlayerComponent_DM[2];
+        private List<DuelistComponent> players = new List<DuelistComponent>();
+        private DM.Systems.Players.DuelistComponent[] playerComponentArray = new DuelistComponent[2];
 
         #region Events
         [TabGroup( Tabs.EVENTS )]
@@ -139,11 +139,11 @@ namespace DM.Systems
             private set;
         }
 
-        public Player player1
+        public DuelistComponent player1
         {
             get
             {
-                if(players != null && players.Length > 1)
+                if(players != null && players.Count > 1)
                 {
                     return players[0];
                 }
@@ -152,11 +152,11 @@ namespace DM.Systems
             }
         }
 
-        public Player player2
+        public DuelistComponent player2
         {
             get
             {
-                if ( players != null && players.Length > 1 )
+                if ( players != null && players.Count > 1 )
                 {
                     return players[1];
                 }
@@ -171,7 +171,7 @@ namespace DM.Systems
             private set;
         } = 0;
 
-        public Player currentTurnPlayer
+        public DuelistComponent currentTurnPlayer
         {
             get;
             private set;
@@ -180,94 +180,40 @@ namespace DM.Systems
         protected override void Enable()
         {
             phaseManager = GetComponentInChildren<PhaseManager>();
+
+            NetworkManager.instance.allPlayerLevelsLoadedEvent.AddListener( StartDuel );
         }
 
         protected override void Disable()
         {
+            NetworkManager.instance.allPlayerLevelsLoadedEvent.RemoveListener( StartDuel );
         }
 
-
-
-
-        [Button]
         public void StartDuel()
         {
-            players[0] = new Player( player1Deck, 0 );
-            players[1] = new Player( player2Deck, 1 );
+            players.Add(PhotonNetwork.Instantiate( playerPrefabName, Vector3.zero, Quaternion.identity).GetComponent<DuelistComponent>());
+        }
 
-            player1Component.AssignPlayer( players[0] );
-            player2Component.AssignPlayer( players[1] );
+        public void RegisterRemotePlayer(DuelistComponent duelistComponent)
+        {
+            //foreach( DuelistComponent _player in players)
+            //{
+            //    _player.deck.Shuffle();
+            //    Action.AddToShieldsFromTopOfDeck( _player, Constants.STARTING_SHIELD_COUNT );
+            //    Action.Draw( _player, Constants.STARTING_HAND_COUNT );
+            //}
 
-            players = new Player[]{ player1, player2 };
-            playerComponentArray = new PlayerComponent_DM[] { player1Component, player2Component };
-
-            foreach(Player _player in players)
+            if(!players.Contains(duelistComponent))
             {
-                _player.Enable();
-
-                _player.deck.Shuffle();
-
-                Action.AddToShieldsFromTopOfDeck( _player, Constants.STARTING_SHIELD_COUNT );
-                Action.Draw( _player, Constants.STARTING_HAND_COUNT );
+                players.Add( duelistComponent );
             }
-
-            currentPlayerIndex = 0;
-            SetCurrentTurnPlayer( players[currentPlayerIndex] );
+            else
+            {
+                Debug.LogError( "WHAT" );
+            }
 
             gameStartedEvent?.Invoke();
             phaseManager?.StartPhases();
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        public void NextPlayersTurn()
-        {
-            currentPlayerIndex++;
-            if(currentPlayerIndex >= players.Length)
-            {
-                currentPlayerIndex = 0;
-            }
-
-            SetCurrentTurnPlayer( players[currentPlayerIndex] );
-        }
-
-        public void SetCurrentTurnPlayer( Player player )
-        {
-            currentTurnPlayer = player;
-            turnChangedEvent?.Invoke( player );
         }
     }
 }

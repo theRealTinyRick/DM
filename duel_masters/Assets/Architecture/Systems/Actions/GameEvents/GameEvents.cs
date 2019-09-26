@@ -16,42 +16,42 @@ namespace DM.Systems.GameEvents
     public class GameEndedEvent : UnityEvent { }
 
     [System.Serializable]
-    public class TurnChangedEvent : UnityEvent<Player> { }
+    public class TurnChangedEvent : UnityEvent<DuelistComponent> { }
 
 
     [System.Serializable]
-    public class StartPhaseEvent : UnityEvent<Player> { }
+    public class StartPhaseEvent : UnityEvent<DuelistComponent> { }
 
     [System.Serializable]
-    public class DrawPhaseEvent : UnityEvent<Player> { }
+    public class DrawPhaseEvent : UnityEvent<DuelistComponent> { }
 
     [System.Serializable]
-    public class ManaPhaseEvent : UnityEvent<Player> { }
+    public class ManaPhaseEvent : UnityEvent<DuelistComponent> { }
 
     [System.Serializable]
-    public class MainPhaseEvent : UnityEvent<Player> { }
+    public class MainPhaseEvent : UnityEvent<DuelistComponent> { }
 
     [System.Serializable]
-    public class BattlePhaseEvent : UnityEvent<Player> { }
+    public class BattlePhaseEvent : UnityEvent<DuelistComponent> { }
 
     [System.Serializable]
-    public class EndPhaseEvent : UnityEvent<Player> { }
+    public class EndPhaseEvent : UnityEvent<DuelistComponent> { }
 
 
     [System.Serializable]
-    public class CreatureSummonedEvent : UnityEvent<Player, Card> { }
+    public class CreatureSummonedEvent : UnityEvent<DuelistComponent, Card> { }
 
     [System.Serializable]
-    public class CardDrawnEvent : UnityEvent<Player, Card> { }
+    public class CardDrawnEvent : UnityEvent<DuelistComponent, Card> { }
 
     [System.Serializable]
-    public class ShieldAddedEvent : UnityEvent<Player, Card> { }
+    public class ShieldAddedEvent : UnityEvent<DuelistComponent, Card> { }
 
     [System.Serializable]
-    public class ShieldBrokenEvent : UnityEvent<Player, Card> { }
+    public class ShieldBrokenEvent : UnityEvent<DuelistComponent, Card> { }
 
     [System.Serializable]
-    public class ManaAddedEvent : UnityEvent<Player, Card> { }
+    public class ManaAddedEvent : UnityEvent<DuelistComponent, Card> { }
 
     [System.Serializable]
     public class CardTappedEvent : UnityEvent<Card> { }

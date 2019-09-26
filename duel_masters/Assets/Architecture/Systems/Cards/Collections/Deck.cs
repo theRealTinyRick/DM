@@ -32,7 +32,7 @@ namespace DM.Systems.Cards
         ///     Requires you to pass in an owning player. 
         /// </param>
         /// <returns></returns>
-        public CardCollection GenerateDeckInstance(Player owner)
+        public CardCollection GenerateDeckInstance(DuelistComponent owner)
         {
             //if(GetDeckCount() >= Constants.MIN_DECK_COUNT)
             {

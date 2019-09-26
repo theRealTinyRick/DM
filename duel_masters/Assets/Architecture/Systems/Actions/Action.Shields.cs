@@ -15,7 +15,7 @@ namespace DM.Systems.Actions
     public partial class Action
     {
         #region Adding
-        private static void AddToShields( Player targetPlayer, CardCollection collection, Card card )
+        private static void AddToShields( DuelistComponent targetPlayer, CardCollection collection, Card card )
         {
             if ( card != null )
             {
@@ -26,7 +26,7 @@ namespace DM.Systems.Actions
             }
         }
 
-        public static void AddToShieldsFromTopOfDeck( Player targetPlayer, int amount = 1 )
+        public static void AddToShieldsFromTopOfDeck( DuelistComponent targetPlayer, int amount = 1 )
         {
             for(int _i = 0; _i < amount; _i++ )
             {
@@ -38,23 +38,23 @@ namespace DM.Systems.Actions
             }
         }
 
-        public static void AddToShieldsFromHand( Player targetPlayer, Card card )
+        public static void AddToShieldsFromHand( DuelistComponent targetPlayer, Card card )
         {
             AddToShields( targetPlayer, targetPlayer.hand, card);
         }
 
-        public static void AddToShieldsFromBattleZone( Player targetPlayer, Card card )
+        public static void AddToShieldsFromBattleZone( DuelistComponent targetPlayer, Card card )
         {
             AddToShields( targetPlayer, targetPlayer.battleZone, card);
         }
 
 
-        public static void AddToShieldsFromGraveyard( Player targetPlayer, Card card )
+        public static void AddToShieldsFromGraveyard( DuelistComponent targetPlayer, Card card )
         {
             AddToShields( targetPlayer, targetPlayer.graveyard, card);
         }
 
-        public static void AddToShieldsFromManaZone( Player targetPlayer, Card card )
+        public static void AddToShieldsFromManaZone( DuelistComponent targetPlayer, Card card )
         {
             AddToShields( targetPlayer, targetPlayer.manaZone, card);
         }
@@ -62,14 +62,14 @@ namespace DM.Systems.Actions
 
         #region Breaking
 
-        public static void BreakShield(Player targetPlayer, Card card)
+        public static void BreakShield(DuelistComponent targetPlayer, Card card)
         {
             targetPlayer.sheildZone.Transfer( card, targetPlayer.hand );
             card.UpdateCardLocation( CardLocation.Hand );
             DuelManager.instance.shieldAddedEvent.Invoke( targetPlayer, card );
         }
 
-        public static void BreakRandom(Player targetPlayer, int amount = 1)
+        public static void BreakRandom(DuelistComponent targetPlayer, int amount = 1)
         {
             for(int _i = 0; _i < amount; _i++ )
             {
@@ -81,7 +81,7 @@ namespace DM.Systems.Actions
             }
         }
 
-        public static void BreakFirst(Player targetPlayer, int amount = 1 )
+        public static void BreakFirst(DuelistComponent targetPlayer, int amount = 1 )
         {
             for(int _i = 0; _i < amount; _i++ )
             {

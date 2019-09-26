@@ -10,7 +10,7 @@ namespace DM.Systems.Actions
 {
     public partial class Action
     {
-        private static void AddToMana(Player targetPlayer, Card card, CardCollection collection)
+        private static void AddToMana(DuelistComponent targetPlayer, Card card, CardCollection collection)
         {
             if( card != null )
             {
@@ -20,27 +20,27 @@ namespace DM.Systems.Actions
             }
         }
 
-        public static void AddToManaFromHand( Player targetPlayer, Card card)
+        public static void AddToManaFromHand( DuelistComponent targetPlayer, Card card)
         {
             AddToMana( targetPlayer, card, targetPlayer.hand );
         }
 
-        public static void AddToManaFromDeck( Player targetPlayer, Card card )
+        public static void AddToManaFromDeck( DuelistComponent targetPlayer, Card card )
         {
             AddToMana( targetPlayer, card, targetPlayer.deck );
         }
 
-        public static void AddToManaFromBattleZone( Player targetPlayer, Card card )
+        public static void AddToManaFromBattleZone( DuelistComponent targetPlayer, Card card )
         {
             AddToMana( targetPlayer, card, targetPlayer.battleZone );
         }
 
-        public static void AddToManaFromGraveyard( Player targetPlayer, Card card )
+        public static void AddToManaFromGraveyard( DuelistComponent targetPlayer, Card card )
         {
             AddToMana( targetPlayer, card, targetPlayer.graveyard );
         }
 
-        public static void AddToManaFromShields( Player targetPlayer, Card card )
+        public static void AddToManaFromShields( DuelistComponent targetPlayer, Card card )
         {
             AddToMana( targetPlayer, card, targetPlayer.sheildZone );
         }

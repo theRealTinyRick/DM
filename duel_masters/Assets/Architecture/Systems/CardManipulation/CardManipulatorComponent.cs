@@ -1,6 +1,6 @@
 ﻿/*
  Author: Aaron Hines
- Description: represents the player in the scene. Handles spawning and despawning cards. Some coroutines may be called here too
+ Description: represents the playerComponent in the scene. Handles spawning and despawning cards. Some coroutines may be called here too
 */
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +18,7 @@ using DM.Systems.Actions;
 
 namespace DM.Systems.CardManipulation
 {
-    [RequireComponent(typeof(PlayerComponent_DM))]
+    [RequireComponent(typeof(DuelistComponent))]
     public class CardManipulatorComponent : ActorComponent
     {
         [TabGroup( Tabs.PROPERTIES )]
@@ -57,16 +57,15 @@ namespace DM.Systems.CardManipulation
         [TabGroup( Tabs.PROPERTIES )]
         private PhaseIdentifier mainPhase;
 
-        private Player player;
         private CardComponent currentManipulatedCard;
-        private PlayerComponent_DM playerComponent;
+        private DuelistComponent playerComponent;
         private new Camera camera;
 
         private bool clicking = false;
 
         public override void InitializeComponent()
         {
-            playerComponent = owner.GetActorComponent<PlayerComponent_DM>();
+            playerComponent = owner.GetActorComponent<DuelistComponent>();
             camera = owner.GetComponentInChildren<Camera>();
 
             DuelManager.instance.gameStartedEvent.AddListener( OnGameStarted );
@@ -81,10 +80,6 @@ namespace DM.Systems.CardManipulation
 
         public void OnGameStarted()
         {
-            if(playerComponent.player != null)
-            {
-                player = playerComponent.player;
-            }
         }
 
         public void OnInputDown()
@@ -102,7 +97,7 @@ namespace DM.Systems.CardManipulation
                 if(_hit.transform.gameObject.WithInLayerMask(cardLayerMask))
                 {
                     CardComponent _card = _hit.transform.gameObject.GetComponentInChildren<CardComponent>();
-                    if( _card != null && player.hand.Contains(_card.card) )
+                    if( _card != null && playerComponent.hand.Contains(_card.card) )
                     {
                         currentManipulatedCard = _card;
                     }
@@ -154,7 +149,7 @@ namespace DM.Systems.CardManipulation
                         {
                             if(!_manaPhase.manaAdded)
                             {
-                                Action.AddToManaFromHand( player, currentManipulatedCard.card );
+                                Action.AddToManaFromHand( playerComponent, currentManipulatedCard.card );
                             }
                         }
                     }

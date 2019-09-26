@@ -505,5 +505,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1774096683590047463, guid: f5dcab94125c52943a9f45ef11370040,
+        type: 3}
+      propertyPath: players.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1774096683590047463, guid: f5dcab94125c52943a9f45ef11370040,
+        type: 3}
+      propertyPath: playerDeck
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c0654d0c13f0be499cec68ecb80ca15,
+        type: 2}
+    - target: {fileID: 1774096683590047463, guid: f5dcab94125c52943a9f45ef11370040,
+        type: 3}
+      propertyPath: playerPrefabName
+      value: Player/Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5dcab94125c52943a9f45ef11370040, type: 3}

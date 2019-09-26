@@ -15,7 +15,7 @@ namespace DM.Systems.Cards
     [Serializable]
     public class Card   
     {
-        public Card(CardData data, Player owner)
+        public Card(CardData data, DuelistComponent owner)
         {
             this.data = data;
             this.owner = owner;
@@ -45,8 +45,8 @@ namespace DM.Systems.Cards
             }
         }
 
-        private Player _owner;
-        public Player owner
+        private DuelistComponent _owner;
+        public DuelistComponent owner
         {
             get
             {
@@ -62,8 +62,8 @@ namespace DM.Systems.Cards
             }
         }
 
-        private Player _overrideOwner;
-        public Player overrideOwner
+        private DuelistComponent _overrideOwner;
+        public DuelistComponent overrideOwner
         {
             get
             {

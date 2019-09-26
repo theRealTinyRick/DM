@@ -40,7 +40,7 @@ namespace DM.Systems.Duel.Phases
             DuelManager.instance.manaAddedEvent.AddListener( OnManaAdded );
         }
 
-        private void OnManaAdded(Player player, Card card)
+        private void OnManaAdded(DuelistComponent player, Card card)
         {
             manaAdded = true;
         }
