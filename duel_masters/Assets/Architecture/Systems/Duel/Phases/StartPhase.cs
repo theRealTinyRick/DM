@@ -29,7 +29,7 @@ namespace DM.Systems.Duel.Phases
 
         public void EnterPhase()
         {
-            DuelManager.instance.startPhaseEnteredEvent.Invoke( DuelManager.instance.currentTurnPlayer );
+           // DuelManager.instance.startPhaseEnteredEvent.Invoke( DuelManager.instance.currentTurnPlayer );
         }
 
         public void RunPhase( float deltaTime )
@@ -44,7 +44,7 @@ namespace DM.Systems.Duel.Phases
         public void ExitPhase()
         {
             currentTime = 0;
-            DuelManager.instance.startPhaseExitedEvent.Invoke( DuelManager.instance.currentTurnPlayer );
+            //DuelManager.instance.startPhaseExitedEvent.Invoke( DuelManager.instance.currentTurnPlayer );
         }
     }
 }

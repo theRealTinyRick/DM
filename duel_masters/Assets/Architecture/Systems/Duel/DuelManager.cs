@@ -17,6 +17,7 @@ using DM.Systems.Cards;
 using DM.Systems.GameEvents;
 using DM.Systems.Actions;
 using System.Collections.Generic;
+using System.Collections;
 
 namespace DM.Systems
 {
@@ -143,12 +144,7 @@ namespace DM.Systems
         {
             get
             {
-                if(players != null && players.Count > 1)
-                {
-                    return players[0];
-                }
-
-                return null;
+                return players.Find( _duelist => _duelist.playerNumber == 1 );
             }
         }
 
@@ -156,40 +152,23 @@ namespace DM.Systems
         {
             get
             {
-                if ( players != null && players.Count > 1 )
-                {
-                    return players[1];
-                }
-
-                return null;
+                return players.Find( _duelist => _duelist.playerNumber == 2 );
             }
-        }
-
-        public int currentPlayerIndex
-        {
-            get;
-            private set;
-        } = 0;
-
-        public DuelistComponent currentTurnPlayer
-        {
-            get;
-            private set;
         }
 
         protected override void Enable()
         {
             phaseManager = GetComponentInChildren<PhaseManager>();
 
-            NetworkManager.instance.allPlayerLevelsLoadedEvent.AddListener( StartDuel );
+            NetworkManager.instance.allPlayerLevelsLoadedEvent.AddListener( StartGame );
         }
 
         protected override void Disable()
         {
-            NetworkManager.instance.allPlayerLevelsLoadedEvent.RemoveListener( StartDuel );
+            NetworkManager.instance.allPlayerLevelsLoadedEvent.RemoveListener( StartGame );
         }
 
-        public void StartDuel()
+        public void StartGame()
         {
             DuelistComponent _localPlayer = PhotonNetwork.Instantiate( playerPrefabName, Vector3.zero, Quaternion.identity ).GetComponent<DuelistComponent>();
 
@@ -222,25 +201,37 @@ namespace DM.Systems
                     {
                         remotePlayer.playerNumber = 1;
                     }
+
+                    // rotate the remove player
+                    remotePlayer.transform.rotation = new Quaternion( 0, 180, 0, 0 );
+                    remotePlayer.GetComponentInChildren<Camera>().gameObject.SetActive( false );
                 }
             }
 
             gameStartedEvent?.Invoke();
             phaseManager?.StartPhases();
+
+            StartDuel();
         }
 
+        public void StartDuel()
+        {
+            // shuffle decks
+            foreach(DuelistComponent _player in players)
+            {
+                _player.SetupDuelist( playerDeck );
+                _player.ShuffleCards();
+            }
+
+            // add shields
+            // draw cards
+            StartCoroutine( RunSetup() );
+        }
         
-        
-        
-        
-        
-        
-        
-        //foreach( DuelistComponent _player in players)
-        //{
-        //    _player.deck.Shuffle();
-        //    Action.AddToShieldsFromTopOfDeck( _player, Constants.STARTING_SHIELD_COUNT );
-        //    Action.Draw( _player, Constants.STARTING_HAND_COUNT );
-        //}
+        private IEnumerator RunSetup()
+        {
+            yield return new WaitForEndOfFrame();
+        }
+
     }
 }

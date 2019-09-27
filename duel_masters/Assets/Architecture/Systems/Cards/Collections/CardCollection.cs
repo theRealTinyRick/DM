@@ -54,6 +54,12 @@ namespace DM.Systems.Cards
             }
 
             cards = this.collection.Values.ToList().SelectMany( _card => _card ).ToList(); 
+            
+            // set initial card index
+            for( int _i = 0; _i < cards.Count; _i++ )
+            {
+                cards[_i].cardIndex = _i;
+            }
         }
 
         private Dictionary<CardData, List<Card>> collection;
@@ -154,24 +160,67 @@ namespace DM.Systems.Cards
             return cards.FindAll( _card => _card.data == data );
         }
 
-        public void Shuffle()
+        public int[] Shuffle() // set card indexes instead of rearanging cards
         {
-            int _randomNumberOfTimesToShuffle = UnityEngine.Random.Range( 5, 10 );
+            // TODO: maybe find a better way to randomize these. 
 
-            for ( int _i = 0; _i < _randomNumberOfTimesToShuffle; _i++ )
+            // maybe actually randomize them and call a second function to reorder them based on card id. That has to happen anyway
+
+            List<int> _availableIndexes = new int[cards.Count].ToList();
+            for(int _i = 0; _i < _availableIndexes.Count; _i++)
             {
-                List<Card> _oldList = new List<Card>( cards );
-                List<Card> _newCardList = new List<Card>();
-                while(_oldList.Count > 0)
+                _availableIndexes[_i] = _i;
+            }
+
+            for (int _i = 0; _i < cards.Count; _i++)
+            {
+                int _index = _availableIndexes[UnityEngine.Random.Range( 0, _availableIndexes.Count )];
+                _availableIndexes.Remove( _index );
+                cards[_i].cardIndex = _index;
+
+                Debug.Log( "setting index: " + cards[_i].cardName + "" + cards[_i].cardIndex );
+            }
+
+            List<int> _result = new List<int>();
+            foreach(Card _card in cards)
+            {
+                _result.Add( _card.cardIndex );
+                Debug.Log( "SECOND setting index: " + _card.cardName + "" + _card.cardIndex );
+            }
+
+            return _result.ToArray();
+            
+
+            //int _randomNumberOfTimesToShuffle = UnityEngine.Random.Range( 5, 10 );
+
+            //for ( int _i = 0; _i < _randomNumberOfTimesToShuffle; _i++ )
+            //{
+            //    List<Card> _oldList = new List<Card>( cards );
+            //    List<Card> _newCardList = new List<Card>();
+
+            //    while(_oldList.Count > 0)
+            //    {
+            //        int _rando = UnityEngine.Random.Range( 0, _oldList.Count );
+            //        Card _card = _oldList[_rando];
+
+            //        _oldList.Remove(_card);
+            //        _newCardList.Add( _card );
+            //    }
+
+            //    cards = _newCardList;
+            //    cards = _newCardList;
+            //}
+
+        }
+
+        public void SetCardIndexes(int[] indexes)
+        {
+            for(int _i = 0; _i < indexes.Length; _i++ )
+            {
+                if(_i < cards.Count)
                 {
-                    int _rando = UnityEngine.Random.Range( 0, _oldList.Count );
-                    Card _card = _oldList[_rando];
-
-                    _oldList.Remove(_card);
-                    _newCardList.Add( _card );
+                    cards[_i].cardIndex = indexes[_i];
                 }
-
-                cards = _newCardList;
             }
         }
     }

@@ -6119,8 +6119,8 @@ MonoBehaviour:
       Data: 
   cardIdentity: {fileID: 11400000, guid: 7cacd158414b3e54c922e8c036f25383, type: 2}
   cardSpawnPoint: {fileID: 1975636711}
-  cardSpeed: 0.3
-  deckData: {fileID: 0}
+  cardMoveSpeed: 0
+  spawnedCards: []
   playerNumber: 0
   deck:
     _cards: []
@@ -6134,7 +6134,8 @@ MonoBehaviour:
     _cards: []
   battleZone:
     _cards: []
-  spawnedCards: []
+  deckData: {fileID: 0}
+  photonView: {fileID: 0}
 --- !u!114 &242501075
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -241,6 +241,9 @@ namespace DM.Systems.Cards
         private bool overrideName = false;
         private bool overrideCost = false;
 
+        public int cardIndex;
+
+
         /// <summary>
         ///     This function will set up any relationships between this card instance and the mechanics and triggers
         /// </summary>

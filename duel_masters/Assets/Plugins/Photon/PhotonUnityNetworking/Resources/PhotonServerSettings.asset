@@ -36,5 +36,8 @@ MonoBehaviour:
   - RespawnSpaceship
   - PressSpace
   - RegisterLevelLoadedRPC
+  - StartDuel
+  - SetDeckIndexes
+  - ShuffleCards
   DisableAutoOpenWizard: 1
   ShowSettings: 1
