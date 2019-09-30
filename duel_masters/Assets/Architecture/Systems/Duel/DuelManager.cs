@@ -3,6 +3,7 @@
  Edits By: 
  Description: Manages the duel. This will spawn in players and have events for listening
  */
+using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
@@ -13,7 +14,6 @@ using GameFramework.Networking;
 using GameFramework.Phases;
 
 using DM.Systems.Players;
-using DM.Systems.Cards;
 using DM.Systems.GameEvents;
 using DM.Systems.Actions;
 using DM.Systems.Turns;
@@ -55,6 +55,22 @@ namespace DM.Systems
             get
             {
                 return players.Find( _duelist => _duelist.playerNumber == 2 );
+            }
+        }
+
+        public DuelistComponent localPlayer
+        {
+            get
+            {
+                return players.Find( _duelist => _duelist.GetComponent<PhotonView>().IsMine );
+            }
+        }
+
+        public DuelistComponent remotePlayer
+        {
+            get
+            {
+                return players.Find( _duelist => !_duelist.GetComponent<PhotonView>().IsMine );
             }
         }
 
@@ -227,11 +243,22 @@ namespace DM.Systems
         {
             if(players.Count >= Constants.MIN_PLAYER_COUNT && PhotonNetwork.IsMasterClient)
             {
-                foreach(DuelistComponent _player in players)
-                {
-                    actionManager.TriggerAddShieldsFromDeck( _player, 5, false );
-                    actionManager.TriggerDraw( _player, 5, false );
-                }
+                StartCoroutine( StartStuffRoutine() );
+            }
+        }
+
+        private IEnumerator StartStuffRoutine()
+        {
+            foreach ( DuelistComponent _player in players )
+            {
+                actionManager.TriggerAddShieldsFromDeck( _player, 5, false );
+            }
+
+            yield return new WaitForSeconds( 4 );
+
+            foreach ( DuelistComponent _player in players )
+            {
+                actionManager.TriggerDraw( _player, 5, false );
             }
         }
 

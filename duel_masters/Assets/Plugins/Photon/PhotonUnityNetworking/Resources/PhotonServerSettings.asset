@@ -44,5 +44,6 @@ MonoBehaviour:
   - StartPhasesRPC
   - PassTurnRPC
   - AddManaFromHandRPC
+  - AddFilterRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1

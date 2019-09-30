@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c295698f5f1675d4fb53772e9eb67fb6, type: 3}
-  m_Name: MainDatabase
+  m_Name: DM_Database
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2

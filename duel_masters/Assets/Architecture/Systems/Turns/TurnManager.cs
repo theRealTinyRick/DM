@@ -18,6 +18,9 @@ namespace DM.Systems.Turns
         public DuelistComponent currentTurnPlayer;
         public int currentTurnPlayerIndex = 0;
 
+        public DuelistComponent currentPriorityPlayer;
+        public int currentPriorityPlayerIndex;
+
         private DuelistComponent[] players;
         private PhotonView photonView;
 
@@ -73,6 +76,16 @@ namespace DM.Systems.Turns
 
             currentTurnPlayerIndex = newTurnIndex;
             currentTurnPlayer = players[currentTurnPlayerIndex];
+        }
+
+        public void SetPriority(int player)
+        {
+
+        }
+
+        public void SetPriority(DuelistComponent player)
+        {
+
         }
     }
 }

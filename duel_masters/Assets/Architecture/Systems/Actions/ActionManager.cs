@@ -41,7 +41,6 @@ namespace DM.Systems.Actions
         [PunRPC]
         public void AddShieldsFromDeckRPC( int targetPlayer, int amount, bool waitForResponse )
         {
-            Debug.Log( "add shields " + amount );
             DuelistComponent _player = DuelManager.instance.GetPlayer( targetPlayer );
             StartCoroutine( AddShieldsRoutine( _player, amount, waitForResponse ) );
         }

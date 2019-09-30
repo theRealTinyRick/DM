@@ -34,7 +34,65 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: 2|DM.Systems.CardMechanics.Triggers.OnSummonTrigger, Assembly-CSharp
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: 3|DM.Systems.CardMechanics.Effect, Assembly-CSharp
+    - Name: mechanics
+      Entry: 7
+      Data: 4|System.Collections.Generic.List`1[[DM.Systems.CardMechanics.ICardMechanic,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
       Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: card
+      Entry: 7
+      Data: 5|DM.Systems.Cards.Card, Assembly-CSharp
+    - Name: _id
+      Entry: 2
+      Data: 00000000000000000000000000000000
+    - Name: _cardName
+      Entry: 1
+      Data: 
+    - Name: cardImage
+      Entry: 6
+      Data: 
+    - Name: cardMaterial
+      Entry: 6
+      Data: 
+    - Name: _tapped
+      Entry: 5
+      Data: false
+    - Name: _currentLocation
+      Entry: 3
+      Data: 0
+    - Name: cardIndex
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 13
       Data: 
