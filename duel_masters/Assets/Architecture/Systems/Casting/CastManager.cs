@@ -47,7 +47,7 @@ namespace DM.Systems.Casting
             }
         }
 
-        private Dictionary<Guid, ICastFilter> castFilters = new Dictionary<Guid, ICastFilter>();
+        private List<ICastFilter> castFilters = new List<ICastFilter>();
         private List<Card> cardsThatYouCanCast = new List<Card>();
 
         private PhotonView photonView;
@@ -69,11 +69,20 @@ namespace DM.Systems.Casting
         {
             if ( turnManager.currentTurnPlayer == player )
             {
-                if ( phaseManager.currentPhase != null && castablePhases.Contains( phaseManager.currentPhase.identifier) )
+                if ( phaseManager.currentPhase == null )
                 {
-                    // loop through the filters
                     return;
                 }
+
+                if ( castablePhases.Contains( phaseManager.currentPhase.identifier) )
+                {
+                    // check available mana
+
+                    // loop through the filters and remove any card that does not meet the conditions
+                    return;
+                }
+
+                // if it
             }
 
             cardsThatYouCanCast.Clear();
@@ -81,6 +90,12 @@ namespace DM.Systems.Casting
 
         public void AddFilter( Card owner, ICastFilter filter )
         {
+
+        }
+
+        public void RemoveFilter( Card owner, ICastFilter filter)
+        {
+
         }
     }
 }
