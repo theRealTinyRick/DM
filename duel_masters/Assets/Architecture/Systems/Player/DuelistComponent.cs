@@ -13,11 +13,20 @@ using GameFramework.Actors;
 using GameFramework.Actors.Components;
 using DM.Systems.Cards;
 using DM.Systems.Gameplay.Locations;
+using DM.Systems.Actions;
 
 namespace DM.Systems.Players
 {
     public class DuelistComponent : ActorComponent
     {
+        [TabGroup( Tabs.PROPERTIES )]
+        [SerializeField]
+        private Deck testDeck;
+
+        [TabGroup( Tabs.PROPERTIES )]
+        [SerializeField]
+        private CardDatabase cardDatabase;
+
         [TabGroup(Tabs.PROPERTIES)]
         [SerializeField]
         private Identity cardIdentity;
@@ -66,10 +75,6 @@ namespace DM.Systems.Players
         [TabGroup( "Cards" )]
         public CardCollection battleZone = new CardCollection();
 
-
-        [HideInInspector]
-        public Deck deckData;
-
         [HideInInspector]
         public PhotonView photonView;
 
@@ -80,27 +85,25 @@ namespace DM.Systems.Players
                 photonView = GetComponent<PhotonView>();
             }
 
-            DuelManager.instance.cardDrawnEvent.AddListener( SpawnNewCard );
-            DuelManager.instance.shieldAddedEvent.AddListener( SpawnNewCard );
-
-            DuelManager.instance.RegisterRemotePlayer(this);
+            DuelManager.instance.cardDrawnEvent.AddListener( OnNeedsToSpawnCard );
+            DuelManager.instance.shieldAddedEvent.AddListener( OnNeedsToSpawnCard );
         }
 
         public override void DisableComponent()
         {
-            DuelManager.instance.cardDrawnEvent.RemoveListener( SpawnNewCard );
-            DuelManager.instance.shieldAddedEvent.RemoveListener( SpawnNewCard );
+            DuelManager.instance.cardDrawnEvent.RemoveListener( OnNeedsToSpawnCard );
+            DuelManager.instance.shieldAddedEvent.RemoveListener( OnNeedsToSpawnCard );
+        }
+
+        private void Start()
+        {
+            SetupDeck();
+            DuelManager.instance.RegisterRemotePlayer(this);
         }
 
         private void Update()
         {
             UpdateCardPosition();
-        }
-
-        public void SetupDuelist( Deck deck )
-        {
-            deckData = deck;
-            this.deck = deck.GenerateDeckInstance( this );
         }
 
         public void SpawnCard( Card card )
@@ -119,7 +122,7 @@ namespace DM.Systems.Players
 
         public void DespawnCard(Card card)
         {
-            CardComponent _cardActorCom = spawnedCards.Find( _card => _card.card.id == card.id );
+            CardComponent _cardActorCom = spawnedCards.Find( _card => _card.card.instanceId == card.instanceId );
             if(_cardActorCom != null)
             {
                 spawnedCards.Remove( _cardActorCom );
@@ -137,8 +140,7 @@ namespace DM.Systems.Players
             spawnedCards.Clear();
         }
 
-        // Event callbacks
-        private void SpawnNewCard(DuelistComponent player, Card card)
+        private void OnNeedsToSpawnCard(DuelistComponent player, Card card)
         {
             if (player == this)
             {
@@ -182,14 +184,64 @@ namespace DM.Systems.Players
             }
         }
 
-        #region Actions
-        [PunRPC]
-        public void ShuffleCards()
+        #region DECK SETUP
+        /// <summary>
+        ///     Creates a deck then replicates in over the network
+        /// </summary>
+        public void SetupDeck()
         {
-            if(photonView.IsMine) // only call this function on the owning player - then set the card indexes on both
+            if(photonView.IsMine)
             {
-                int[] cardindexes = deck.Shuffle();
-                photonView.RPC( "SetDeckIndexes", RpcTarget.Others, cardindexes );
+                deck = testDeck.GenerateDeckInstance( this );
+
+                List<string> _cardIds = new List<string>();
+                List<string> _instanceIds = new List<string>();
+
+                foreach(Card _card in deck.cards)
+                {
+                    if(!string.IsNullOrEmpty(_card.data.cardId))
+                    {
+                        _cardIds.Add( _card.data.cardId );
+                        _instanceIds.Add( _card.instanceId.ToString() );
+                    }
+                }
+
+                photonView.RPC( "SetupDeckOverNetwork", RpcTarget.Others, _cardIds.ToArray(), _instanceIds.ToArray() );
+            }
+        }
+
+        /// <summary>
+        ///     This function will be called after SetupDeck. It will send that data over the server to the opponents machine. 
+        /// </summary>
+        [PunRPC]
+        public void SetupDeckOverNetwork(string[] cardIds, string[] cardInstanceIds)
+        {
+            Dictionary<CardData, int> _collection = new Dictionary<CardData, int>();
+
+            for(int i = 0; i < cardIds.Length; i++)
+            {
+                CardData _data = cardDatabase.GetById( cardIds[i] );
+                if(_collection.ContainsKey(_data))
+                {
+                    _collection[_data]++;
+                }
+                else
+                {
+                    _collection.Add( _data, 1 );
+                }
+            }
+
+            deck = new CardCollection( _collection, this, cardInstanceIds );
+        }
+        #endregion
+
+        #region SHUFFLING
+        public void ShuffleCards() // becuase this is random, we will do it on the local and replicate those results
+        {
+            if(photonView.IsMine)
+            {
+                int[] cardindexes = deck.Shuffle( repositionCards: true );
+                photonView.RPC( "SetDeckIndexesRPC", RpcTarget.Others, cardindexes );
             }
             else
             {
@@ -198,9 +250,9 @@ namespace DM.Systems.Players
         }
 
         [PunRPC]
-        public void SetDeckIndexes(int[] indexes)
+        public void SetDeckIndexesRPC( int[] indexes )
         {
-            deck.SetCardIndexes( indexes );
+            deck.SetCardIndexes( indexes, repositionCards: true );
         }
         #endregion
     }

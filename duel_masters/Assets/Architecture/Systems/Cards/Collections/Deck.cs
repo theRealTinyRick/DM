@@ -34,6 +34,7 @@ namespace DM.Systems.Cards
         /// <returns></returns>
         public CardCollection GenerateDeckInstance(DuelistComponent owner)
         {
+            // TODO: do check here
             //if(GetDeckCount() >= Constants.MIN_DECK_COUNT)
             {
                 return new CardCollection( collection, owner );

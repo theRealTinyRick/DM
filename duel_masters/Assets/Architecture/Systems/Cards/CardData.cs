@@ -29,9 +29,17 @@ namespace DM.Systems.Cards
         [SerializeField]
         public Material cardMaterial;
 
+        [TabGroup( Tabs.PROPERTIES )]
+        [SerializeField]
+        public SetIdentifier set;
+
         [TabGroup(Tabs.PROPERTIES)]
         [SerializeField]
         public string cardName;
+
+        [TabGroup(Tabs.PROPERTIES)]
+        [SerializeField]
+        public string cardId;
 
         [TabGroup(Tabs.PROPERTIES)]
         [SerializeField]
@@ -63,9 +71,6 @@ namespace DM.Systems.Cards
         [TabGroup(Tabs.PROPERTIES)]
         [SerializeField]
         public Dictionary<IMechanicTrigger, Effect> mechanics = new Dictionary<IMechanicTrigger, Effect>();
-
-
-
 
 
         private bool IsCreature()

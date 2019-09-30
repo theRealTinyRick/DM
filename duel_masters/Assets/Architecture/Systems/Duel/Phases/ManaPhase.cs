@@ -37,12 +37,17 @@ namespace DM.Systems.Duel.Phases
 
         public void EnterPhase()
         {
+            Debug.Log( "Mana Phase entered" );
             DuelManager.instance.manaAddedEvent.AddListener( OnManaAdded );
+            DuelManager.instance.manaPhaseEnteredEvent.Invoke( DuelManager.instance.turnManager.currentTurnPlayer );
         }
 
         private void OnManaAdded(DuelistComponent player, Card card)
         {
-            manaAdded = true;
+            if( player == DuelManager.instance.turnManager.currentTurnPlayer )
+            {
+                manaAdded = true;
+            }
         }
 
         public void RunPhase( float deltaTime )
@@ -60,6 +65,7 @@ namespace DM.Systems.Duel.Phases
         public void ExitPhase()
         {
             DuelManager.instance.manaAddedEvent.RemoveListener( OnManaAdded );
+            DuelManager.instance.manaPhaseExitedEvent.Invoke( DuelManager.instance.turnManager.currentTurnPlayer );
             manaAdded = false;
         }
     }

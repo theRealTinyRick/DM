@@ -16,8 +16,8 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 11400000}
     - {fileID: 21300000, guid: c6a6a547326734342a75a30ac42e0893, type: 3}
+    - {fileID: 2100000, guid: 1af94432229bcf047900a38d247a3e1e, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -65,15 +65,27 @@ MonoBehaviour:
     - Name: card
       Entry: 7
       Data: 5|DM.Systems.Cards.Card, Assembly-CSharp
-    - Name: _data
-      Entry: 10
-      Data: 0
+    - Name: _id
+      Entry: 2
+      Data: de9687b3b1964e65b547c38473256008
+    - Name: _cardName
+      Entry: 1
+      Data: Aqua Hulcus
     - Name: cardImage
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: cardMaterial
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 1
+    - Name: _tapped
+      Entry: 5
+      Data: false
+    - Name: _currentLocation
+      Entry: 3
+      Data: 0
+    - Name: cardIndex
+      Entry: 3
+      Data: 19
     - Name: 
       Entry: 8
       Data: 
@@ -91,7 +103,9 @@ MonoBehaviour:
       Data: 
   cardImage: {fileID: 21300000, guid: c6a6a547326734342a75a30ac42e0893, type: 3}
   cardMaterial: {fileID: 2100000, guid: 1af94432229bcf047900a38d247a3e1e, type: 2}
+  set: {fileID: 11400000, guid: c20a34133cd60a749a0af7a5c95e8b0a, type: 2}
   cardName: Aqua Hulcus
+  cardId: DM-01_23-110
   cardType: 0
   power: 0
   numberOfShieldsBroken: 1

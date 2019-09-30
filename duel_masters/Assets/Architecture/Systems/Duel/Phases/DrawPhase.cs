@@ -29,7 +29,13 @@ namespace DM.Systems.Duel.Phases
 
         public void EnterPhase()
         {
-            //DuelManager.instance.drawPhaseEnteredEvent.Invoke( DuelManager.instance.currentTurnPlayer );
+            Debug.Log( "draw phase entered" );
+            DuelManager.instance.drawPhaseEnteredEvent.Invoke( DuelManager.instance.turnManager.currentTurnPlayer );
+
+            if( phaseManager.GetComponent<Photon.Pun.PhotonView>().IsMine )
+            {
+                DuelManager.instance.actionManager.TriggerDraw( DuelManager.instance.turnManager.currentTurnPlayer, 1, false );
+            }
         }
 
         public void RunPhase( float deltaTime )
@@ -44,7 +50,7 @@ namespace DM.Systems.Duel.Phases
         public void ExitPhase()
         {
             currentTime = 0;
-           // DuelManager.instance.drawPhaseExitedEvent.Invoke( DuelManager.instance.currentTurnPlayer );
+            DuelManager.instance.drawPhaseExitedEvent.Invoke( DuelManager.instance.turnManager.currentTurnPlayer );
         }
     }
 }

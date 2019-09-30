@@ -38,7 +38,7 @@ namespace DM.Systems.Cards
             cards = new List<Card>();
         }
 
-        public CardCollection(Dictionary<CardData, int> collection, DuelistComponent owner )
+        public CardCollection(Dictionary<CardData, int> collection, DuelistComponent owner, string[] instanceIds = null /*used to manually set guids*/)
         {
             this.owner = owner;
             this.collection = new Dictionary<CardData, List<Card>>();
@@ -59,6 +59,12 @@ namespace DM.Systems.Cards
             for( int _i = 0; _i < cards.Count; _i++ )
             {
                 cards[_i].cardIndex = _i;
+
+                // if ids have been passed through, set their ids here - these will be used to identify cards
+                if (instanceIds != null && _i <= cards.Count)
+                {
+                    cards[_i].SetId( Guid.Parse(instanceIds[_i]) );
+                }
             }
         }
 
@@ -155,17 +161,20 @@ namespace DM.Systems.Cards
             return cards.Find( _card => _card.data == data );
         }
 
+        public Card Get(Guid instanceId)
+        {
+            return cards.Find( _card => _card.instanceId == instanceId );
+        }
+
         public List<Card> GetAll(CardData data)
         {
             return cards.FindAll( _card => _card.data == data );
         }
 
-        public int[] Shuffle() // set card indexes instead of rearanging cards
+        public int[] Shuffle(bool repositionCards = false) // set card indexes instead of rearanging cards
         {
             // TODO: maybe find a better way to randomize these. 
-
             // maybe actually randomize them and call a second function to reorder them based on card id. That has to happen anyway
-
             List<int> _availableIndexes = new int[cards.Count].ToList();
             for(int _i = 0; _i < _availableIndexes.Count; _i++)
             {
@@ -177,15 +186,17 @@ namespace DM.Systems.Cards
                 int _index = _availableIndexes[UnityEngine.Random.Range( 0, _availableIndexes.Count )];
                 _availableIndexes.Remove( _index );
                 cards[_i].cardIndex = _index;
-
-                Debug.Log( "setting index: " + cards[_i].cardName + "" + cards[_i].cardIndex );
             }
 
             List<int> _result = new List<int>();
             foreach(Card _card in cards)
             {
                 _result.Add( _card.cardIndex );
-                Debug.Log( "SECOND setting index: " + _card.cardName + "" + _card.cardIndex );
+            }
+
+            if ( repositionCards )
+            {
+                RepositionCardsToIndexes();
             }
 
             return _result.ToArray();
@@ -210,10 +221,9 @@ namespace DM.Systems.Cards
             //    cards = _newCardList;
             //    cards = _newCardList;
             //}
-
         }
 
-        public void SetCardIndexes(int[] indexes)
+        public void SetCardIndexes(int[] indexes, bool repositionCards = false)
         {
             for(int _i = 0; _i < indexes.Length; _i++ )
             {
@@ -222,6 +232,22 @@ namespace DM.Systems.Cards
                     cards[_i].cardIndex = indexes[_i];
                 }
             }
+
+            if(repositionCards)
+            {
+                RepositionCardsToIndexes();
+            }
+        }
+
+        public void RepositionCardsToIndexes()
+        {
+            List<Card> _newList = new List<Card>();
+            for( int i = 0; i < cards.Count; i++ )
+            {
+                _newList.Add( cards.Find( _card => _card.cardIndex == i ) );
+            }
+
+            cards = _newList;
         }
     }
 }

@@ -15,15 +15,13 @@ using DM.Systems.Cards;
 using DM.Systems.Players;
 using DM.Systems.Duel.Phases;
 using DM.Systems.Actions;
+using DM.Systems.Turns;
 
 namespace DM.Systems.CardManipulation
 {
     [RequireComponent(typeof(DuelistComponent))]
     public class CardManipulatorComponent : ActorComponent
     {
-        [TabGroup( Tabs.PROPERTIES )]
-        [SerializeField]
-        private PhaseManager phaseManager;
 
         [TabGroup( Tabs.PROPERTIES )]
         [SerializeField]
@@ -57,6 +55,21 @@ namespace DM.Systems.CardManipulation
         [TabGroup( Tabs.PROPERTIES )]
         private PhaseIdentifier mainPhase;
 
+        private ActionManager actionManager
+        {
+            get => DuelManager.instance.actionManager;
+        }
+
+        private PhaseManager phaseManager
+        {
+            get => DuelManager.instance.phaseManager;
+        }
+
+        private TurnManager turnManager
+        {
+            get => DuelManager.instance.turnManager;
+        }
+
         private CardComponent currentManipulatedCard;
         private DuelistComponent playerComponent;
         private new Camera camera;
@@ -84,7 +97,7 @@ namespace DM.Systems.CardManipulation
 
         public void OnInputDown()
         {
-            if(!CanDragCards())
+            if(!CanDragCards() || DuelManager.instance.turnManager.currentTurnPlayer != playerComponent )
             {
                 return;
             }
@@ -109,7 +122,7 @@ namespace DM.Systems.CardManipulation
 
         public void OnInputHeld()
         {
-            if ( !CanDragCards() )
+            if ( !CanDragCards() || DuelManager.instance.turnManager.currentTurnPlayer != playerComponent )
             {
                 ReleaseCard();
                 return;
@@ -149,7 +162,7 @@ namespace DM.Systems.CardManipulation
                         {
                             if(!_manaPhase.manaAdded)
                             {
-                                Action.AddToManaFromHand( playerComponent, currentManipulatedCard.card );
+                                actionManager.TriggerAddManaFromHand( playerComponent, currentManipulatedCard.card );
                             }
                         }
                     }
@@ -182,15 +195,8 @@ namespace DM.Systems.CardManipulation
 
         private bool CanDragCards()
         {
-            if(phaseManager == null)
-            {
-                //Debug.LogError( "Phase manager is null", gameObject );
-                return false;
-            }
-
             if(phaseManager.currentPhase == null)
             {
-                //Debug.LogError( "current Phase is null", gameObject );
                 return false;
             }
 

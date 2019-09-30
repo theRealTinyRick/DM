@@ -1,14 +1,14 @@
 ﻿/*
  Author: Aaron Hines
  Edits By: 
- Description: Manages the duel
+ Description: Manages the duel. This will spawn in players and have events for listening
  */
+using System.Collections.Generic;
+
 using UnityEngine;
 using Photon.Pun;
-using Photon.Realtime;
 using Sirenix.OdinInspector;
 
-using GameFramework;
 using GameFramework.Networking;
 using GameFramework.Phases;
 
@@ -16,8 +16,7 @@ using DM.Systems.Players;
 using DM.Systems.Cards;
 using DM.Systems.GameEvents;
 using DM.Systems.Actions;
-using System.Collections.Generic;
-using System.Collections;
+using DM.Systems.Turns;
 
 namespace DM.Systems
 {
@@ -27,22 +26,37 @@ namespace DM.Systems
         [SerializeField]
         private string playerPrefabName;
 
-        [TabGroup(Tabs.PROPERTIES)]
-        [SerializeField]
-        public Deck playerDeck;
-
-        [TabGroup( "Setup" )]
-        [SerializeField]
-        private DuelistComponent player1Component;
-
-        [TabGroup( "Setup" )]
-        [SerializeField]
-        private DuelistComponent player2Component;
-
         [TabGroup( Tabs.PROPERTIES )]
         [SerializeField]
-        private List<DuelistComponent> players = new List<DuelistComponent>();
-        private DM.Systems.Players.DuelistComponent[] playerComponentArray = new DuelistComponent[2];
+        public List<DuelistComponent> players = new List<DuelistComponent>();
+
+        [TabGroup( "Managers" )]
+        [SerializeField]
+        public ActionManager actionManager;
+
+        [TabGroup( "Managers" )]
+        [SerializeField]
+        public PhaseManager phaseManager;
+
+        [TabGroup( "Managers" )]
+        [SerializeField]
+        public TurnManager turnManager;
+
+        public DuelistComponent player1
+        {
+            get
+            {
+                return players.Find( _duelist => _duelist.playerNumber == 1 );
+            }
+        }
+
+        public DuelistComponent player2
+        {
+            get
+            {
+                return players.Find( _duelist => _duelist.playerNumber == 2 );
+            }
+        }
 
         #region Events
         [TabGroup( Tabs.EVENTS )]
@@ -134,32 +148,8 @@ namespace DM.Systems
         public CardUntappedEvent cardUntappedEvent = new CardUntappedEvent();
         #endregion
 
-        public PhaseManager phaseManager
-        {
-            get;
-            private set;
-        }
-
-        public DuelistComponent player1
-        {
-            get
-            {
-                return players.Find( _duelist => _duelist.playerNumber == 1 );
-            }
-        }
-
-        public DuelistComponent player2
-        {
-            get
-            {
-                return players.Find( _duelist => _duelist.playerNumber == 2 );
-            }
-        }
-
         protected override void Enable()
         {
-            phaseManager = GetComponentInChildren<PhaseManager>();
-
             NetworkManager.instance.allPlayerLevelsLoadedEvent.AddListener( StartGame );
         }
 
@@ -170,9 +160,32 @@ namespace DM.Systems
 
         public void StartGame()
         {
+            // this should call the function to spawn a player - then wait for the next player to be spawned
+            SpawnLocalPlayer();
+        }
+        public void Update() // need to check if master client and only do this stuff on there
+        {
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                DoStartStuff();
+            }
+
+            if(Input.GetKeyDown(KeyCode.Return))
+            {
+                StartDuel();
+            }
+        }
+
+        public DuelistComponent GetPlayer( int playerNumber )
+        {
+            return players.Find( _player => _player.playerNumber == playerNumber );
+        }
+
+        private void SpawnLocalPlayer()
+        {
             DuelistComponent _localPlayer = PhotonNetwork.Instantiate( playerPrefabName, Vector3.zero, Quaternion.identity ).GetComponent<DuelistComponent>();
 
-            if(NetworkManager.instance.isHost)
+            if ( NetworkManager.instance.isHost )
             {
                 _localPlayer.playerNumber = 1;
             }
@@ -181,15 +194,15 @@ namespace DM.Systems
                 _localPlayer.playerNumber = 2;
             }
 
-            players.Add(_localPlayer);
+            players.Add( _localPlayer );
         }
 
-        public void RegisterRemotePlayer(DuelistComponent remotePlayer)
+        public void RegisterRemotePlayer( DuelistComponent remotePlayer )
         {
             PhotonView _view = remotePlayer.GetComponent<PhotonView>();
-            if(_view != null)
+            if ( _view != null )
             {
-                if(!_view.IsMine)
+                if ( !_view.IsMine )
                 {
                     players.Add( remotePlayer );
 
@@ -202,36 +215,30 @@ namespace DM.Systems
                         remotePlayer.playerNumber = 1;
                     }
 
-                    // rotate the remove player
                     remotePlayer.transform.rotation = new Quaternion( 0, 180, 0, 0 );
+
                     remotePlayer.GetComponentInChildren<Camera>().gameObject.SetActive( false );
+                    remotePlayer.GetComponentInChildren<CardManipulation.CardManipulatorComponent>().enabled = false;
                 }
             }
+        }
 
-            gameStartedEvent?.Invoke();
-            phaseManager?.StartPhases();
-
-            StartDuel();
+        public void DoStartStuff()
+        {
+            if(players.Count >= Constants.MIN_PLAYER_COUNT && PhotonNetwork.IsMasterClient)
+            {
+                foreach(DuelistComponent _player in players)
+                {
+                    actionManager.TriggerAddShieldsFromDeck( _player, 5, false );
+                    actionManager.TriggerDraw( _player, 5, false );
+                }
+            }
         }
 
         public void StartDuel()
         {
-            // shuffle decks
-            foreach(DuelistComponent _player in players)
-            {
-                _player.SetupDuelist( playerDeck );
-                _player.ShuffleCards();
-            }
-
-            // add shields
-            // draw cards
-            StartCoroutine( RunSetup() );
+            turnManager.Init();
+            phaseManager.StartPhases();
         }
-        
-        private IEnumerator RunSetup()
-        {
-            yield return new WaitForEndOfFrame();
-        }
-
     }
 }

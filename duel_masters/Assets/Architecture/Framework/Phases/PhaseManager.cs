@@ -4,6 +4,7 @@
 */
 using System.Linq;
 using System.Collections.Generic;
+using Photon.Pun;
 
 using UnityEngine;
 using Sirenix.OdinInspector;
@@ -31,6 +32,7 @@ namespace GameFramework.Phases
     {
         [TabGroup(Tabs.PROPERTIES)]
         [SerializeField]
+        [Tooltip( "Checking this box will cause the phases to loop back to the beginning after reaching the end" )]
         private bool loop = false;
 
         [TabGroup(Tabs.PROPERTIES)]
@@ -54,10 +56,6 @@ namespace GameFramework.Phases
         [SerializeField]
         public PhaseEndedEvent phaseExitedEvent { get; set; }
 
-        [SerializeField]
-        public int currentIndex = 0;
-
-        [SerializeField]
         public IPhase currentPhase
         {
             get;
@@ -70,11 +68,16 @@ namespace GameFramework.Phases
             private set;
         } = null;
 
+        private int currentIndex = 0;
         private bool running = false;
+
+        public PhotonView photonView;
 
         private void OnEnable()
         {
-            Reset();
+            photonView = GetComponent<PhotonView>();
+
+            OnReset();
         }
 
         private void Update()
@@ -87,6 +90,12 @@ namespace GameFramework.Phases
 
         public void StartPhases()
         {
+            photonView.RPC( "StartPhasesRPC", RpcTarget.All );
+        }
+
+        [PunRPC]
+        public void StartPhasesRPC()
+        {
             foreach ( var _phase in phases )
             {
                 _phase.phaseManager = this;
@@ -94,7 +103,7 @@ namespace GameFramework.Phases
 
             if (phases.Count > 0)
             {
-                Reset();
+                OnReset();
 
                 currentPhase = phases[currentIndex];
                 EnterPhase( currentPhase );
@@ -103,7 +112,7 @@ namespace GameFramework.Phases
             }
         }
 
-        public void Reset()
+        public void OnReset()
         {
             if(previousPhase != null)
             {
@@ -116,13 +125,23 @@ namespace GameFramework.Phases
             running = false;
         }
 
+        [Button]
         public void MoveToNextPhase()
+        {
+            if(PhotonNetwork.IsMasterClient)
+            {
+                photonView.RPC( "MoveToNextPhaseRPC", RpcTarget.All );
+            }
+        }
+
+        [PunRPC]
+        public void MoveToNextPhaseRPC()
         {
             int _nextIndex = currentIndex + 1;
 
-            if (_nextIndex >= phases.Count)
+            if ( _nextIndex >= phases.Count )
             {
-                if(loop)
+                if ( loop )
                 {
                     _nextIndex = 0;
                 }
@@ -133,12 +152,12 @@ namespace GameFramework.Phases
                 }
             }
 
-            if (currentPhase != null)
+            if ( currentPhase != null )
             {
                 previousPhase = currentPhase;
             }
 
-            if(previousPhase != null)
+            if ( previousPhase != null )
             {
                 ExitPhase( previousPhase );
             }
@@ -169,7 +188,7 @@ namespace GameFramework.Phases
 
         public void Run()
         {
-            if(currentPhase != null && phases.Contains( currentPhase ) )
+            if( PhotonNetwork.IsMasterClient && currentPhase != null && phases.Contains( currentPhase ) )
             {
                 currentPhase.RunPhase(Time.deltaTime);
                 phaseRunningEvent?.Invoke( currentPhase );

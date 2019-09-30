@@ -7,6 +7,7 @@ namespace DM.Systems
 {
     class Constants
     {
+        public const int MIN_PLAYER_COUNT = 2; //TODO: add this to some kind of game config
         public const int STARTING_SHIELD_COUNT = 5; //TODO: add this to some kind of game config
         public const int STARTING_HAND_COUNT = 5; //TODO: add this to some kind of game config
         public const int MAX_HAND_COUNT = 7; //TODO: add this to some kind of game config
@@ -18,6 +19,7 @@ namespace DM.Systems
         public const string CREATE_NEW_CARD_DATA = "DM/Create New Card Data";
         public const string CREATE_NEW_CREATURE_RACE = "DM/Create New Creature Race";
         public const string CREATE_NEW_CARD_DATABASE = "DM/Create New Card Database";
+        public const string CREATE_NEW_SET = "DM/Create New Set";
         public const string CREATE_NEW_DECK = "DM/Create New Deck";
         public const string CREATE_NEW_TRUNK = "DM/Create New Trunk";
 

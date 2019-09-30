@@ -19,14 +19,14 @@ namespace DM.Systems.Cards
         {
             this.data = data;
             this.owner = owner;
+            instanceId = Guid.NewGuid();
 
             Initialize();
         }
 
         [SerializeField]
-
         private Guid _id;
-        public Guid id
+        public Guid instanceId
         {
             get => _id;
             private set => _id = value;
@@ -263,8 +263,6 @@ namespace DM.Systems.Cards
                 _pair.Key.Initialize(this);
                 _pair.Value.Initialize(this);
             }
-
-            id = Guid.NewGuid();
         }
 
         public void UpdateCardLocation(CardLocation location)
@@ -275,6 +273,15 @@ namespace DM.Systems.Cards
         public void SetTap(bool tap)
         {
             tapped = tap;
+        }
+
+        /// <summary>
+        ///     Used to sync network
+        /// </summary>
+        /// <param name="instanceId"></param>
+        public void SetId(Guid instanceId)
+        {
+            this.instanceId = instanceId;
         }
     }
 }

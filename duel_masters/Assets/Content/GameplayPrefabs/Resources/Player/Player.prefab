@@ -2856,7 +2856,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1457594875}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0, z: 2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8076153296741603535}
@@ -4861,8 +4861,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1819764169909697183}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.22029182, y: -0, z: -0, w: 0.975434}
+  m_LocalPosition: {x: 0, y: -1.8393642, z: -0.74783564}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 453845510497241346}
@@ -4876,7 +4876,7 @@ Transform:
   - {fileID: 1254860163249071407}
   m_Father: {fileID: 1457594876}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 25.452002, y: 0, z: 0}
 --- !u!1 &1843745291989488687
 GameObject:
   m_ObjectHideFlags: 0
@@ -5364,13 +5364,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7658202461562064786}
-  m_LocalRotation: {x: 0.22117837, y: -0, z: -0, w: 0.97523344}
-  m_LocalPosition: {x: 0, y: 4.1, z: -11.48}
+  m_LocalRotation: {x: 0.4631379, y: -0, z: -0, w: 0.8862863}
+  m_LocalPosition: {x: 0.34, y: 6.37, z: -6.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7658202462092130355}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 25.557001, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 55.180004, y: 0, z: 0}
 --- !u!20 &7658202461562064784
 Camera:
   m_ObjectHideFlags: 0
@@ -5401,7 +5401,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1847
+    m_Bits: 823
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -6117,9 +6117,11 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+  testDeck: {fileID: 11400000, guid: 4c0654d0c13f0be499cec68ecb80ca15, type: 2}
+  cardDatabase: {fileID: 11400000, guid: a7e8b14aa88a93e4395ec029e66705ce, type: 2}
   cardIdentity: {fileID: 11400000, guid: 7cacd158414b3e54c922e8c036f25383, type: 2}
   cardSpawnPoint: {fileID: 1975636711}
-  cardMoveSpeed: 0
+  cardMoveSpeed: 0.5
   spawnedCards: []
   playerNumber: 0
   deck:
@@ -6134,7 +6136,6 @@ MonoBehaviour:
     _cards: []
   battleZone:
     _cards: []
-  deckData: {fileID: 0}
   photonView: {fileID: 0}
 --- !u!114 &242501075
 MonoBehaviour:
@@ -6157,7 +6158,6 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  phaseManager: {fileID: 0}
   cardVerticalOffset: 0.2
   cardSpeed: 0.5
   cardLayerMask:

@@ -1,18 +1,18 @@
 ﻿/*
  Author: Aaron Hines
- Description: defines the start phase of a players turn
+ Description: defines the end phase of a players turn
 */
 using UnityEngine;
 using GameFramework.Phases;
 
 namespace DM.Systems.Duel.Phases
 {
-    public class StartPhase : IPhase
+    public class EndPhase : IPhase
     {
+
         [SerializeField]
         private float delayTime = 0;
         private float currentTime = 0;
-
         public PhaseManager phaseManager
         {
             get;
@@ -29,14 +29,13 @@ namespace DM.Systems.Duel.Phases
 
         public void EnterPhase()
         {
-            Debug.Log( "Start Phase entered" );
-            DuelManager.instance.startPhaseEnteredEvent.Invoke( DuelManager.instance.turnManager.currentTurnPlayer );
+            DuelManager.instance.endPhaseEnteredEvent.Invoke( DuelManager.instance.turnManager.currentTurnPlayer );
         }
 
         public void RunPhase( float deltaTime )
         {
             currentTime += deltaTime;
-            if(currentTime >= delayTime)
+            if ( currentTime >= delayTime )
             {
                 phaseManager.MoveToNextPhase();
             }
@@ -44,8 +43,8 @@ namespace DM.Systems.Duel.Phases
 
         public void ExitPhase()
         {
-            currentTime = 0;
-            DuelManager.instance.startPhaseExitedEvent.Invoke( DuelManager.instance.turnManager.currentTurnPlayer );
+            DuelManager.instance.endPhaseExitedEvent.Invoke( DuelManager.instance.turnManager.currentTurnPlayer );
+            DuelManager.instance.turnManager.PassTurn();
         }
     }
 }

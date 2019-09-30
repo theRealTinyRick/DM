@@ -16,8 +16,8 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 11400000}
     - {fileID: 21300000, guid: 583d8713533d2a2428d9aa1e95cc969e, type: 3}
+    - {fileID: 2100000, guid: db22be96ae8845c469647319fbc9397b, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -65,15 +65,27 @@ MonoBehaviour:
     - Name: card
       Entry: 7
       Data: 5|DM.Systems.Cards.Card, Assembly-CSharp
-    - Name: _data
-      Entry: 10
-      Data: 0
+    - Name: _id
+      Entry: 2
+      Data: 26f2896f83634eb8920be1e346233fe1
+    - Name: _cardName
+      Entry: 1
+      Data: Urth Purifying Elemental
     - Name: cardImage
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: cardMaterial
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 1
+    - Name: _tapped
+      Entry: 5
+      Data: false
+    - Name: _currentLocation
+      Entry: 3
+      Data: 0
+    - Name: cardIndex
+      Entry: 3
+      Data: 37
     - Name: 
       Entry: 8
       Data: 
@@ -91,7 +103,9 @@ MonoBehaviour:
       Data: 
   cardImage: {fileID: 21300000, guid: 583d8713533d2a2428d9aa1e95cc969e, type: 3}
   cardMaterial: {fileID: 2100000, guid: db22be96ae8845c469647319fbc9397b, type: 2}
+  set: {fileID: 11400000, guid: c20a34133cd60a749a0af7a5c95e8b0a, type: 2}
   cardName: Urth Purifying Elemental
+  cardId: DM-01_S2-S10
   cardType: 0
   power: 6000
   numberOfShieldsBroken: 1

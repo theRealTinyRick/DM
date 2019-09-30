@@ -57,6 +57,15 @@ namespace GameFramework.Actors
         {
             base.OnEnable();
 
+            Photon.Pun.PhotonView photonView = GetComponent<Photon.Pun.PhotonView>();
+            if(photonView != null)
+            {
+                if(!photonView.IsMine)
+                {
+                    pawnControlType = PawnControlType.Network;
+                }
+            }
+
             if(playerInputComponent == null)
             {
                 playerInputComponent = GetActorComponent<PlayerInputComponent>();
