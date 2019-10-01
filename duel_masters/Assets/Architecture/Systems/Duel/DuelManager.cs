@@ -30,17 +30,21 @@ namespace DM.Systems
         [SerializeField]
         public List<DuelistComponent> players = new List<DuelistComponent>();
 
-        [TabGroup( "Managers" )]
-        [SerializeField]
-        public ActionManager actionManager;
+        private ActionManager actionManager
+        {
+            get => ActionManager.instance;
+        }
 
-        [TabGroup( "Managers" )]
-        [SerializeField]
-        public PhaseManager phaseManager;
 
-        [TabGroup( "Managers" )]
-        [SerializeField]
-        public TurnManager turnManager;
+        private PhaseManager phaseManager
+        {
+            get => PhaseManager.instance;
+        }
+
+        private TurnManager turnManager
+        {
+            get => TurnManager.instance;
+        }
 
         public DuelistComponent player1
         {
@@ -179,6 +183,7 @@ namespace DM.Systems
             // this should call the function to spawn a player - then wait for the next player to be spawned
             SpawnLocalPlayer();
         }
+
         public void Update() // need to check if master client and only do this stuff on there
         {
             if(Input.GetKeyDown(KeyCode.Space))

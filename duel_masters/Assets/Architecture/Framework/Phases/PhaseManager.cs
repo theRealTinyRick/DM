@@ -1,8 +1,7 @@
 ﻿/*
  Author: Aaron Hines
- Description: controls phases
+ Description: controls the phases
 */
-using System.Linq;
 using System.Collections.Generic;
 using Photon.Pun;
 
@@ -28,7 +27,7 @@ namespace GameFramework.Phases
     {
     }
 
-    public class PhaseManager : SerializedMonoBehaviour
+    public class PhaseManager : Singleton_SerializedMonobehaviour<PhaseManager>
     {
         [TabGroup(Tabs.PROPERTIES)]
         [SerializeField]

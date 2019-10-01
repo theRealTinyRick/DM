@@ -22,7 +22,6 @@ namespace DM.Systems.CardManipulation
     [RequireComponent(typeof(DuelistComponent))]
     public class CardManipulatorComponent : ActorComponent
     {
-
         [TabGroup( Tabs.PROPERTIES )]
         [SerializeField]
         private float cardVerticalOffset;
@@ -57,17 +56,17 @@ namespace DM.Systems.CardManipulation
 
         private ActionManager actionManager
         {
-            get => DuelManager.instance.actionManager;
+            get => ActionManager.instance;
         }
 
         private PhaseManager phaseManager
         {
-            get => DuelManager.instance.phaseManager;
+            get => PhaseManager.instance;
         }
 
         private TurnManager turnManager
         {
-            get => DuelManager.instance.turnManager;
+            get => TurnManager.instance;
         }
 
         private CardComponent currentManipulatedCard;
@@ -91,13 +90,18 @@ namespace DM.Systems.CardManipulation
             DuelManager.instance.gameEndedEvent.RemoveListener( OnGameStarted );
         }
 
+        private void Update()
+        {
+            //TODO: move all movement of cards here   
+        }
+
         public void OnGameStarted()
         {
         }
 
         public void OnInputDown()
         {
-            if(!CanDragCards() || DuelManager.instance.turnManager.currentTurnPlayer != playerComponent )
+            if(!CanDragCards() || turnManager.currentTurnPlayer != playerComponent )
             {
                 return;
             }
@@ -122,7 +126,7 @@ namespace DM.Systems.CardManipulation
 
         public void OnInputHeld()
         {
-            if ( !CanDragCards() || DuelManager.instance.turnManager.currentTurnPlayer != playerComponent )
+            if ( !CanDragCards() || turnManager.currentTurnPlayer != playerComponent )
             {
                 ReleaseCard();
                 return;

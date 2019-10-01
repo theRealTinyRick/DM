@@ -13,7 +13,7 @@ using DM.Systems.Gameplay.Locations;
 
 namespace DM.Systems.Turns
 {
-    public class TurnManager : SerializedMonoBehaviour 
+    public class TurnManager : Singleton_SerializedMonobehaviour<TurnManager>
     {
         public DuelistComponent currentTurnPlayer;
         public int currentTurnPlayerIndex = 0;

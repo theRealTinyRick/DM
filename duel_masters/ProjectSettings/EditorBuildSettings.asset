@@ -15,6 +15,6 @@ EditorBuildSettings:
     path: Assets/Content/Levels/Lobby/Scenes/Duel_Lobby.unity
     guid: 82bfe1218931b4343bf207584462eff9
   - enabled: 1
-    path: Assets/Content/Levels/Duel_Standard/Scenes/Duel_Standard.unity
+    path: Assets/Content/Levels/Duel/Scenes/Duel.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}

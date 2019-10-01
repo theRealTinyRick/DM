@@ -3,9 +3,12 @@
  Description: defines the start phase of a players turn
 */
 using UnityEngine;
+
+using GameFramework.Phases;
+
 using DM.Systems.Cards;
 using DM.Systems.Players;
-using GameFramework.Phases;
+using DM.Systems.Turns;
 
 namespace DM.Systems.Duel.Phases
 {
@@ -39,12 +42,12 @@ namespace DM.Systems.Duel.Phases
         {
             Debug.Log( "Mana Phase entered" );
             DuelManager.instance.manaAddedEvent.AddListener( OnManaAdded );
-            DuelManager.instance.manaPhaseEnteredEvent.Invoke( DuelManager.instance.turnManager.currentTurnPlayer );
+            DuelManager.instance.manaPhaseEnteredEvent.Invoke( TurnManager.instance.currentTurnPlayer );
         }
 
         private void OnManaAdded(DuelistComponent player, Card card)
         {
-            if( player == DuelManager.instance.turnManager.currentTurnPlayer )
+            if( player == TurnManager.instance.currentTurnPlayer )
             {
                 manaAdded = true;
             }
@@ -65,7 +68,7 @@ namespace DM.Systems.Duel.Phases
         public void ExitPhase()
         {
             DuelManager.instance.manaAddedEvent.RemoveListener( OnManaAdded );
-            DuelManager.instance.manaPhaseExitedEvent.Invoke( DuelManager.instance.turnManager.currentTurnPlayer );
+            DuelManager.instance.manaPhaseExitedEvent.Invoke( TurnManager.instance.currentTurnPlayer );
             manaAdded = false;
         }
     }

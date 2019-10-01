@@ -12,7 +12,7 @@ using GameFramework.Phases;
 
 namespace DM.Systems.Casting
 {
-    public class CastManager : SerializedMonoBehaviour
+    public class CastManager : Singleton_SerializedMonobehaviour<CastManager>
     {
         [TabGroup(Tabs.PROPERTIES)]
         [SerializeField]
@@ -22,7 +22,7 @@ namespace DM.Systems.Casting
         {
             get
             {
-                return DuelManager.instance.phaseManager;
+                return PhaseManager.instance;
             }
         }
 
@@ -30,7 +30,7 @@ namespace DM.Systems.Casting
         {
             get
             {
-                return DuelManager.instance.turnManager;
+                return TurnManager.instance;
             }
         }
 
@@ -52,7 +52,7 @@ namespace DM.Systems.Casting
 
         private PhotonView photonView;
 
-        private void OnEnable()
+        protected override void Enable()
         {
             if(photonView == null)
             {

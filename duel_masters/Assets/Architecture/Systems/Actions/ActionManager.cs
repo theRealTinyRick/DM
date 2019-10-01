@@ -16,7 +16,7 @@ using System;
 
 namespace DM.Systems.Actions
 {
-    public class ActionManager : SerializedMonoBehaviour
+    public class ActionManager : Singleton_SerializedMonobehaviour<ActionManager>
     {
         [TabGroup( Tabs.PROPERTIES )]
         [SerializeField]

@@ -4,6 +4,8 @@
 */
 using UnityEngine;
 using GameFramework.Phases;
+using DM.Systems.Turns;
+using DM.Systems.Actions;
 
 namespace DM.Systems.Duel.Phases
 {
@@ -30,11 +32,11 @@ namespace DM.Systems.Duel.Phases
         public void EnterPhase()
         {
             Debug.Log( "draw phase entered" );
-            DuelManager.instance.drawPhaseEnteredEvent.Invoke( DuelManager.instance.turnManager.currentTurnPlayer );
+            DuelManager.instance.drawPhaseEnteredEvent.Invoke( TurnManager.instance.currentTurnPlayer );
 
             if( phaseManager.GetComponent<Photon.Pun.PhotonView>().IsMine )
             {
-                DuelManager.instance.actionManager.TriggerDraw( DuelManager.instance.turnManager.currentTurnPlayer, 1, false );
+                ActionManager.instance.TriggerDraw( TurnManager.instance.currentTurnPlayer, 1, false );
             }
         }
 
@@ -50,7 +52,7 @@ namespace DM.Systems.Duel.Phases
         public void ExitPhase()
         {
             currentTime = 0;
-            DuelManager.instance.drawPhaseExitedEvent.Invoke( DuelManager.instance.turnManager.currentTurnPlayer );
+            DuelManager.instance.drawPhaseExitedEvent.Invoke( TurnManager.instance.currentTurnPlayer );
         }
     }
 }

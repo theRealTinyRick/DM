@@ -4,6 +4,7 @@
 */
 using UnityEngine;
 using GameFramework.Phases;
+using DM.Systems.Turns;
 
 namespace DM.Systems.Duel.Phases
 {
@@ -29,7 +30,7 @@ namespace DM.Systems.Duel.Phases
 
         public void EnterPhase()
         {
-            DuelManager.instance.endPhaseEnteredEvent.Invoke( DuelManager.instance.turnManager.currentTurnPlayer );
+            DuelManager.instance.endPhaseEnteredEvent.Invoke( TurnManager.instance.currentTurnPlayer );
         }
 
         public void RunPhase( float deltaTime )
@@ -43,8 +44,8 @@ namespace DM.Systems.Duel.Phases
 
         public void ExitPhase()
         {
-            DuelManager.instance.endPhaseExitedEvent.Invoke( DuelManager.instance.turnManager.currentTurnPlayer );
-            DuelManager.instance.turnManager.PassTurn();
+            DuelManager.instance.endPhaseExitedEvent.Invoke( TurnManager.instance.currentTurnPlayer );
+            TurnManager.instance.PassTurn();
         }
     }
 }
