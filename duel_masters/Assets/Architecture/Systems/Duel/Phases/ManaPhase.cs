@@ -45,7 +45,7 @@ namespace DM.Systems.Duel.Phases
             DuelManager.instance.manaPhaseEnteredEvent.Invoke( TurnManager.instance.currentTurnPlayer );
         }
 
-        private void OnManaAdded(DuelistComponent player, Card card)
+        private void OnManaAdded(PlayerComponent player, Card card)
         {
             if( player == TurnManager.instance.currentTurnPlayer )
             {

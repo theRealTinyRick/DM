@@ -41,8 +41,8 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  cardImage: {fileID: 21300000, guid: c634cdef8447d83409eb9cb20c9c14fa, type: 3}
-  cardMaterial: {fileID: 2100000, guid: 95b7376d34986734e9d6d68da8f86082, type: 2}
+  cardImage: {fileID: 21300000, guid: ff6b960b2a419e945ad92076e46f4126, type: 3}
+  cardMaterial: {fileID: 2100000, guid: d3e13fcba65503c4696110422e7ae550, type: 2}
   set: {fileID: 11400000, guid: c20a34133cd60a749a0af7a5c95e8b0a, type: 2}
   cardName: Terror Pit
   cardId: DM-01_63-110

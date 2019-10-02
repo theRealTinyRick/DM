@@ -15,13 +15,13 @@ namespace DM.Systems.Turns
 {
     public class TurnManager : Singleton_SerializedMonobehaviour<TurnManager>
     {
-        public DuelistComponent currentTurnPlayer;
+        public PlayerComponent currentTurnPlayer;
         public int currentTurnPlayerIndex = 0;
 
-        public DuelistComponent currentPriorityPlayer;
+        public PlayerComponent currentPriorityPlayer;
         public int currentPriorityPlayerIndex;
 
-        private DuelistComponent[] players;
+        private PlayerComponent[] players;
         private PhotonView photonView;
 
         private void Start()
@@ -83,7 +83,7 @@ namespace DM.Systems.Turns
 
         }
 
-        public void SetPriority(DuelistComponent player)
+        public void SetPriority(PlayerComponent player)
         {
 
         }

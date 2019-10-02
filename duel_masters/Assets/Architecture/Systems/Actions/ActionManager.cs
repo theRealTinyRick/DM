@@ -33,7 +33,7 @@ namespace DM.Systems.Actions
         }
 
         #region SHIELDS
-        public void TriggerAddShieldsFromDeck( DuelistComponent targetPlayer, int amount = 1, bool waitForResponse = true )
+        public void TriggerAddShieldsFromDeck( PlayerComponent targetPlayer, int amount = 1, bool waitForResponse = true )
         {
             photonView.RPC( "AddShieldsFromDeckRPC", RpcTarget.All, targetPlayer.playerNumber, amount, waitForResponse );
         }
@@ -41,11 +41,11 @@ namespace DM.Systems.Actions
         [PunRPC]
         public void AddShieldsFromDeckRPC( int targetPlayer, int amount, bool waitForResponse )
         {
-            DuelistComponent _player = DuelManager.instance.GetPlayer( targetPlayer );
+            PlayerComponent _player = DuelManager.instance.GetPlayer( targetPlayer );
             StartCoroutine( AddShieldsRoutine( _player, amount, waitForResponse ) );
         }
 
-        IEnumerator AddShieldsRoutine( DuelistComponent targetPlayer, int amount, bool waitForResponse )
+        IEnumerator AddShieldsRoutine( PlayerComponent targetPlayer, int amount, bool waitForResponse )
         {
             for ( int i = 0; i < amount; i++ )
             {
@@ -57,7 +57,7 @@ namespace DM.Systems.Actions
         #endregion
 
         #region DRAW
-        public void TriggerDraw( DuelistComponent targetPlayer, int amount = 1, bool waitForResponse = true )
+        public void TriggerDraw( PlayerComponent targetPlayer, int amount = 1, bool waitForResponse = true )
         {
             photonView.RPC( "DrawRPC", RpcTarget.All, targetPlayer.playerNumber, amount, waitForResponse );
         }
@@ -65,11 +65,11 @@ namespace DM.Systems.Actions
         [PunRPC]
         public void DrawRPC( int targetPlayer, int amount = 1, bool waitForResponse = true )
         {
-            DuelistComponent _player = DuelManager.instance.GetPlayer( targetPlayer );
+            PlayerComponent _player = DuelManager.instance.GetPlayer( targetPlayer );
             StartCoroutine( DrawRoutine( _player, amount, waitForResponse ) );
         }
 
-        IEnumerator DrawRoutine( DuelistComponent targetPlayer, int amount = 1, bool waitForResponse = true )
+        IEnumerator DrawRoutine( PlayerComponent targetPlayer, int amount = 1, bool waitForResponse = true )
         {
             for( int i = 0; i < amount; i++ )
             {
@@ -80,7 +80,7 @@ namespace DM.Systems.Actions
         #endregion
 
         #region MANA
-        public void TriggerAddManaFromHand(DuelistComponent player, Card card)
+        public void TriggerAddManaFromHand(PlayerComponent player, Card card)
         {
             photonView.RPC( "AddManaFromHandRPC", RpcTarget.All, player.playerNumber, card.instanceId.ToString() );
         }
@@ -88,7 +88,7 @@ namespace DM.Systems.Actions
         [PunRPC]
         public void AddManaFromHandRPC(int player, string cardId)
         {
-            DuelistComponent _player = DuelManager.instance.GetPlayer( player );
+            PlayerComponent _player = DuelManager.instance.GetPlayer( player );
             Action.AddToManaFromHand( _player, _player.hand.Get( Guid.Parse( cardId ) ) );
         }
         #endregion

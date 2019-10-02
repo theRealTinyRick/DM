@@ -629,7 +629,9 @@ MonoBehaviour:
   debugLevel: 1
   connectOnLoad: 0
   autoStartGame: 1
-  gameSceneName: Duel_Standard
+  closeRoomWhenGameStarts: 0
+  repopenRoomWhenPlayersLeave: 0
+  gameSceneName: Duel
   lobbyScene: Duel_Lobby
   maxPlayerCount: 2
   minPlayerCount: 2

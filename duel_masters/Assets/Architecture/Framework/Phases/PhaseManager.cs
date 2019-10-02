@@ -55,6 +55,7 @@ namespace GameFramework.Phases
         [SerializeField]
         public PhaseEndedEvent phaseExitedEvent { get; set; }
 
+        [SerializeField]
         public IPhase currentPhase
         {
             get;

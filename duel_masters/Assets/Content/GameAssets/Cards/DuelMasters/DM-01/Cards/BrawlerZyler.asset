@@ -15,9 +15,7 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 21300000, guid: a332a81dfc713f248ac86c4c43d9394a, type: 3}
-    - {fileID: 2100000, guid: 3115a556dcdb5354582306271461c81e, type: 2}
+    ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -72,11 +70,11 @@ MonoBehaviour:
       Entry: 1
       Data: Brawler Zyler
     - Name: cardImage
-      Entry: 10
-      Data: 0
+      Entry: 6
+      Data: 
     - Name: cardMaterial
-      Entry: 10
-      Data: 1
+      Entry: 6
+      Data: 
     - Name: _tapped
       Entry: 5
       Data: false
@@ -101,8 +99,8 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  cardImage: {fileID: 21300000, guid: a332a81dfc713f248ac86c4c43d9394a, type: 3}
-  cardMaterial: {fileID: 2100000, guid: 3115a556dcdb5354582306271461c81e, type: 2}
+  cardImage: {fileID: 21300000, guid: 73f7ea11d70bbbb4399ec465f0602948, type: 3}
+  cardMaterial: {fileID: 2100000, guid: 369047a1b41f3404d96c36c93a4ad417, type: 2}
   set: {fileID: 11400000, guid: c20a34133cd60a749a0af7a5c95e8b0a, type: 2}
   cardName: Brawler Zyler
   cardId: DM-01_70-110
@@ -110,7 +108,7 @@ MonoBehaviour:
   power: 0
   numberOfShieldsBroken: 1
   civilization:
-    civilitations: 03000000
-  manaCost: 2
+    civs: 03000000
+  manaCost: 1
   creatureRace:
   - {fileID: 11400000, guid: 405e8bb84e7ab6244b637c5bba485b05, type: 2}

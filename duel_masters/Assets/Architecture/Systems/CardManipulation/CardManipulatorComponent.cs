@@ -19,7 +19,7 @@ using DM.Systems.Turns;
 
 namespace DM.Systems.CardManipulation
 {
-    [RequireComponent(typeof(DuelistComponent))]
+    [RequireComponent(typeof(PlayerComponent))]
     public class CardManipulatorComponent : ActorComponent
     {
         [TabGroup( Tabs.PROPERTIES )]
@@ -70,14 +70,14 @@ namespace DM.Systems.CardManipulation
         }
 
         private CardComponent currentManipulatedCard;
-        private DuelistComponent playerComponent;
+        private PlayerComponent playerComponent;
         private new Camera camera;
 
         private bool clicking = false;
 
         public override void InitializeComponent()
         {
-            playerComponent = owner.GetActorComponent<DuelistComponent>();
+            playerComponent = owner.GetActorComponent<PlayerComponent>();
             camera = owner.GetComponentInChildren<Camera>();
 
             DuelManager.instance.gameStartedEvent.AddListener( OnGameStarted );
@@ -153,8 +153,6 @@ namespace DM.Systems.CardManipulation
 
         public void OnInputUp()
         {
-            // check distance from current location and phase - call an action
-
             if(currentManipulatedCard != null)
             {
                 if(Vector3.Distance(currentManipulatedCard.transform.position, playerPos.position) > dragDistance)
@@ -183,6 +181,11 @@ namespace DM.Systems.CardManipulation
                 }
             }
 
+            ReleaseCard();
+        }
+        
+        public void OnCancelClick()
+        {
             ReleaseCard();
         }
 

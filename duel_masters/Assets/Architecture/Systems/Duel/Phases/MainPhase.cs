@@ -35,8 +35,13 @@ namespace DM.Systems.Duel.Phases
 
         public void RunPhase( float deltaTime )
         {
-            currentTime += deltaTime;
-            if ( currentTime >= delayTime )
+            //currentTime += deltaTime;
+            //if ( currentTime >= delayTime )
+            //{
+            //    phaseManager.MoveToNextPhase();
+            //}
+
+            if(Input.GetKeyDown(KeyCode.F))
             {
                 phaseManager.MoveToNextPhase();
             }

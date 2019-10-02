@@ -28,7 +28,7 @@ namespace DM.Systems
 
         [TabGroup( Tabs.PROPERTIES )]
         [SerializeField]
-        public List<DuelistComponent> players = new List<DuelistComponent>();
+        public List<PlayerComponent> players = new List<PlayerComponent>();
 
         private ActionManager actionManager
         {
@@ -46,7 +46,7 @@ namespace DM.Systems
             get => TurnManager.instance;
         }
 
-        public DuelistComponent player1
+        public PlayerComponent player1
         {
             get
             {
@@ -54,7 +54,7 @@ namespace DM.Systems
             }
         }
 
-        public DuelistComponent player2
+        public PlayerComponent player2
         {
             get
             {
@@ -62,7 +62,7 @@ namespace DM.Systems
             }
         }
 
-        public DuelistComponent localPlayer
+        public PlayerComponent localPlayer
         {
             get
             {
@@ -70,7 +70,7 @@ namespace DM.Systems
             }
         }
 
-        public DuelistComponent remotePlayer
+        public PlayerComponent remotePlayer
         {
             get
             {
@@ -197,14 +197,14 @@ namespace DM.Systems
             }
         }
 
-        public DuelistComponent GetPlayer( int playerNumber )
+        public PlayerComponent GetPlayer( int playerNumber )
         {
             return players.Find( _player => _player.playerNumber == playerNumber );
         }
 
         private void SpawnLocalPlayer()
         {
-            DuelistComponent _localPlayer = PhotonNetwork.Instantiate( playerPrefabName, Vector3.zero, Quaternion.identity ).GetComponent<DuelistComponent>();
+            PlayerComponent _localPlayer = PhotonNetwork.Instantiate( playerPrefabName, Vector3.zero, Quaternion.identity ).GetComponent<PlayerComponent>();
 
             if ( NetworkManager.instance.isHost )
             {
@@ -218,7 +218,7 @@ namespace DM.Systems
             players.Add( _localPlayer );
         }
 
-        public void RegisterRemotePlayer( DuelistComponent remotePlayer )
+        public void RegisterRemotePlayer( PlayerComponent remotePlayer )
         {
             PhotonView _view = remotePlayer.GetComponent<PhotonView>();
             if ( _view != null )
@@ -254,14 +254,14 @@ namespace DM.Systems
 
         private IEnumerator StartStuffRoutine()
         {
-            foreach ( DuelistComponent _player in players )
+            foreach ( PlayerComponent _player in players )
             {
                 actionManager.TriggerAddShieldsFromDeck( _player, 5, false );
             }
 
             yield return new WaitForSeconds( 4 );
 
-            foreach ( DuelistComponent _player in players )
+            foreach ( PlayerComponent _player in players )
             {
                 actionManager.TriggerDraw( _player, 5, false );
             }

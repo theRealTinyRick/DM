@@ -48,7 +48,7 @@ namespace DM.Systems.Actions
             collection.Shuffle();
         }
 
-        public static void Draw( DuelistComponent targetPlayer, int amountToDraw = 1 )
+        public static void Draw( PlayerComponent targetPlayer, int amountToDraw = 1 )
         {
             for ( int _i = 0; _i < amountToDraw; _i++ )
             {
@@ -65,7 +65,7 @@ namespace DM.Systems.Actions
         #endregion
 
         #region SHIELDS
-        private static void AddToShields( DuelistComponent targetPlayer, CardCollection collection, Card card )
+        private static void AddToShields( PlayerComponent targetPlayer, CardCollection collection, Card card )
         {
             if ( card != null )
             {
@@ -76,7 +76,7 @@ namespace DM.Systems.Actions
             }
         }
 
-        public static void AddToShieldsFromTopOfDeck( DuelistComponent targetPlayer, int amount = 1 )
+        public static void AddToShieldsFromTopOfDeck( PlayerComponent targetPlayer, int amount = 1 )
         {
             for ( int _i = 0; _i < amount; _i++ )
             {
@@ -88,34 +88,34 @@ namespace DM.Systems.Actions
             }
         }
 
-        public static void AddToShieldsFromHand( DuelistComponent targetPlayer, Card card )
+        public static void AddToShieldsFromHand( PlayerComponent targetPlayer, Card card )
         {
             AddToShields( targetPlayer, targetPlayer.hand, card );
         }
 
-        public static void AddToShieldsFromBattleZone( DuelistComponent targetPlayer, Card card )
+        public static void AddToShieldsFromBattleZone( PlayerComponent targetPlayer, Card card )
         {
             AddToShields( targetPlayer, targetPlayer.battleZone, card );
         }
 
-        public static void AddToShieldsFromGraveyard( DuelistComponent targetPlayer, Card card )
+        public static void AddToShieldsFromGraveyard( PlayerComponent targetPlayer, Card card )
         {
             AddToShields( targetPlayer, targetPlayer.graveyard, card );
         }
 
-        public static void AddToShieldsFromManaZone( DuelistComponent targetPlayer, Card card )
+        public static void AddToShieldsFromManaZone( PlayerComponent targetPlayer, Card card )
         {
             AddToShields( targetPlayer, targetPlayer.manaZone, card );
         }
 
-        public static void BreakShield( DuelistComponent targetPlayer, Card card )
+        public static void BreakShield( PlayerComponent targetPlayer, Card card )
         {
             targetPlayer.sheildZone.Transfer( card, targetPlayer.hand );
             card.UpdateCardLocation( CardLocation.Hand );
             DuelManager.instance.shieldAddedEvent.Invoke( targetPlayer, card );
         }
 
-        public static void BreakRandom( DuelistComponent targetPlayer, int amount = 1 )
+        public static void BreakRandom( PlayerComponent targetPlayer, int amount = 1 )
         {
             for ( int _i = 0; _i < amount; _i++ )
             {
@@ -127,7 +127,7 @@ namespace DM.Systems.Actions
             }
         }
 
-        public static void BreakFirst( DuelistComponent targetPlayer, int amount = 1 )
+        public static void BreakFirst( PlayerComponent targetPlayer, int amount = 1 )
         {
             for ( int _i = 0; _i < amount; _i++ )
             {
@@ -141,7 +141,7 @@ namespace DM.Systems.Actions
         #endregion
 
         #region MANA
-        private static void AddToMana( DuelistComponent targetPlayer, Card card, CardCollection collection )
+        private static void AddToMana( PlayerComponent targetPlayer, Card card, CardCollection collection )
         {
             if ( card != null )
             {
@@ -151,27 +151,27 @@ namespace DM.Systems.Actions
             }
         }
 
-        public static void AddToManaFromHand( DuelistComponent targetPlayer, Card card )
+        public static void AddToManaFromHand( PlayerComponent targetPlayer, Card card )
         {
             AddToMana( targetPlayer, card, targetPlayer.hand );
         }
 
-        public static void AddToManaFromDeck( DuelistComponent targetPlayer, Card card )
+        public static void AddToManaFromDeck( PlayerComponent targetPlayer, Card card )
         {
             AddToMana( targetPlayer, card, targetPlayer.deck );
         }
 
-        public static void AddToManaFromBattleZone( DuelistComponent targetPlayer, Card card )
+        public static void AddToManaFromBattleZone( PlayerComponent targetPlayer, Card card )
         {
             AddToMana( targetPlayer, card, targetPlayer.battleZone );
         }
 
-        public static void AddToManaFromGraveyard( DuelistComponent targetPlayer, Card card )
+        public static void AddToManaFromGraveyard( PlayerComponent targetPlayer, Card card )
         {
             AddToMana( targetPlayer, card, targetPlayer.graveyard );
         }
 
-        public static void AddToManaFromShields( DuelistComponent targetPlayer, Card card )
+        public static void AddToManaFromShields( PlayerComponent targetPlayer, Card card )
         {
             AddToMana( targetPlayer, card, targetPlayer.sheildZone );
         }

@@ -12,7 +12,10 @@ namespace DM.Systems.Cards
         Water,
         Darkness,
         Fire,
-        Nature
+        Nature,
+
+        Zero,
+        Joker
     }
 
     public static class CivExtension
@@ -31,6 +34,10 @@ namespace DM.Systems.Cards
                     return "Fire";
                 case Civ.Nature:
                     return "Nature";
+                case Civ.Zero:
+                    return "Zero";
+                case Civ.Joker:
+                    return "Joker";
             }
             return "";
         }
@@ -43,35 +50,35 @@ namespace DM.Systems.Cards
 
         public Civilization(Civ civ1)
         {
-            civilitations = new List<Civ>() { civ1 };
+            civs = new List<Civ>() { civ1 };
         }
 
         public Civilization(Civ civ1, Civ civ2)
         {
-            civilitations = new List<Civ>() { civ1, civ2 };
+            civs = new List<Civ>() { civ1, civ2 };
         }
 
         public Civilization(Civ civ1, Civ civ2, Civ civ3)
         {
-            civilitations = new List<Civ>() { civ1, civ2, civ3 };
+            civs = new List<Civ>() { civ1, civ2, civ3 };
         }
 
         public Civilization(Civ civ1, Civ civ2, Civ civ3, Civ civ4)
         {
-            civilitations = new List<Civ>() { civ1, civ2, civ3, civ4 };
+            civs = new List<Civ>() { civ1, civ2, civ3, civ4 };
         }
 
         public Civilization(Civ civ1, Civ civ2, Civ civ3, Civ civ4, Civ civ5)
         {
-            civilitations = new List<Civ>() { civ1, civ2, civ3, civ4, civ5 };
+            civs = new List<Civ>() { civ1, civ2, civ3, civ4, civ5 };
         }
 
-        public List<Civ> civilitations = new List<Civ>();
+        public List<Civ> civs = new List<Civ>();
 
         public override string ToString()
         {
             string _result = "";
-            foreach(Civ _civ in civilitations)
+            foreach(Civ _civ in civs)
             {
                 if(!string.IsNullOrEmpty(_result))
                 {

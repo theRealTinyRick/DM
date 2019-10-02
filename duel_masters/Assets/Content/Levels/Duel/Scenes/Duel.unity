@@ -484,6 +484,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 40e02b375af27014096fdba365d493fc, type: 2}
     - {fileID: 11400000, guid: 58b7fe4c107f3654998482fb9df6944b, type: 2}
     - {fileID: 11400000, guid: 605738ebafb306d47b5411b4248e8f11, type: 2}
+    - {fileID: 11400000, guid: 8255f08bc4e05c2499ece767a146bad6, type: 2}
     - {fileID: 11400000, guid: 38db109e29b303b45a2971b0c42dcd1d, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
@@ -583,7 +584,7 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 4
+      Data: 5
     - Name: 
       Entry: 7
       Data: 10|DM.Systems.Duel.Phases.StartPhase, Assembly-CSharp
@@ -622,13 +623,25 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 13|DM.Systems.Duel.Phases.EndPhase, Assembly-CSharp
+      Data: 13|DM.Systems.Duel.Phases.MainPhase, Assembly-CSharp
+    - Name: delayTime
+      Entry: 4
+      Data: 0
+    - Name: _phaseIdentifier
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 14|DM.Systems.Duel.Phases.EndPhase, Assembly-CSharp
     - Name: delayTime
       Entry: 4
       Data: 1
     - Name: _phaseIdentifier
       Entry: 10
-      Data: 3
+      Data: 4
     - Name: 
       Entry: 8
       Data: 
@@ -1066,4 +1079,6 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  castablePhases: []
+  mainPhase: {fileID: 11400000, guid: 8255f08bc4e05c2499ece767a146bad6, type: 2}
+  battlePhase: {fileID: 11400000, guid: 013f421f80994a644870c83974c5dde8, type: 2}
+  cardsThatYouCanCast: []

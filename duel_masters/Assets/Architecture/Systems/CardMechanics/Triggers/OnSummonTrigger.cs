@@ -26,7 +26,7 @@ namespace DM.Systems.CardMechanics.Triggers
            // DuelManager.instance.creatureSummonedEvent.RemoveListener( OnTrigger );
         }
 
-        public void OnTrigger(DuelistComponent player, Card card)
+        public void OnTrigger(PlayerComponent player, Card card)
         {
             if(this.card == card)
             {
