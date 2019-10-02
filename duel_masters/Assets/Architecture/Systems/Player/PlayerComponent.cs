@@ -13,7 +13,6 @@ using GameFramework.Actors;
 
 using DM.Systems.Cards;
 using GameFramework.Actors.Components;
-using DM.Systems.Gameplay.Locations;
 
 namespace DM.Systems.Players
 {
@@ -34,18 +33,6 @@ namespace DM.Systems.Players
         [TabGroup( Tabs.PROPERTIES )]
         [SerializeField]
         private Transform cardSpawnPoint;
-
-        [TabGroup( Tabs.PROPERTIES )]
-        [SerializeField]
-        private float cardMoveSpeed;
-
-        [SerializeField]
-        [TabGroup( Tabs.PROPERTIES )]
-        private List<CardComponent> spawnedCards = new List<CardComponent>();
-
-        [TabGroup( Tabs.PROPERTIES )]
-        [SerializeField]
-        public Dictionary<CardLocation, List<Transform>> cardLocations = new Dictionary<CardLocation, List<Transform>>();
 
         [SerializeField]
         [TabGroup( "Cards" )]
@@ -75,8 +62,21 @@ namespace DM.Systems.Players
         [TabGroup( "Cards" )]
         public CardCollection battleZone = new CardCollection();
 
-        [HideInInspector]
-        public PhotonView photonView;
+        private PhotonView photonView;
+
+        public bool isLocal
+        {
+            get
+            {
+                return photonView.IsMine;
+            }
+        }
+
+        public List<CardComponent> spawnedCards
+        {
+            get;
+            private set;
+        } = new List<CardComponent>();
 
         public override void InitializeComponent()
         {
@@ -99,11 +99,6 @@ namespace DM.Systems.Players
         {
             SetupDeck();
             DuelManager.instance.RegisterRemotePlayer(this);
-        }
-
-        private void Update()
-        {
-            UpdateCardPosition();
         }
 
         public void SpawnCard( Card card )
@@ -145,42 +140,6 @@ namespace DM.Systems.Players
             if (player == this)
             {
                 SpawnCard( card );
-            }
-        }
-
-        private void UpdateCardPosition()
-        {
-            if(spawnedCards.Count == 0)
-            {
-                return;
-            }
-
-            Dictionary<CardLocation, int> locationIndexMap = new Dictionary<CardLocation, int>()
-            {
-                { CardLocation.Hand, 0 },
-                { CardLocation.Deck, 0 },
-                { CardLocation.BattleZone, 0 },
-                { CardLocation.ShieldZone, 0 },
-                { CardLocation.Graveyard, 0 },
-                { CardLocation.ManaZone, 0 },
-            };
-
-            foreach ( CardComponent _card in spawnedCards )
-            {
-                if(_card.externallyManipulated)
-                {
-                    //locationIndexMap[_card.card.currentLocation]++;
-                    continue;
-                }
-
-                int _index = locationIndexMap[_card.card.currentLocation];
-                if ( cardLocations[_card.card.currentLocation].Count > _index)
-                {
-                    _card.transform.position = Vector3.Lerp( _card.transform.position, cardLocations[_card.card.currentLocation][_index].position, cardMoveSpeed );
-                    _card.transform.rotation = Quaternion.Lerp( _card.transform.rotation, cardLocations[_card.card.currentLocation][_index].rotation, cardMoveSpeed );
-
-                    locationIndexMap[_card.card.currentLocation]++;
-                }
             }
         }
 

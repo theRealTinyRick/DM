@@ -16,6 +16,7 @@ using DM.Systems.Players;
 using DM.Systems.Duel.Phases;
 using DM.Systems.Actions;
 using DM.Systems.Turns;
+using DM.Systems.Gameplay.Locations;
 
 namespace DM.Systems.CardManipulation
 {
@@ -54,6 +55,18 @@ namespace DM.Systems.CardManipulation
         [TabGroup( Tabs.PROPERTIES )]
         private PhaseIdentifier mainPhase;
 
+        [TabGroup( Tabs.PROPERTIES )]
+        [SerializeField]
+        public Dictionary<CardLocation, List<Transform>> cardLocations = new Dictionary<CardLocation, List<Transform>>();
+
+        private List<CardComponent> spawnedCards
+        {
+            get
+            {
+                return player.spawnedCards;
+            }
+        }
+
         private ActionManager actionManager
         {
             get => ActionManager.instance;
@@ -69,39 +82,67 @@ namespace DM.Systems.CardManipulation
             get => TurnManager.instance;
         }
 
-        private CardComponent currentManipulatedCard;
-        private PlayerComponent playerComponent;
+        private PlayerComponent player;
         private new Camera camera;
 
+        private CardComponent currentManipulatedCard;
         private bool clicking = false;
 
         public override void InitializeComponent()
         {
-            playerComponent = owner.GetActorComponent<PlayerComponent>();
+            player = owner.GetActorComponent<PlayerComponent>();
             camera = owner.GetComponentInChildren<Camera>();
-
-            DuelManager.instance.gameStartedEvent.AddListener( OnGameStarted );
-            DuelManager.instance.gameEndedEvent.AddListener( OnGameStarted );
         }
 
-        public override void DisableComponent()
+        public override void DisableComponent() { } // satisfying the abstract call
+
+        private void FixedUpdate()
         {
-            DuelManager.instance.gameStartedEvent.RemoveListener( OnGameStarted );
-            DuelManager.instance.gameEndedEvent.RemoveListener( OnGameStarted );
+            UpdateCardPosition();
         }
 
-        private void Update()
+        /// <summary>
+        ///     Updates cards positions according to their CardLocation
+        /// </summary>
+        private void UpdateCardPosition()
         {
-            //TODO: move all movement of cards here   
-        }
+            if ( spawnedCards.Count == 0 )
+            {
+                return;
+            }
 
-        public void OnGameStarted()
-        {
+            Dictionary<CardLocation, int> locationIndexMap = new Dictionary<CardLocation, int>()
+            {
+                { CardLocation.Hand, 0 },
+                { CardLocation.Deck, 0 },
+                { CardLocation.BattleZone, 0 },
+                { CardLocation.ShieldZone, 0 },
+                { CardLocation.Graveyard, 0 },
+                { CardLocation.ManaZone, 0 },
+            };
+
+            foreach ( CardComponent _card in spawnedCards )
+            {
+                if ( _card.externallyManipulated )
+                {
+                    //locationIndexMap[_card.card.currentLocation]++;
+                    continue;
+                }
+
+                int _index = locationIndexMap[_card.card.currentLocation];
+                if ( cardLocations[_card.card.currentLocation].Count > _index )
+                {
+                    _card.transform.position = Vector3.Lerp( _card.transform.position, cardLocations[_card.card.currentLocation][_index].position, cardSpeed );
+                    _card.transform.rotation = Quaternion.Lerp( _card.transform.rotation, cardLocations[_card.card.currentLocation][_index].rotation, cardSpeed );
+
+                    locationIndexMap[_card.card.currentLocation]++;
+                }
+            }
         }
 
         public void OnInputDown()
         {
-            if(!CanDragCards() || turnManager.currentTurnPlayer != playerComponent )
+            if(!CanDragCards() || turnManager.currentTurnPlayer != player )
             {
                 return;
             }
@@ -114,7 +155,7 @@ namespace DM.Systems.CardManipulation
                 if(_hit.transform.gameObject.WithInLayerMask(cardLayerMask))
                 {
                     CardComponent _card = _hit.transform.gameObject.GetComponentInChildren<CardComponent>();
-                    if( _card != null && playerComponent.hand.Contains(_card.card) )
+                    if( _card != null && player.hand.Contains(_card.card) )
                     {
                         currentManipulatedCard = _card;
                     }
@@ -126,7 +167,7 @@ namespace DM.Systems.CardManipulation
 
         public void OnInputHeld()
         {
-            if ( !CanDragCards() || turnManager.currentTurnPlayer != playerComponent )
+            if ( !CanDragCards() || turnManager.currentTurnPlayer != player )
             {
                 ReleaseCard();
                 return;
@@ -153,7 +194,12 @@ namespace DM.Systems.CardManipulation
 
         public void OnInputUp()
         {
-            if(currentManipulatedCard != null)
+            if ( !player.isLocal )
+            {
+                return;
+            }
+
+            if (currentManipulatedCard != null)
             {
                 if(Vector3.Distance(currentManipulatedCard.transform.position, playerPos.position) > dragDistance)
                 {
@@ -164,7 +210,7 @@ namespace DM.Systems.CardManipulation
                         {
                             if(!_manaPhase.manaAdded)
                             {
-                                actionManager.TriggerAddManaFromHand( playerComponent, currentManipulatedCard.card );
+                                actionManager.TriggerAddManaFromHand( player, currentManipulatedCard.card );
                             }
                         }
                     }
@@ -186,6 +232,11 @@ namespace DM.Systems.CardManipulation
         
         public void OnCancelClick()
         {
+            if(!player.isLocal)
+            {
+                return;
+            }
+
             ReleaseCard();
         }
 
@@ -202,6 +253,11 @@ namespace DM.Systems.CardManipulation
 
         private bool CanDragCards()
         {
+            if(!player.isLocal)
+            {
+                return false;
+            }
+
             if(phaseManager.currentPhase == null)
             {
                 return false;
@@ -214,5 +270,6 @@ namespace DM.Systems.CardManipulation
 
             return false;
         }
+
     }
 }

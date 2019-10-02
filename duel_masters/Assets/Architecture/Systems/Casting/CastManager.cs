@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 
 using UnityEngine;
 using Photon.Pun;
@@ -39,16 +37,11 @@ namespace DM.Systems.Casting
             }
         }
 
-        private PlayerComponent _player;
         public PlayerComponent player
         {
             get
             {
-                if ( _player == null )
-                {
-                    _player = DuelManager.instance.localPlayer;
-                }
-                return _player;
+                return DuelManager.instance.localPlayer;
             }
         }
 
@@ -61,6 +54,14 @@ namespace DM.Systems.Casting
         }
 
         private List<Card> availableMana
+        {
+            get
+            {
+                return player.manaZone.cards.FindAll( _card => !_card.tapped );
+            }
+        }
+
+        private List<Card> unavailableMana
         {
             get
             {
@@ -88,18 +89,8 @@ namespace DM.Systems.Casting
             }
         }
 
-        private List<Card> unavailableMana
-        {
-            get
-            {
-                return player.manaZone.cards.FindAll( _card => !_card.tapped );
-            }
-        }
-
-        private List<ICastFilter> castFilters = new List<ICastFilter>();
-
-        [SerializeField]
         private List<Card> cardsThatYouCanCast = new List<Card>();
+        private List<ICastCondition> castFilters = new List<ICastCondition>();
 
         private PhotonView photonView;
 
@@ -111,19 +102,9 @@ namespace DM.Systems.Casting
             }
         }
 
-        public void AddFilter( Card owner, ICastFilter filter )
-        {
-
-        }
-
-        public void RemoveFilter( Card owner, ICastFilter filter )
-        {
-
-        }
-
         private void Update()
         {
-            Run();
+            Run(); // TODO: remove this from update and only call whent he hand state has changed
         }
 
         private void Run()
@@ -159,25 +140,10 @@ namespace DM.Systems.Casting
 
         private bool CanPayFor(Card card)
         {
-            return card.manaCost <= availableMana.Count && AllCivsAreAvailable( card );
+            return card.manaCost <= availableMana.Count && CanPayCivCost( card );
         }
 
-        private bool Filter(Card card)
-        {
-            foreach(ICastFilter _filter in castFilters)
-            {
-                if(!_filter.CanPlayCard(card))
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
-        #region Private Methods
-
-        private bool AllCivsAreAvailable(Card card)
+        private bool CanPayCivCost(Card card)
         {
             foreach(Civ _civ in card.civilization.civs)
             {
@@ -190,6 +156,17 @@ namespace DM.Systems.Casting
             return true; 
         }
 
-        #endregion
+        private bool Filter(Card card)
+        {
+            foreach(ICastCondition _filter in castFilters)
+            {
+                if(!_filter.CanPlayCard(card))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
     }
 }

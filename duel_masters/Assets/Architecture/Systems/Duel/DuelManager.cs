@@ -239,7 +239,6 @@ namespace DM.Systems
                     remotePlayer.transform.rotation = new Quaternion( 0, 180, 0, 0 );
 
                     remotePlayer.GetComponentInChildren<Camera>().gameObject.SetActive( false );
-                    remotePlayer.GetComponentInChildren<CardManipulation.CardManipulatorComponent>().enabled = false;
                 }
             }
         }

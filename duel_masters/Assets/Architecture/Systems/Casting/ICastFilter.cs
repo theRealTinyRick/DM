@@ -2,7 +2,7 @@
 
 namespace DM.Systems.Casting
 {
-    public interface ICastFilter
+    public interface ICastCondition
     {
         bool CanPlayCard( Card card );
     }

@@ -5464,14 +5464,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 0
-    SerializedBytes: 2900080000005f6163746f72496498e5a57e7c6f5044b3378f9a4da32360
+    SerializedFormat: 2
+    SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes: []
+    SerializationNodes:
+    - Name: _actorId
+      Entry: 2
+      Data: 7ea5e5986f7c4450b3378f9a4da32360
   _identity: {fileID: 11400000, guid: 9853c3cf4f034de41a53ac760b673cde, type: 2}
   dontDestroyOnLoad: 0
   enableEvent:
@@ -5512,7 +5515,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 0
+    SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -5762,8 +5765,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 0
-    SerializedBytes: 01000d000000636172644c6f636174696f6e732f0000000000cf00000053797374656d2e436f6c6c656374696f6e732e47656e657269632e44696374696f6e61727960325b5b444d2e53797374656d732e47616d65706c61792e4c6f636174696f6e732e436172644c6f636174696f6e2c20417373656d626c792d4353686172705d2c5b53797374656d2e436f6c6c656374696f6e732e47656e657269632e4c69737460315b5b556e697479456e67696e652e5472616e73666f726d2c20556e697479456e67696e652e436f72654d6f64756c655d5d2c206d73636f726c69625d5d2c206d73636f726c696200000000010008000000636f6d70617265722f01000000007a00000053797374656d2e436f6c6c656374696f6e732e47656e657269632e456e756d457175616c697479436f6d706172657260315b5b444d2e53797374656d732e47616d65706c61792e4c6f636174696f6e732e436172644c6f636174696f6e2c20417373656d626c792d4353686172705d5d2c206d73636f726c6962010000000600000000000000000705060600000000000000042e1d0002000000246b000000000000000001000200000024762f02000000005c00000053797374656d2e436f6c6c656374696f6e732e47656e657269632e4c69737460315b5b556e697479456e67696e652e5472616e73666f726d2c20556e697479456e67696e652e436f72654d6f64756c655d5d2c206d73636f726c6962020000000601000000000000000c00000000070505042e1d0002000000246b010000000000000001000200000024763002000000030000000609000000000000000c010000000c020000000c030000000c040000000c050000000c060000000c070000000c080000000c09000000070505042e1d0002000000246b050000000000000001000200000024763002000000040000000601000000000000000c0a000000070505042e1d0002000000246b02000000000000000100020000002476300200000005000000060e000000000000000c0b0000000c0c0000000c0d0000000c0e0000000c0f0000000c100000000c110000000c120000000c130000000c140000000c150000000c160000000c170000000c18000000070505042e1d0002000000246b03000000000000000100020000002476300200000006000000060c000000000000000c190000000c1a0000000c1b0000000c1c0000000c1d0000000c1e0000000c1f0000000c200000000c210000000c220000000c230000000c24000000070505042e1d0002000000246b04000000000000000100020000002476300200000007000000060c000000000000000c250000000c260000000c270000000c280000000c290000000c2a0000000c2b0000000c2c0000000c2d0000000c2e0000000c2f0000000c300000000705050705
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  testDeck: {fileID: 11400000, guid: 4c0654d0c13f0be499cec68ecb80ca15, type: 2}
+  cardDatabase: {fileID: 11400000, guid: a7e8b14aa88a93e4395ec029e66705ce, type: 2}
+  cardIdentity: {fileID: 11400000, guid: 7cacd158414b3e54c922e8c036f25383, type: 2}
+  cardSpawnPoint: {fileID: 1975636711}
+  playerNumber: 0
+  deck:
+    _cards: []
+  hand:
+    _cards: []
+  graveyard:
+    _cards: []
+  sheildZone:
+    _cards: []
+  manaZone:
+    _cards: []
+  battleZone:
+    _cards: []
+--- !u!114 &242501075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7658202462092130348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a00791ee3e8503648ac04fc954de3e6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 1975636711}
     - {fileID: 453845510497241346}
@@ -5775,7 +5816,6 @@ MonoBehaviour:
     - {fileID: 4451586742458597349}
     - {fileID: 4231065470915367352}
     - {fileID: 1254860163249071407}
-    - {fileID: 600540333}
     - {fileID: 294211826}
     - {fileID: 1575039908}
     - {fileID: 246729036}
@@ -5814,52 +5854,318 @@ MonoBehaviour:
     - {fileID: 561539452}
     - {fileID: 342362218}
     - {fileID: 551193953}
+    - {fileID: 600540333}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes: []
-  testDeck: {fileID: 11400000, guid: 4c0654d0c13f0be499cec68ecb80ca15, type: 2}
-  cardDatabase: {fileID: 11400000, guid: a7e8b14aa88a93e4395ec029e66705ce, type: 2}
-  cardIdentity: {fileID: 11400000, guid: 7cacd158414b3e54c922e8c036f25383, type: 2}
-  cardSpawnPoint: {fileID: 1975636711}
-  cardMoveSpeed: 0.5
-  spawnedCards: []
-  playerNumber: 0
-  deck:
-    _cards: []
-  hand:
-    _cards: []
-  graveyard:
-    _cards: []
-  sheildZone:
-    _cards: []
-  manaZone:
-    _cards: []
-  battleZone:
-    _cards: []
-  photonView: {fileID: 0}
---- !u!114 &242501075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7658202462092130348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a00791ee3e8503648ac04fc954de3e6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 0
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
+    SerializationNodes:
+    - Name: cardLocations
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[DM.Systems.Gameplay.Locations.CardLocation,
+        Assembly-CSharp],[System.Collections.Generic.List`1[[UnityEngine.Transform,
+        UnityEngine.CoreModule]], mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[DM.Systems.Gameplay.Locations.CardLocation,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 6
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 7
+      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Transform, UnityEngine.CoreModule]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 7
+      Data: 3|System.Collections.Generic.List`1[[UnityEngine.Transform, UnityEngine.CoreModule]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 9
+    - Name: 
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 2
+    - Name: 
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 10
+      Data: 4
+    - Name: 
+      Entry: 10
+      Data: 5
+    - Name: 
+      Entry: 10
+      Data: 6
+    - Name: 
+      Entry: 10
+      Data: 7
+    - Name: 
+      Entry: 10
+      Data: 8
+    - Name: 
+      Entry: 10
+      Data: 9
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 7
+      Data: 4|System.Collections.Generic.List`1[[UnityEngine.Transform, UnityEngine.CoreModule]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 14
+    - Name: 
+      Entry: 10
+      Data: 10
+    - Name: 
+      Entry: 10
+      Data: 11
+    - Name: 
+      Entry: 10
+      Data: 12
+    - Name: 
+      Entry: 10
+      Data: 13
+    - Name: 
+      Entry: 10
+      Data: 14
+    - Name: 
+      Entry: 10
+      Data: 15
+    - Name: 
+      Entry: 10
+      Data: 16
+    - Name: 
+      Entry: 10
+      Data: 17
+    - Name: 
+      Entry: 10
+      Data: 18
+    - Name: 
+      Entry: 10
+      Data: 19
+    - Name: 
+      Entry: 10
+      Data: 20
+    - Name: 
+      Entry: 10
+      Data: 21
+    - Name: 
+      Entry: 10
+      Data: 22
+    - Name: 
+      Entry: 10
+      Data: 23
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 7
+      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Transform, UnityEngine.CoreModule]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 12
+    - Name: 
+      Entry: 10
+      Data: 24
+    - Name: 
+      Entry: 10
+      Data: 25
+    - Name: 
+      Entry: 10
+      Data: 26
+    - Name: 
+      Entry: 10
+      Data: 27
+    - Name: 
+      Entry: 10
+      Data: 28
+    - Name: 
+      Entry: 10
+      Data: 29
+    - Name: 
+      Entry: 10
+      Data: 30
+    - Name: 
+      Entry: 10
+      Data: 31
+    - Name: 
+      Entry: 10
+      Data: 32
+    - Name: 
+      Entry: 10
+      Data: 33
+    - Name: 
+      Entry: 10
+      Data: 34
+    - Name: 
+      Entry: 10
+      Data: 35
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 4
+    - Name: $v
+      Entry: 7
+      Data: 6|System.Collections.Generic.List`1[[UnityEngine.Transform, UnityEngine.CoreModule]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 12
+    - Name: 
+      Entry: 10
+      Data: 36
+    - Name: 
+      Entry: 10
+      Data: 37
+    - Name: 
+      Entry: 10
+      Data: 38
+    - Name: 
+      Entry: 10
+      Data: 39
+    - Name: 
+      Entry: 10
+      Data: 40
+    - Name: 
+      Entry: 10
+      Data: 41
+    - Name: 
+      Entry: 10
+      Data: 42
+    - Name: 
+      Entry: 10
+      Data: 43
+    - Name: 
+      Entry: 10
+      Data: 44
+    - Name: 
+      Entry: 10
+      Data: 45
+    - Name: 
+      Entry: 10
+      Data: 46
+    - Name: 
+      Entry: 10
+      Data: 47
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 5
+    - Name: $v
+      Entry: 7
+      Data: 7|System.Collections.Generic.List`1[[UnityEngine.Transform, UnityEngine.CoreModule]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 48
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   cardVerticalOffset: 0.2
   cardSpeed: 0.5
   cardLayerMask:
