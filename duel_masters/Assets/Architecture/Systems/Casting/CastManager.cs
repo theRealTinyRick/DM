@@ -89,9 +89,15 @@ namespace DM.Systems.Casting
             }
         }
 
-        private List<Card> cardsThatYouCanCast = new List<Card>();
         private List<ICastCondition> castFilters = new List<ICastCondition>();
 
+        public List<Card> castableCards
+        {
+            get;
+            private set;
+        } = new List<Card>();
+
+        private Card currentlyCastingCard;
         private PhotonView photonView;
 
         protected override void Enable()
@@ -107,9 +113,14 @@ namespace DM.Systems.Casting
             Run(); // TODO: remove this from update and only call whent he hand state has changed
         }
 
+        public void Cast(Card card)
+        {
+
+        }
+
         private void Run()
         {
-            cardsThatYouCanCast.Clear();
+            castableCards.Clear();
 
             if ( turnManager.currentTurnPlayer != player )
             {
@@ -132,7 +143,7 @@ namespace DM.Systems.Casting
                 {
                     if(Filter(_card))
                     {
-                        cardsThatYouCanCast.Add( _card );
+                        castableCards.Add( _card );
                     }
                 }
             }

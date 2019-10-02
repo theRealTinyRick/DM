@@ -15,7 +15,7 @@ namespace DM.Systems.Cards
     public enum CardType
     {
         Creature,
-        Spell
+        Spell,
     }
 
     [CreateAssetMenu(fileName = "New Card", menuName = Constants.CREATE_NEW_CARD_DATA, order = 1)]
@@ -23,7 +23,7 @@ namespace DM.Systems.Cards
     {
         [TabGroup(Tabs.PROPERTIES)]
         [SerializeField]
-        public Sprite cardImage;
+        public Sprite cardSprite;
 
         [TabGroup(Tabs.PROPERTIES)]
         [SerializeField]

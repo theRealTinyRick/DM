@@ -4,7 +4,9 @@
 */
 using System;
 using System.Collections.Generic;
+
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 using DM.Systems.Players;
 using DM.Systems.CardMechanics;
@@ -24,7 +26,7 @@ namespace DM.Systems.Cards
             Initialize();
         }
 
-        [SerializeField]
+        [ShowInInspector]
         private Guid _id;
         public Guid instanceId
         {
@@ -32,6 +34,7 @@ namespace DM.Systems.Cards
             private set => _id = value;
         }
 
+        [ShowInInspector]
         private CardData _data;
         public CardData data
         {
@@ -75,8 +78,6 @@ namespace DM.Systems.Cards
             }
         }
 
-        [SerializeField]
-        private string _cardName;
         public string cardName
         {
             get
@@ -85,54 +86,32 @@ namespace DM.Systems.Cards
                 {
                     return nameOverride;
                 }
-                return _cardName;
-            }
-            private set
-            {
-                _cardName = value;
+                return data.cardName;
             }
         }
 
-        private string _nameOverride;
         public string nameOverride
         {
-            get
-            {
-                return _nameOverride;
-            }
-            private set
-            {
-                _nameOverride = value;
-            }
+            get;
+            private set;
         }
 
-        private CardType _cardType;
         public CardType cardType
         {
             get
             {
-                return _cardType;
-            }
-            private set
-            {
-                _cardType = value;
+                return data.cardType;
             }
         }
 
-        private List<Race> _creatureRace;
         public List<Race> creatureRace
         {
             get
             {
-                return _creatureRace;
-            }
-            private set
-            {
-                _creatureRace = value;
+                return data.creatureRace;
             }
         }
 
-        private Civilization _civilization;
         public Civilization civilization
         {
             get
@@ -142,28 +121,16 @@ namespace DM.Systems.Cards
                     return civilizationOverride;
                 }
 
-                return _civilization;
-            }
-            private set
-            {
-                _civilization = value;
+                return data.civilization;
             }
         }
 
-        private Civilization _civilizationOverride;
         public Civilization civilizationOverride
         {
-            get
-            {
-                return _civilizationOverride;
-            }
-            private set
-            {
-                _civilizationOverride = value;
-            }
+            get;
+            private set;
         }
 
-        private int _manaCost;
         public int manaCost
         {
             get
@@ -173,52 +140,44 @@ namespace DM.Systems.Cards
                     return manaCostOverride;
                 }
 
-                return _manaCost;
-            }
-            private set
-            {
-                _manaCost = value;
+                return data.manaCost;
             }
         }
 
-        private int _manaCostOverride;
         public int manaCostOverride
         {
-            get
-            {
-                return _manaCostOverride;
-            }
-            private set
-            {
-                _manaCostOverride = value;
-            }
+            get;
+            private set;
         }
 
-        private Dictionary<IMechanicTrigger, Effect> _mechanics = new Dictionary<IMechanicTrigger, Effect>();
         public Dictionary<IMechanicTrigger, Effect> mechanics
+        {
+            get;
+            private set;
+        } 
+
+        public Sprite sprite
         {
             get
             {
-                return _mechanics;
+                return data.cardSprite;
             }
-            private set
+        }
+
+        public Material cardMaterial
+        {
+            get
             {
-                _mechanics = value;
+                return data.cardMaterial;
             }
-        } 
-
-        [HideInInspector]
-        public Sprite cardImage;
-
-        [HideInInspector]
-        public Material cardMaterial;
+        }
 
         [SerializeField]
         private bool _tapped = false;
         public bool tapped
         {
             get => _tapped;
-            private set => _tapped = value;
+            private set => _tapped = value;6
         }
 
         [SerializeField]
@@ -249,14 +208,7 @@ namespace DM.Systems.Cards
         /// </summary>
         private void Initialize()
         {
-            cardImage = data.cardImage;
-            cardMaterial = data.cardMaterial;
-            cardName = data.cardName;
-            cardType = data.cardType;
-            civilization = data.civilization;
-            manaCost = data.manaCost;
             mechanics = data.mechanics;
-            creatureRace = data.creatureRace;
 
             foreach (var _pair in mechanics)
             {
@@ -276,7 +228,7 @@ namespace DM.Systems.Cards
         }
 
         /// <summary>
-        ///     Used to sync network
+        ///     Used to sync network. 
         /// </summary>
         /// <param name="instanceId"></param>
         public void SetId(Guid instanceId)
