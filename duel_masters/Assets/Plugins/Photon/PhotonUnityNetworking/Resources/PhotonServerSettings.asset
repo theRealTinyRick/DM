@@ -46,5 +46,6 @@ MonoBehaviour:
   - AddManaFromHandRPC
   - AddFilterRPC
   - SummonRPC
+  - TapManaRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1

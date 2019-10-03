@@ -17,7 +17,8 @@ namespace DM.Systems.Cards
     {
         Creature,
         Spell,
-        EvolutionCreature
+        EvolutionCreature,
+        PsychicCreature
     }
 
     [CreateAssetMenu(fileName = "New Card", menuName = Constants.CREATE_NEW_CARD_DATA, order = 1)]

@@ -10,82 +10,68 @@ using DM.Systems.Cards;
 
 namespace DM.Systems.Selection
 {
+    [System.Serializable]
+    public class SelectionFinishedEvent : UnityEngine.Events.UnityEvent<List<Card>>
+    { }
+
     public class SelectionManager : Singleton_SerializedMonobehaviour<SelectionManager>
     {
-        private List<Card> currentSelectionPool = new List<Card>();
-        private List<Card> currentSelection = new List<Card>();
+        public SelectionFinishedEvent selectionFinishedEvent = new SelectionFinishedEvent();
 
-        private bool inSelection;
+        public bool selectionHasFinished = false;
+        private bool inSelection = false;
+
         private bool cancelledSelection;
         private bool confirmedSelection;
 
-        public void StartSelection( CardCollection collection, List<ISelectionFilter> filters, List<ISelectionRequirements> reqs, bool usepopup = false )
-        {
-            List<Card> _cards = new List<Card>( collection.cards );
-            _cards = RunThroughFilters( _cards, filters );
+        private List<Card> currentSelection = new List<Card>();
 
-            if(_cards.Count > 0)
+        public void StartSelection( CardCollection collection, List<ISelectionFilter> filters = null, List<ISelectionRequirements> reqs = null, bool usepopup = false )
+        {   
+            if( !inSelection )
             {
-                StartCoroutine( SelectionRoutine( _cards, usepopup ) );
+                inSelection = true;
+                selectionHasFinished = false;
+
+                List<Card> _cards = new List<Card>( collection.cards );
+                _cards = RunThroughFilters( _cards, filters );
+
+                if(_cards.Count > 0)
+                {
+                    StartCoroutine( SelectionRoutine( _cards, usepopup ) );
+                }
+                else
+                {
+                    FinishSelection();
+                }
             }
         }
 
         private List<Card> RunThroughFilters( List<Card> cards, List<ISelectionFilter> filters )
         {
-            foreach ( ISelectionFilter _filter in filters )
+            if( filters != null )
             {
-                cards = _filter.Filter( cards );
+                foreach ( ISelectionFilter _filter in filters )
+                {
+                    cards = _filter.Filter( cards );
+                }
             }
-
             return cards;
         }
 
         private IEnumerator SelectionRoutine( List<Card> cards, bool usepopup = false )
         {
-            if ( usepopup )
-            {
-                // TODO: add logic for the popup bpx
-            }
-
-            while(true)
-            {
-                if(confirmedSelection)
-                {
-                }
-
-                if(cancelledSelection)
-                {
-
-                }
-
-                yield return new WaitForEndOfFrame();
-            }
+            yield return new WaitForSeconds( 1 );
+            FinishSelection();
         }
 
-        public void AddToSelection(Card card)
+        private void FinishSelection()
         {
-            if(currentSelectionPool.Contains(card))
-            {
-                currentSelection.Add( card );
-            }
-        }
+            selectionHasFinished = true;
+            inSelection = false;
+            selectionFinishedEvent.Invoke( currentSelection );
 
-        public void RemoveFromSelection(Card card)
-        {
-            if(currentSelectionPool.Contains(card) && currentSelection.Contains(card))
-            {
-                currentSelection.Remove( card );
-            }
-        }
-
-        public void ConfirmSelection()
-        {
-
-        }
-
-        public void CancelSelection()
-        {
-
+            currentSelection = null;
         }
     }
 }

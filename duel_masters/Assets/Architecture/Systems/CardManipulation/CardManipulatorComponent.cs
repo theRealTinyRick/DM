@@ -120,13 +120,13 @@ namespace DM.Systems.CardManipulation
                 { CardLocation.ShieldZone, 0 },
                 { CardLocation.Graveyard, 0 },
                 { CardLocation.ManaZone, 0 },
+                {CardLocation.Casting, 0 }
             };
 
             foreach ( CardComponent _card in spawnedCards )
             {
                 if ( _card.externallyManipulated )
                 {
-                    //locationIndexMap[_card.card.currentLocation]++;
                     continue;
                 }
 
