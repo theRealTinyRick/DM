@@ -105,45 +105,48 @@ namespace DM.Systems.Casting
             }
         }
 
-        public void Cast(Card card)
+        public void Cast( Card card, bool shieldtrigger = false )
         {
-            if(CanCast(card))
+            if ( CanCast( card ) )
             {
-            }
                 StartCoroutine( CastRoutine( card ) );
+            }
         }
 
-        private IEnumerator CastRoutine(Card card)
+        private IEnumerator CastRoutine( Card card )
         {
             currentlyCastingCard = card;
 
             // add a wait here for tapping mana
 
-
-            if(card.castRequirements.Count <= 0)
+            if ( card.castRequirements.Count <= 0 )
             {
                 yield return new WaitForSeconds( 1f );
             }
-
-            foreach(ICastRequirements _req in card.castRequirements)
+            else
             {
-                _req.Start();
-
-                while(_req.running)
+                Debug.Log( "check reqs" );
+                foreach ( ICastRequirements _req in card.castRequirements )
                 {
-                    yield return new WaitForEndOfFrame();
-                    if(_req.failed)
-                    {
-                        // TODO: cancel summon
-                    }
-                }
+                    _req.Start();
 
-                _req.Stop();
+                    while ( _req.running )
+                    {
+                        yield return new WaitForEndOfFrame();
+                        if ( _req.failed )
+                        {
+                            // TODO: cancel summon
+                        }
+                    }
+
+                    _req.Stop();
+                }
             }
 
             switch ( card.cardType )
             {
                 case CardType.Creature:
+                    Debug.Log( "summon" );
                     ActionManager.instance.Summon( card );
                     break;
                 case CardType.Spell:
@@ -152,10 +155,10 @@ namespace DM.Systems.Casting
                     break;
             }
 
-            yield break;
+            currentlyCastingCard = null;
         }
 
-        private bool CanCast(Card card)
+        private bool CanCast( Card card )
         {
             if ( turnManager.currentTurnPlayer != player )
             {
@@ -172,12 +175,9 @@ namespace DM.Systems.Casting
                 return false;
             }
 
-            if ( CanPayFor( card ) )
+            if ( CanPayFor( card ) && Filter(card) )
             {
-                if(Filter( card ))
-                {
-                    return true;
-                }
+                return true;
             }
 
             return false;

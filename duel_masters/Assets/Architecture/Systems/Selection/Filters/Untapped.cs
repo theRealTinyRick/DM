@@ -6,9 +6,9 @@ namespace DM.Systems.Selection
 {
     public class UntappedSelectionFilter : ISelectionFilter
     {
-        public void Filter( List<Card> cards )
+        public List<Card> Filter( List<Card> cards )
         {
-            cards = cards.FindAll( _card => !_card.tapped ).ToList(); 
+            return cards.FindAll( _card => !_card.tapped ).ToList(); 
         }
     }
 }

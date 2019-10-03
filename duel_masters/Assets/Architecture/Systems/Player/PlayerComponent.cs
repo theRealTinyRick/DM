@@ -158,6 +158,7 @@ namespace DM.Systems.Players
 
                 foreach(Card _card in deck.cards)
                 {
+                    _card.SetOwner(this);
                     if(!string.IsNullOrEmpty(_card.data.cardId))
                     {
                         _cardIds.Add( _card.data.cardId );
@@ -191,6 +192,10 @@ namespace DM.Systems.Players
             }
 
             deck = new CardCollection( _collection, this, cardInstanceIds );
+            foreach(Card _card in deck.cards)
+            {
+                _card.SetOwner( this );
+            }
         }
         #endregion
 

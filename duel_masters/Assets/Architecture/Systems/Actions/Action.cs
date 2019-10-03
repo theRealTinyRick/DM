@@ -2,6 +2,8 @@
 using DM.Systems.Gameplay.Locations;
 using DM.Systems.Players;
 
+using UnityEngine;
+
 namespace DM.Systems.Actions
 { 
     public class Action
@@ -178,7 +180,17 @@ namespace DM.Systems.Actions
         #endregion
 
         #region CASTING/SUMMON
+        public static void Summon( CardCollection cardCollection, Card card )
+        {
+            cardCollection.Transfer( card, card.owner.battleZone );
+            card.UpdateCardLocation( CardLocation.BattleZone );
+            DuelManager.instance.creatureSummonedEvent.Invoke( card.owner, card );
+        }
 
+        public static void SummonFromHand(PlayerComponent targetPlayer, Card card)
+        {
+            Summon( targetPlayer.hand, card );
+        }
         #endregion
 
         #region BATTLE

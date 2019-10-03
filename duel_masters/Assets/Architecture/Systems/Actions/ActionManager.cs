@@ -106,6 +106,11 @@ namespace DM.Systems.Actions
         #region SUMMON
         public void Summon(Card card)
         {
+            Debug.Log( "call rpc" );
+            if(card.owner == null)
+            {
+                Debug.Log( "card has no ownere" );
+            }
             photonView.RPC( "SummonRPC", RpcTarget.All, card.owner.playerNumber, card.instanceId.ToString() );
         }
 
@@ -113,7 +118,17 @@ namespace DM.Systems.Actions
         public void SummonRPC(int targetPlayer, string instanceId)
         {
             PlayerComponent _player = DuelManager.instance.GetPlayer( targetPlayer );
-            Card card = _player.hand.Get( Guid.Parse( instanceId ) );
+            if(_player == null)
+            {
+                Debug.Log( "no player found" );
+            }
+
+            Card _card = _player.hand.Get( Guid.Parse( instanceId ) );
+            if(_card == null)
+            {
+                Debug.Log( "no card found" );
+            }
+            Action.Summon( _player.hand, _card );
         }
         #endregion
     }

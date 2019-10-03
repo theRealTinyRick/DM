@@ -17,6 +17,7 @@ using DM.Systems.Duel.Phases;
 using DM.Systems.Actions;
 using DM.Systems.Turns;
 using DM.Systems.Gameplay.Locations;
+using DM.Systems.Casting;
 
 namespace DM.Systems.CardManipulation
 {
@@ -221,7 +222,7 @@ namespace DM.Systems.CardManipulation
                         MainPhase _mainPhase = phaseManager.currentPhase as MainPhase;
                         if ( _mainPhase != null )
                         {
-                            // cast/summon card
+                            CastManager.instance.Cast( currentManipulatedCard.card );
                         }
                     }
                 }

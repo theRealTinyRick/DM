@@ -6,6 +6,6 @@ namespace DM.Systems.Selection
 {
     public interface ISelectionFilter
     {
-        void Filter( List<Card> cards );
+        List<Card> Filter( List<Card> cards );
     }
 }

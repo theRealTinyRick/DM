@@ -236,6 +236,11 @@ namespace DM.Systems.Cards
             currentLocation = location;
         }
 
+        public void SetOwner(PlayerComponent owner)
+        {
+            this.owner = owner;
+        }
+
         public void SetTap(bool tap)
         {
             tapped = tap;
