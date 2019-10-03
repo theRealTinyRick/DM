@@ -1,13 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 
 using UnityEngine;
 using Photon.Pun;
 using Sirenix.OdinInspector;
 
+using GameFramework.Phases;
+
 using DM.Systems.Turns;
 using DM.Systems.Players;
 using DM.Systems.Cards;
-using GameFramework.Phases;
+using DM.Systems.Actions;
 
 namespace DM.Systems.Casting
 {
@@ -91,12 +94,6 @@ namespace DM.Systems.Casting
 
         private List<ICastCondition> castFilters = new List<ICastCondition>();
 
-        public List<Card> castableCards
-        {
-            get;
-            private set;
-        } = new List<Card>();
-
         private Card currentlyCastingCard;
         private PhotonView photonView;
 
@@ -108,45 +105,82 @@ namespace DM.Systems.Casting
             }
         }
 
-        private void Update()
-        {
-            Run(); // TODO: remove this from update and only call whent he hand state has changed
-        }
-
         public void Cast(Card card)
         {
-
+            if(CanCast(card))
+            {
+            }
+                StartCoroutine( CastRoutine( card ) );
         }
 
-        private void Run()
+        private IEnumerator CastRoutine(Card card)
         {
-            castableCards.Clear();
+            currentlyCastingCard = card;
 
+            // add a wait here for tapping mana
+
+
+            if(card.castRequirements.Count <= 0)
+            {
+                yield return new WaitForSeconds( 1f );
+            }
+
+            foreach(ICastRequirements _req in card.castRequirements)
+            {
+                _req.Start();
+
+                while(_req.running)
+                {
+                    yield return new WaitForEndOfFrame();
+                    if(_req.failed)
+                    {
+                        // TODO: cancel summon
+                    }
+                }
+
+                _req.Stop();
+            }
+
+            switch ( card.cardType )
+            {
+                case CardType.Creature:
+                    ActionManager.instance.Summon( card );
+                    break;
+                case CardType.Spell:
+                    break;
+                case CardType.EvolutionCreature:
+                    break;
+            }
+
+            yield break;
+        }
+
+        private bool CanCast(Card card)
+        {
             if ( turnManager.currentTurnPlayer != player )
             {
-                return;
+                return false;
             }
 
             if ( phaseManager.currentPhase == null )
             {
-                return;
+                return false;
             }
 
             if ( mainPhase != phaseManager.currentPhase.identifier )
             {
-                return;
+                return false;
             }
 
-            foreach ( Card _card in player.hand.cards ) // TODO: add away to add spaces to this - phycics and playing cards in the grave
+            if ( CanPayFor( card ) )
             {
-                if ( CanPayFor(_card ) )
+                if(Filter( card ))
                 {
-                    if(Filter(_card))
-                    {
-                        castableCards.Add( _card );
-                    }
+                    return true;
                 }
             }
+
+            return false;
         }
 
         private bool CanPayFor(Card card)

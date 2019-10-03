@@ -91,6 +91,30 @@ namespace DM.Systems.Actions
             PlayerComponent _player = DuelManager.instance.GetPlayer( player );
             Action.AddToManaFromHand( _player, _player.hand.Get( Guid.Parse( cardId ) ) );
         }
+
+        public void TapMana() // for paying cost
+        {
+
+        }
+
+        public void TapManaRPC()
+        {
+
+        }
+        #endregion
+
+        #region SUMMON
+        public void Summon(Card card)
+        {
+            photonView.RPC( "SummonRPC", RpcTarget.All, card.owner.playerNumber, card.instanceId.ToString() );
+        }
+
+        [PunRPC]
+        public void SummonRPC(int targetPlayer, string instanceId)
+        {
+            PlayerComponent _player = DuelManager.instance.GetPlayer( targetPlayer );
+            Card card = _player.hand.Get( Guid.Parse( instanceId ) );
+        }
         #endregion
     }
 }

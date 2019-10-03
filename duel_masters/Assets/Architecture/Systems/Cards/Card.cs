@@ -11,6 +11,7 @@ using Sirenix.OdinInspector;
 using DM.Systems.Players;
 using DM.Systems.CardMechanics;
 using DM.Systems.Gameplay.Locations;
+using DM.Systems.Casting;
 
 namespace DM.Systems.Cards
 {
@@ -150,6 +151,13 @@ namespace DM.Systems.Cards
             private set;
         }
 
+        [TabGroup( Tabs.PROPERTIES )]
+        [SerializeField]
+        public List<ICastRequirements> castRequirements
+        {
+            get;
+        } = new List<ICastRequirements>();
+
         public Dictionary<IMechanicTrigger, Effect> mechanics
         {
             get;
@@ -177,7 +185,7 @@ namespace DM.Systems.Cards
         public bool tapped
         {
             get => _tapped;
-            private set => _tapped = value;6
+            private set => _tapped = value;
         }
 
         [SerializeField]
@@ -208,6 +216,12 @@ namespace DM.Systems.Cards
         /// </summary>
         private void Initialize()
         {
+
+            foreach(var _req in castRequirements)
+            {
+                _req.card = this;
+            }
+
             mechanics = data.mechanics;
 
             foreach (var _pair in mechanics)

@@ -9,6 +9,7 @@ using UnityEngine.UI;
 using Sirenix.OdinInspector;
 
 using DM.Systems.CardMechanics;
+using DM.Systems.Casting;
 
 namespace DM.Systems.Cards
 {
@@ -16,6 +17,7 @@ namespace DM.Systems.Cards
     {
         Creature,
         Spell,
+        EvolutionCreature
     }
 
     [CreateAssetMenu(fileName = "New Card", menuName = Constants.CREATE_NEW_CARD_DATA, order = 1)]
@@ -67,6 +69,10 @@ namespace DM.Systems.Cards
         [TabGroup(Tabs.PROPERTIES)]
         [SerializeField]
         public List<Race> creatureRace = new List<Race>();
+
+        [TabGroup( Tabs.PROPERTIES )]
+        [SerializeField]
+        public List<ICastRequirements> castRequirements = new List<ICastRequirements>();
 
         [TabGroup(Tabs.PROPERTIES)]
         [SerializeField]
