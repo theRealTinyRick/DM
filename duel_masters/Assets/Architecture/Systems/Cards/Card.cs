@@ -15,6 +15,14 @@ using DM.Systems.Casting;
 
 namespace DM.Systems.Cards
 {
+    public enum CardStatus
+    {
+        Hidden,
+        Private,
+        Uptapped,
+        Tapped
+    }
+
     [Serializable]
     public class Card   
     {
@@ -104,6 +112,13 @@ namespace DM.Systems.Cards
                 return data.cardType;
             }
         }
+
+        public CardStatus cardStatus
+        {
+            get;
+            private set;
+
+        } = CardStatus.Hidden;
 
         public List<Race> creatureRace
         {
@@ -207,16 +222,10 @@ namespace DM.Systems.Cards
 
         private bool overrideName = false;
         private bool overrideCost = false;
-
         public int cardIndex;
 
-
-        /// <summary>
-        ///     This function will set up any relationships between this card instance and the mechanics and triggers
-        /// </summary>
         private void Initialize()
         {
-
             foreach(var _req in castRequirements)
             {
                 _req.card = this;
@@ -246,10 +255,6 @@ namespace DM.Systems.Cards
             tapped = tap;
         }
 
-        /// <summary>
-        ///     Used to sync network. 
-        /// </summary>
-        /// <param name="instanceId"></param>
         public void SetId(Guid instanceId)
         {
             this.instanceId = instanceId;

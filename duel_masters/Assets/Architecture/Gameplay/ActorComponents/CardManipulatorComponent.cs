@@ -4,6 +4,7 @@
 */
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 using Sirenix.OdinInspector;
 
@@ -19,8 +20,10 @@ using DM.Systems.Turns;
 using DM.Systems.Gameplay.Locations;
 using DM.Systems.Casting;
 
-namespace DM.Systems.CardManipulation
+namespace DM.Systems.Gameplay
 {
+    public class CardHoverEvent : UnityEvent<Card> { }
+
     [RequireComponent(typeof(PlayerComponent))]
     public class CardManipulatorComponent : ActorComponent
     {
@@ -87,7 +90,10 @@ namespace DM.Systems.CardManipulation
         private new Camera camera;
 
         private CardComponent currentManipulatedCard;
+        private CardComponent currentHoveringCard;
         private bool clicking = false;
+
+        public CardHoverEvent cardHoverEvent = new CardHoverEvent();
 
         public override void InitializeComponent()
         {
@@ -99,6 +105,7 @@ namespace DM.Systems.CardManipulation
 
         private void FixedUpdate()
         {
+            MouseHover();
             UpdateCardPosition();
         }
 
@@ -137,6 +144,27 @@ namespace DM.Systems.CardManipulation
                     _card.transform.rotation = Quaternion.Lerp( _card.transform.rotation, cardLocations[_card.card.currentLocation][_index].rotation, cardSpeed );
 
                     locationIndexMap[_card.card.currentLocation]++;
+                }
+            }
+        }
+
+        private void MouseHover()
+        {
+            RaycastHit _hit;
+            Ray ray = camera.ScreenPointToRay( Input.mousePosition );
+
+            if ( Physics.Raycast( ray, out _hit, 100 ) )
+            {
+                if ( _hit.transform.gameObject.WithInLayerMask( cardLayerMask ) )
+                {
+                    CardComponent _cardComponent = _hit.transform.gameObject.GetComponentInChildren<CardComponent>();
+                    if ( _cardComponent != null)
+                    {
+                        return;
+                    }
+
+                    currentHoveringCard = _cardComponent;
+                    cardHoverEvent.Invoke( _cardComponent.card );
                 }
             }
         }
