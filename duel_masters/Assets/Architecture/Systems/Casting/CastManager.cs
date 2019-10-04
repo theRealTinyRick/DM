@@ -11,6 +11,7 @@ using DM.Systems.Turns;
 using DM.Systems.Players;
 using DM.Systems.Cards;
 using DM.Systems.Actions;
+using DM.Systems.Selection;
 
 namespace DM.Systems.Casting
 {
@@ -94,7 +95,12 @@ namespace DM.Systems.Casting
 
         private List<ICastCondition> castFilters = new List<ICastCondition>();
 
-        private Card currentlyCastingCard;
+        public Card currentlyCastingCard
+        {
+            get;
+            private set;
+        }
+
         private PhotonView photonView;
 
         protected override void Enable()
@@ -113,40 +119,44 @@ namespace DM.Systems.Casting
             }
         }
 
+        public void Cancel()
+        {
+
+        }
+
         private IEnumerator CastRoutine( Card card )
         {
+            card.UpdateCardLocation( Gameplay.Locations.CardLocation.Casting );
             currentlyCastingCard = card;
 
+            SelectionManager.instance.selectionFinishedEvent.AddListener( TapMana );
+            SelectionManager.instance.StartSelection( card.owner.manaZone );
+            
             // add a wait here for tapping mana
-
-            if ( card.castRequirements.Count <= 0 )
+            while ( !SelectionManager.instance.selectionHasFinished )
             {
-                yield return new WaitForSeconds( 1f );
+                yield return new WaitForEndOfFrame();
             }
-            else
+
+            foreach ( ICastRequirements _req in card.castRequirements )
             {
-                Debug.Log( "check reqs" );
-                foreach ( ICastRequirements _req in card.castRequirements )
+                _req.Start();
+
+                while ( _req.running )
                 {
-                    _req.Start();
-
-                    while ( _req.running )
+                    yield return new WaitForEndOfFrame();
+                    if ( _req.failed )
                     {
-                        yield return new WaitForEndOfFrame();
-                        if ( _req.failed )
-                        {
-                            // TODO: cancel summon
-                        }
+                        // TODO: cancel summon
                     }
-
-                    _req.Stop();
                 }
+
+                _req.Stop();
             }
 
             switch ( card.cardType )
             {
                 case CardType.Creature:
-                    Debug.Log( "summon" );
                     ActionManager.instance.Summon( card );
                     break;
                 case CardType.Spell:
@@ -212,6 +222,19 @@ namespace DM.Systems.Casting
             }
 
             return true;
+        }
+
+        private void TapMana(List<Card> cards)
+        {
+            SelectionManager.instance.selectionFinishedEvent.RemoveListener( TapMana );
+
+            if(cards != null && cards.Count > 0)
+            {
+                foreach (Card _card in cards)
+                {
+                    ActionManager.instance.TapMana( player, _card );
+                }
+            }
         }
     }
 }

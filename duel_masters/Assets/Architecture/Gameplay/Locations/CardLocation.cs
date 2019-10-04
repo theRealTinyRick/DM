@@ -8,6 +8,7 @@ namespace DM.Systems.Gameplay.Locations
         BattleZone,
         ShieldZone,
         ManaZone,
-        Graveyard
+        Graveyard,
+        Casting
     }
 }
