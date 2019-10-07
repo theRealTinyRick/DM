@@ -3031,7 +3031,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1457594875}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: 3.08}
+  m_LocalPosition: {x: 0.5, y: -0.28, z: 2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8076153296741603535}
@@ -5046,14 +5046,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 949410745889033711}
-  m_LocalRotation: {x: 0.44177762, y: -0, z: -0, w: 0.89712465}
-  m_LocalPosition: {x: -2.87, y: 4.23, z: -5.81}
+  m_LocalRotation: {x: 0.4631413, y: 0, z: 0, w: 0.8862845}
+  m_LocalPosition: {x: -3.74, y: 4.12, z: -5.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3046499011004267981}
   m_Father: {fileID: 1457594876}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 52.435, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 55.18, y: 0, z: 0}
 --- !u!1 &1292920695202854721
 GameObject:
   m_ObjectHideFlags: 0
@@ -6627,13 +6627,13 @@ MonoBehaviour:
       Data: 
     - Name: cardHoverEvent
       Entry: 7
-      Data: 8|DM.Systems.Gameplay.CardHoverEvent, Assembly-CSharp
+      Data: 9|DM.Systems.Gameplay.CardMouseEvent, Assembly-CSharp
     - Name: m_PersistentCalls
       Entry: 7
-      Data: 9|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
+      Data: 10|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
     - Name: m_Calls
       Entry: 7
-      Data: 10|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
+      Data: 11|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
         UnityEngine.CoreModule]], mscorlib
     - Name: 
       Entry: 12
@@ -6649,7 +6649,65 @@ MonoBehaviour:
       Data: 
     - Name: m_TypeName
       Entry: 1
-      Data: DM.Systems.Gameplay.CardHoverEvent, Assembly-CSharp, Version=0.0.0.0,
+      Data: DM.Systems.Gameplay.CardMouseEvent, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: cardClickedEvent
+      Entry: 7
+      Data: 12|DM.Systems.Gameplay.CardMouseEvent, Assembly-CSharp
+    - Name: m_PersistentCalls
+      Entry: 7
+      Data: 13|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
+    - Name: m_Calls
+      Entry: 7
+      Data: 14|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
+        UnityEngine.CoreModule]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: m_TypeName
+      Entry: 1
+      Data: DM.Systems.Gameplay.CardMouseEvent, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: cardReleasedEvent
+      Entry: 7
+      Data: 15|DM.Systems.Gameplay.CardMouseEvent, Assembly-CSharp
+    - Name: m_PersistentCalls
+      Entry: 7
+      Data: 16|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
+    - Name: m_Calls
+      Entry: 7
+      Data: 17|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
+        UnityEngine.CoreModule]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: m_TypeName
+      Entry: 1
+      Data: DM.Systems.Gameplay.CardMouseEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     - Name: 
       Entry: 8
@@ -6666,6 +6724,7 @@ MonoBehaviour:
   dragDistance: 3
   manaPhase: {fileID: 11400000, guid: 605738ebafb306d47b5411b4248e8f11, type: 2}
   mainPhase: {fileID: 11400000, guid: 8255f08bc4e05c2499ece767a146bad6, type: 2}
+  tapRotation: {x: 0, y: 0, z: 0.70710677, w: 0.70710677}
 --- !u!114 &3947815539389235977
 MonoBehaviour:
   m_ObjectHideFlags: 0

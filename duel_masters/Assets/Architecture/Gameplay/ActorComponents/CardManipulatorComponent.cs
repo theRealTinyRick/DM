@@ -22,7 +22,7 @@ using DM.Systems.Casting;
 
 namespace DM.Systems.Gameplay
 {
-    public class CardHoverEvent : UnityEvent<Card> { }
+    public class CardMouseEvent : UnityEvent<Card> { }
 
     [RequireComponent(typeof(PlayerComponent))]
     public class CardManipulatorComponent : ActorComponent
@@ -63,6 +63,10 @@ namespace DM.Systems.Gameplay
         [SerializeField]
         public Dictionary<CardLocation, List<Transform>> cardLocations = new Dictionary<CardLocation, List<Transform>>();
 
+        [TabGroup( Tabs.PROPERTIES )]
+        [SerializeField]
+        public Quaternion tapRotation;
+
         private List<CardComponent> spawnedCards
         {
             get
@@ -93,7 +97,9 @@ namespace DM.Systems.Gameplay
         private CardComponent currentHoveringCard;
         private bool clicking = false;
 
-        public CardHoverEvent cardHoverEvent = new CardHoverEvent();
+        public CardMouseEvent cardHoverEvent = new CardMouseEvent();
+        public CardMouseEvent cardClickedEvent = new CardMouseEvent();
+        public CardMouseEvent cardReleasedEvent = new CardMouseEvent();
 
         public override void InitializeComponent()
         {
@@ -141,7 +147,14 @@ namespace DM.Systems.Gameplay
                 if ( cardLocations[_card.card.currentLocation].Count > _index )
                 {
                     _card.transform.position = Vector3.Lerp( _card.transform.position, cardLocations[_card.card.currentLocation][_index].position, cardSpeed );
-                    _card.transform.rotation = Quaternion.Lerp( _card.transform.rotation, cardLocations[_card.card.currentLocation][_index].rotation, cardSpeed );
+                    if(_card.card.tapped)
+                    {
+                        _card.transform.rotation = Quaternion.Lerp( _card.transform.rotation, cardLocations[_card.card.currentLocation][_index].rotation * tapRotation , cardSpeed );
+                    }
+                    else
+                    {
+                        _card.transform.rotation = Quaternion.Lerp( _card.transform.rotation, cardLocations[_card.card.currentLocation][_index].rotation, cardSpeed );
+                    }
 
                     locationIndexMap[_card.card.currentLocation]++;
                 }
@@ -160,13 +173,15 @@ namespace DM.Systems.Gameplay
                     CardComponent _cardComponent = _hit.transform.gameObject.GetComponentInChildren<CardComponent>();
                     if ( _cardComponent != null)
                     {
-                        return;
+                        currentHoveringCard = _cardComponent;
+                        cardHoverEvent.Invoke( _cardComponent.card );
+                      return;
                     }
 
-                    currentHoveringCard = _cardComponent;
-                    cardHoverEvent.Invoke( _cardComponent.card );
                 }
             }
+
+            currentHoveringCard = null;
         }
 
         public void OnInputDown()
@@ -184,9 +199,14 @@ namespace DM.Systems.Gameplay
                 if(_hit.transform.gameObject.WithInLayerMask(cardLayerMask))
                 {
                     CardComponent _card = _hit.transform.gameObject.GetComponentInChildren<CardComponent>();
-                    if( _card != null && player.hand.Contains(_card.card) )
+                    if( _card != null )
                     {
-                        currentManipulatedCard = _card;
+                        cardClickedEvent.Invoke( _card.card );
+
+                        if( player.hand.Contains( _card.card ) )
+                        {
+                            currentManipulatedCard = _card;
+                        }
                     }
                 }
             }
@@ -246,7 +266,6 @@ namespace DM.Systems.Gameplay
 
                     if( phaseManager.currentPhase.identifier == mainPhase )
                     {
-                        // TODO: make main phase 
                         MainPhase _mainPhase = phaseManager.currentPhase as MainPhase;
                         if ( _mainPhase != null )
                         {

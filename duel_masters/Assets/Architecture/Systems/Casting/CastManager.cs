@@ -115,7 +115,30 @@ namespace DM.Systems.Casting
         {
             if ( CanCast( card ) )
             {
-                StartCoroutine( CastRoutine( card ) );
+                card.UpdateCardLocation( Gameplay.Locations.CardLocation.Casting );
+                currentlyCastingCard = card;
+
+                SelectionManager.instance.selectionFinishedEvent.AddListener( TapMana );
+                SelectionManager.instance.StartSelection( 
+                    OnManaSelected, 
+                    new List<CardCollection>() { card.owner.manaZone }, 
+                    new List<ISelectionFilter>() { new UntappedSelectionFilter() }, 
+                    new List<ISelectionRequirements>() { new MeetsManaRequirements(card) } );
+
+                //foreach ( ICastRequirements _req in card.castRequirements )
+                //{
+                //    _req.Start();
+
+                //    while ( _req.running )
+                //    {
+                //        if ( _req.failed )
+                //        {
+                //            // TODO: cancel summon
+                //        }
+                //    }
+
+                //    _req.Stop();
+                //}
             }
         }
 
@@ -124,40 +147,17 @@ namespace DM.Systems.Casting
 
         }
 
-        private IEnumerator CastRoutine( Card card )
+        private void OnManaSelected(List<Card> manaCards)
         {
-            card.UpdateCardLocation( Gameplay.Locations.CardLocation.Casting );
-            currentlyCastingCard = card;
-
-            SelectionManager.instance.selectionFinishedEvent.AddListener( TapMana );
-            SelectionManager.instance.StartSelection( card.owner.manaZone );
-            
-            // add a wait here for tapping mana
-            while ( !SelectionManager.instance.selectionHasFinished )
+            foreach(Card _card in manaCards)
             {
-                yield return new WaitForEndOfFrame();
+                _card.SetTap( true );
             }
 
-            foreach ( ICastRequirements _req in card.castRequirements )
-            {
-                _req.Start();
-
-                while ( _req.running )
-                {
-                    yield return new WaitForEndOfFrame();
-                    if ( _req.failed )
-                    {
-                        // TODO: cancel summon
-                    }
-                }
-
-                _req.Stop();
-            }
-
-            switch ( card.cardType )
+            switch ( currentlyCastingCard.cardType )
             {
                 case CardType.Creature:
-                    ActionManager.instance.Summon( card );
+                    ActionManager.instance.Summon( currentlyCastingCard );
                     break;
                 case CardType.Spell:
                     break;
