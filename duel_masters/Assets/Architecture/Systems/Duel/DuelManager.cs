@@ -186,12 +186,12 @@ namespace DM.Systems
 
         public void Update() // need to check if master client and only do this stuff on there
         {
-            if(Input.GetKeyDown(KeyCode.Space))
+            if(Input.GetKeyDown(KeyCode.UpArrow))
             {
                 DoStartStuff();
             }
 
-            if(Input.GetKeyDown(KeyCode.Return))
+            if(Input.GetKeyDown(KeyCode.DownArrow))
             {
                 StartDuel();
             }
@@ -237,7 +237,6 @@ namespace DM.Systems
                     }
 
                     remotePlayer.transform.rotation = new Quaternion( 0, 180, 0, 0 );
-
                     remotePlayer.GetComponentInChildren<Camera>().gameObject.SetActive( false );
                 }
             }
@@ -258,7 +257,7 @@ namespace DM.Systems
                 actionManager.TriggerAddShieldsFromDeck( _player, 5, false );
             }
 
-            yield return new WaitForSeconds( 4 );
+            yield return new WaitForSeconds( 4 );   
 
             foreach ( PlayerComponent _player in players )
             {

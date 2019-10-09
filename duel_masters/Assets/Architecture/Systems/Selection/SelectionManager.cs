@@ -72,6 +72,8 @@ namespace DM.Systems.Selection
                     player = DuelManager.instance.localPlayer;
                     cardManipulatorComponent = player.GetComponentInChildren<CardManipulatorComponent>();
                     cardManipulatorComponent.cardClickedEvent.AddListener(OnCardClicked);
+                    cardManipulatorComponent.confirmPressedEvent.AddListener(ConfirmSelection);
+                    cardManipulatorComponent.cancelledPressedEvent.AddListener(CancelSelection);
                 }
                 else
                 {
@@ -96,6 +98,8 @@ namespace DM.Systems.Selection
         {
             currentCallback( currentSelection );
             cardManipulatorComponent.cardClickedEvent.RemoveListener( OnCardClicked );
+            cardManipulatorComponent.confirmPressedEvent.RemoveListener( ConfirmSelection );
+            cardManipulatorComponent.cancelledPressedEvent.RemoveListener( CancelSelection );
 
             cardManipulatorComponent = null;
             player = null;
@@ -113,6 +117,11 @@ namespace DM.Systems.Selection
 
         private bool MeetsReqs()
         {
+            if(currentSelection == null || currentSelection.Count == 0)
+            {
+                return false;
+            }
+
             foreach(ISelectionRequirements _req in reqs)
             {
                 if(!_req.Meets(currentSelection))
@@ -124,23 +133,22 @@ namespace DM.Systems.Selection
             return true;
         }
 
-        [Button]
-        public bool ConfirmSelection()
+        public void  ConfirmSelection()
         {
             if( !inSelection )
             {
-                return false;
+                return;
             }
 
             if (MeetsReqs())
             {
                 FinishSelection();
-                return true;
+                return;
             }
 
-            return false;
+            return;
         }
-
+        
         public void  CancelSelection()
         {
             if ( !inSelection )

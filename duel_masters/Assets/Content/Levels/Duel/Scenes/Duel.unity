@@ -578,6 +578,9 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: currentPhase
+      Entry: 6
+      Data: 
     - Name: _phases
       Entry: 7
       Data: 9|System.Collections.Generic.List`1[[GameFramework.Phases.IPhase, Assembly-CSharp]],
@@ -1081,4 +1084,3 @@ MonoBehaviour:
     SerializationNodes: []
   mainPhase: {fileID: 11400000, guid: 8255f08bc4e05c2499ece767a146bad6, type: 2}
   battlePhase: {fileID: 11400000, guid: 013f421f80994a644870c83974c5dde8, type: 2}
-  cardsThatYouCanCast: []

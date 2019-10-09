@@ -22,7 +22,8 @@ using DM.Systems.Casting;
 
 namespace DM.Systems.Gameplay
 {
-    public class CardMouseEvent : UnityEvent<Card> { }
+    public class CardInputEvent : UnityEvent<Card> { }
+    public class CardInputEventNoArg : UnityEvent { }
 
     [RequireComponent(typeof(PlayerComponent))]
     public class CardManipulatorComponent : ActorComponent
@@ -97,9 +98,11 @@ namespace DM.Systems.Gameplay
         private CardComponent currentHoveringCard;
         private bool clicking = false;
 
-        public CardMouseEvent cardHoverEvent = new CardMouseEvent();
-        public CardMouseEvent cardClickedEvent = new CardMouseEvent();
-        public CardMouseEvent cardReleasedEvent = new CardMouseEvent();
+        public CardInputEvent cardHoverEvent = new CardInputEvent();
+        public CardInputEvent cardClickedEvent = new CardInputEvent();
+        public CardInputEvent cardReleasedEvent = new CardInputEvent();
+        public CardInputEventNoArg confirmPressedEvent = new CardInputEventNoArg();
+        public CardInputEventNoArg cancelledPressedEvent = new CardInputEventNoArg();
 
         public override void InitializeComponent()
         {
@@ -113,6 +116,25 @@ namespace DM.Systems.Gameplay
         {
             MouseHover();
             UpdateCardPosition();
+        }
+
+        private void Update()
+        {
+            // TODO: make this use unity's input system, that needs to be finished anyway
+            if(Input.GetKeyDown(KeyCode.Return))
+            {
+                OnConfirmedInput();
+            }
+
+            if(Input.GetKeyDown(KeyCode.Escape))
+            {
+                OnCancelInput();
+            }
+
+            if(Input.GetMouseButtonDown(1))
+            {
+                OnCancelInput();
+            }
         }
 
         /// <summary>
@@ -277,14 +299,25 @@ namespace DM.Systems.Gameplay
 
             ReleaseCard();
         }
-        
-        public void OnCancelClick()
+
+        public void OnConfirmedInput()
         {
             if(!player.isLocal)
             {
                 return;
             }
 
+            confirmPressedEvent.Invoke();
+        }
+        
+        public void OnCancelInput()
+        {
+            if ( !player.isLocal )
+            {
+                return;
+            }
+
+            cancelledPressedEvent.Invoke();
             ReleaseCard();
         }
 

@@ -151,7 +151,7 @@ namespace DM.Systems.Casting
         {
             foreach(Card _card in manaCards)
             {
-                _card.SetTap( true );
+                ActionManager.instance.TapMana( player, _card );
             }
 
             switch ( currentlyCastingCard.cardType )
