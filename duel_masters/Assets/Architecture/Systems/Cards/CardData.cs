@@ -13,13 +13,6 @@ using DM.Systems.Casting;
 
 namespace DM.Systems.Cards
 {
-    public enum CardType
-    {
-        Creature,
-        Spell,
-        EvolutionCreature,
-        PsychicCreature
-    }
 
     [CreateAssetMenu(fileName = "New Card", menuName = Constants.CREATE_NEW_CARD_DATA, order = 1)]
     public class CardData : SerializedScriptableObject
@@ -43,6 +36,8 @@ namespace DM.Systems.Cards
         [TabGroup(Tabs.PROPERTIES)]
         [SerializeField]
         public string cardId;
+
+        //public CardType cardType;
 
         [TabGroup(Tabs.PROPERTIES)]
         [SerializeField]
@@ -78,12 +73,6 @@ namespace DM.Systems.Cards
         [TabGroup(Tabs.PROPERTIES)]
         [SerializeField]
         public Dictionary<IMechanicTrigger, Effect> mechanics = new Dictionary<IMechanicTrigger, Effect>();
-
-
-        private bool IsCreature()
-        {
-            return cardType == CardType.Creature;
-        }
     }
 }
 

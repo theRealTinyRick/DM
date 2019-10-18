@@ -195,6 +195,11 @@ namespace DM.Systems
             {
                 StartDuel();
             }
+
+            if(Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                phaseManager.MoveToNextPhase();
+            }
         }
 
         public PlayerComponent GetPlayer( int playerNumber )

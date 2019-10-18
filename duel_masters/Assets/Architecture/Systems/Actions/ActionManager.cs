@@ -53,7 +53,6 @@ namespace DM.Systems.Actions
                 Action.AddToShieldsFromTopOfDeck( targetPlayer );
             }
         }
-        
         #endregion
 
         #region DRAW
@@ -92,16 +91,16 @@ namespace DM.Systems.Actions
             Action.AddToManaFromHand( _player, _player.hand.Get( Guid.Parse( cardId ) ) );
         }
 
-        public void TapMana(PlayerComponent player, Card card)
+        public void TapMana(Card card)
         {
-            photonView.RPC( "TapManaRPC", RpcTarget.All, player.playerNumber, card.instanceId.ToString() );
+            photonView.RPC( "TapManaRPC", RpcTarget.All, card.owner.playerNumber, card.instanceId.ToString() );
         }
 
         [PunRPC]
         public void TapManaRPC( int player, string cardId )
         {
             PlayerComponent _player = DuelManager.instance.GetPlayer( player );
-            Action.TapCard( _player.hand.Get( Guid.Parse( cardId ) ) );
+            Action.TapCard( _player.manaZone.Get( Guid.Parse( cardId ) ) );
         }
         #endregion
 

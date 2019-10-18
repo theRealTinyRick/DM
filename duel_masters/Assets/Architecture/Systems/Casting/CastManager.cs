@@ -151,18 +151,18 @@ namespace DM.Systems.Casting
         {
             foreach(Card _card in manaCards)
             {
-                ActionManager.instance.TapMana( player, _card );
+                ActionManager.instance.TapMana( _card );
             }
 
-            switch ( currentlyCastingCard.cardType )
+            if(currentlyCastingCard.cardType == CType.Creature)
             {
-                case CardType.Creature:
-                    ActionManager.instance.Summon( currentlyCastingCard );
-                    break;
-                case CardType.Spell:
-                    break;
-                case CardType.EvolutionCreature:
-                    break;
+                ActionManager.instance.Summon( currentlyCastingCard );
+            }
+            else if(currentlyCastingCard.cardType == CType.Spell)
+            {
+            }
+            else if(currentlyCastingCard.cardType == CType.Spell)
+            {
             }
 
             currentlyCastingCard = null;
@@ -232,7 +232,7 @@ namespace DM.Systems.Casting
             {
                 foreach (Card _card in cards)
                 {
-                    ActionManager.instance.TapMana( player, _card );
+                    ActionManager.instance.TapMana( _card );
                 }
             }
         }

@@ -88,5 +88,32 @@ namespace DM.Systems.Cards
             }
             return _result;
         }
+
+        public static bool operator ==(Civilization obj1, Civilization obj2)
+        {
+            foreach (Civ _civ in obj1.civs)
+            {
+                if(!obj2.civs.Contains(_civ))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public static bool operator !=(Civilization obj1, Civilization obj2)
+        {
+            foreach (Civ _civ in obj1.civs)
+            {
+                if (!obj2.civs.Contains(_civ))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
     }
 }
