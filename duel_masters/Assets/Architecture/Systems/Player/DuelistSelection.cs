@@ -3,7 +3,7 @@
  Description: Easy selection in the editor for targeting a player
 */
 
-namespace DM.Systems.Players
+namespace DuelMasters.Systems.Players
 {
     public enum DuelistSelection
     {

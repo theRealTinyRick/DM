@@ -8,10 +8,10 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using DM.Systems.Players;
+using DuelMasters.Systems.Players;
 using GameFramework.Events;
 
-namespace DM.Systems.Cards
+namespace DuelMasters.Systems.Cards
 {
     [Serializable]
     public class CardAddedEvent : GameEvent<CardCollection, Card>

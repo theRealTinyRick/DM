@@ -5,7 +5,7 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using GameFramework.Events;
 
-namespace DM.Systems.Cards
+namespace DuelMasters.Systems.Cards
 {
     [Serializable]
     public class CardAddedToTrunkEvent : GameEvent<Trunk, CardData>

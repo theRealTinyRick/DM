@@ -4,9 +4,9 @@
 */
 using UnityEngine;
 using GameFramework.Phases;
-using DM.Systems.Turns;
+using DuelMasters.Systems.Turns;
 
-namespace DM.Systems.Duel.Phases
+namespace DuelMasters.Systems.Duel.Phases
 {
     public class EndPhase : IPhase
     {
@@ -46,6 +46,7 @@ namespace DM.Systems.Duel.Phases
         {
             DuelManager.instance.endPhaseExitedEvent.Invoke( TurnManager.instance.currentTurnPlayer );
             TurnManager.instance.PassTurn();
+            Debug.Log("End Phase ended, pass turn");
         }
     }
 }

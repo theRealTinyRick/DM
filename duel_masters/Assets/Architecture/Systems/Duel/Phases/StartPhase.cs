@@ -4,9 +4,9 @@
 */
 using UnityEngine;
 using GameFramework.Phases;
-using DM.Systems.Turns;
+using DuelMasters.Systems.Turns;
 
-namespace DM.Systems.Duel.Phases
+namespace DuelMasters.Systems.Duel.Phases
 {
     public class StartPhase : IPhase
     {

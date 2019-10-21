@@ -1,14 +1,11 @@
 ﻿/*
  Author: Aaron Hines
- Description: Defines card types in the game
+ Description: Defines card types in the game. Types determine how a card is played.
 */
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace DM.Systems.Cards
+namespace DuelMasters.Systems.Cards
 {
     public enum CType
     {
@@ -37,6 +34,7 @@ namespace DM.Systems.Cards
         }
     }
 
+    [Serializable]
     public class CardType
     {
         public List<CType> cardTypes = new List<CType>();
@@ -55,50 +53,27 @@ namespace DM.Systems.Cards
             return _result;
         }
 
-        public static bool operator ==(CardType obj1, CardType obj2)
+        public bool Equal(CType rhs)
         {
-            foreach (CType _civ in obj1.cardTypes)
+            if (!cardTypes.Contains(rhs))
             {
-                if (!obj2.cardTypes.Contains(_civ))
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool Equal(CardType rhs)
+        {
+            foreach (CType _type in rhs.cardTypes)
+            {
+                if (!rhs.cardTypes.Contains(_type))
                 {
                     return false;
                 }
             }
 
             return true;
-        }
-
-        public static bool operator !=(CardType obj1, CardType obj2)
-        {
-            foreach (CType _civ in obj1.cardTypes)
-            {
-                if (!obj2.cardTypes.Contains(_civ))
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        public static bool operator ==(CardType obj1, CType obj2)
-        {
-            return obj1.cardTypes.Contains(obj2);
-        }
-
-        public static bool operator !=(CardType obj1, CType obj2)
-        {
-            return !obj1.cardTypes.Contains(obj2);
-        }
-
-        public override bool Equals(object obj)
-        {
-            return base.Equals(obj);
-        }
-
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
         }
     }
 }

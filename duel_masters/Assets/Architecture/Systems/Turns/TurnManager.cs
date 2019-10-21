@@ -7,11 +7,11 @@ using Sirenix.OdinInspector;
 
 using GameFramework.Phases;
 
-using DM.Systems.Cards;
-using DM.Systems.Players;
-using DM.Systems.Gameplay.Locations;
+using DuelMasters.Systems.Cards;
+using DuelMasters.Systems.Players;
+using DuelMasters.Systems.Gameplay.Locations;
 
-namespace DM.Systems.Turns
+namespace DuelMasters.Systems.Turns
 {
     public class TurnManager : Singleton_SerializedMonobehaviour<TurnManager>
     {

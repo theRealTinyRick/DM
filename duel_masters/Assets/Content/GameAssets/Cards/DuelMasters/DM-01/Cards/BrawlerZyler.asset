@@ -21,13 +21,26 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
+    - Name: castRequirements
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[DM.Systems.Casting.ICastRequirements,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: mechanics
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[DM.Systems.CardMechanics.IMechanicTrigger,
+      Data: 1|System.Collections.Generic.Dictionary`2[[DM.Systems.CardMechanics.IMechanicTrigger,
         Assembly-CSharp],[DM.Systems.CardMechanics.Effect, Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[DM.Systems.CardMechanics.IMechanicTrigger,
+      Data: 2|System.Collections.Generic.ObjectEqualityComparer`1[[DM.Systems.CardMechanics.IMechanicTrigger,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 8
@@ -40,16 +53,16 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 7
-      Data: 2|DM.Systems.CardMechanics.Triggers.OnSummonTrigger, Assembly-CSharp
+      Data: 3|DM.Systems.CardMechanics.Triggers.OnSummonTrigger, Assembly-CSharp
     - Name: 
       Entry: 8
       Data: 
     - Name: $v
       Entry: 7
-      Data: 3|DM.Systems.CardMechanics.Effect, Assembly-CSharp
+      Data: 4|DM.Systems.CardMechanics.Effect, Assembly-CSharp
     - Name: mechanics
       Entry: 7
-      Data: 4|System.Collections.Generic.List`1[[DM.Systems.CardMechanics.ICardMechanic,
+      Data: 5|System.Collections.Generic.List`1[[DM.Systems.CardMechanics.ICardMechanic,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -62,28 +75,16 @@ MonoBehaviour:
       Data: 
     - Name: card
       Entry: 7
-      Data: 5|DM.Systems.Cards.Card, Assembly-CSharp
-    - Name: _id
-      Entry: 2
-      Data: d2bce033a69d48eea6bd8a69e58b5315
-    - Name: _cardName
-      Entry: 1
-      Data: Brawler Zyler
-    - Name: cardImage
-      Entry: 6
-      Data: 
-    - Name: cardMaterial
-      Entry: 6
-      Data: 
+      Data: 6|DM.Systems.Cards.Card, Assembly-CSharp
     - Name: _tapped
       Entry: 5
       Data: false
     - Name: _currentLocation
       Entry: 3
-      Data: 0
+      Data: 1
     - Name: cardIndex
       Entry: 3
-      Data: 3
+      Data: 9
     - Name: 
       Entry: 8
       Data: 
@@ -99,12 +100,13 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  cardImage: {fileID: 21300000, guid: 73f7ea11d70bbbb4399ec465f0602948, type: 3}
+  cardSprite: {fileID: 0}
   cardMaterial: {fileID: 2100000, guid: 369047a1b41f3404d96c36c93a4ad417, type: 2}
   set: {fileID: 11400000, guid: c20a34133cd60a749a0af7a5c95e8b0a, type: 2}
   cardName: Brawler Zyler
   cardId: DM-01_70-110
-  cardType: 0
+  cardType:
+    cardTypes: 00000000
   power: 0
   numberOfShieldsBroken: 1
   civilization:

@@ -6,16 +6,16 @@ using GameFramework.Phases;
 using GameFramework.Actors.Components;
 using GameFramework.Utilities.Extensions;
 
-using DM.Systems.Cards;
-using DM.Systems.Players;
-using DM.Systems.Duel.Phases;
-using DM.Systems.Actions;
-using DM.Systems.Turns;
-using DM.Systems.Gameplay.Locations;
-using DM.Systems.Casting;
-using DM.Systems.Gameplay;
+using DuelMasters.Systems.Cards;
+using DuelMasters.Systems.Players;
+using DuelMasters.Systems.Duel.Phases;
+using DuelMasters.Systems.Actions;
+using DuelMasters.Systems.Turns;
+using DuelMasters.Systems.Gameplay.Locations;
+using DuelMasters.Systems.Casting;
+using DuelMasters.Systems.Gameplay;
 
-namespace DM.Gameplay.UI
+namespace DuelMasters.Gameplay.UI
 {
     [RequireComponent( typeof( PlayerComponent ) )]
     [RequireComponent( typeof( CardManipulatorComponent ) )]

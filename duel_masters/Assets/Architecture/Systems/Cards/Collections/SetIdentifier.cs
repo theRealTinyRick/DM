@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Sirenix.OdinInspector;
 
-namespace DM.Systems.Cards
+namespace DuelMasters.Systems.Cards
 {
     [CreateAssetMenu( fileName = "New Set", menuName = Constants.CREATE_NEW_SET, order = 1 )]
     public class SetIdentifier : SerializedScriptableObject

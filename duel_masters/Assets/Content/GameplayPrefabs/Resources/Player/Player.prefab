@@ -6296,12 +6296,12 @@ MonoBehaviour:
     SerializationNodes:
     - Name: cardLocations
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[DM.Systems.Gameplay.Locations.CardLocation,
+      Data: 0|System.Collections.Generic.Dictionary`2[[DuelMasters.Systems.Gameplay.Locations.CardLocation,
         Assembly-CSharp],[System.Collections.Generic.List`1[[UnityEngine.Transform,
         UnityEngine.CoreModule]], mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[DM.Systems.Gameplay.Locations.CardLocation,
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[DuelMasters.Systems.Gameplay.Locations.CardLocation,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -6627,7 +6627,7 @@ MonoBehaviour:
       Data: 
     - Name: cardHoverEvent
       Entry: 7
-      Data: 9|DM.Systems.Gameplay.CardInputEvent, Assembly-CSharp
+      Data: 9|DuelMasters.Systems.Gameplay.CardInputEvent, Assembly-CSharp
     - Name: m_PersistentCalls
       Entry: 7
       Data: 10|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
@@ -6649,14 +6649,14 @@ MonoBehaviour:
       Data: 
     - Name: m_TypeName
       Entry: 1
-      Data: DM.Systems.Gameplay.CardInputEvent, Assembly-CSharp, Version=0.0.0.0,
+      Data: DuelMasters.Systems.Gameplay.CardInputEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     - Name: 
       Entry: 8
       Data: 
     - Name: cardClickedEvent
       Entry: 7
-      Data: 12|DM.Systems.Gameplay.CardInputEvent, Assembly-CSharp
+      Data: 12|DuelMasters.Systems.Gameplay.CardInputEvent, Assembly-CSharp
     - Name: m_PersistentCalls
       Entry: 7
       Data: 13|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
@@ -6678,14 +6678,14 @@ MonoBehaviour:
       Data: 
     - Name: m_TypeName
       Entry: 1
-      Data: DM.Systems.Gameplay.CardInputEvent, Assembly-CSharp, Version=0.0.0.0,
+      Data: DuelMasters.Systems.Gameplay.CardInputEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     - Name: 
       Entry: 8
       Data: 
     - Name: cardReleasedEvent
       Entry: 7
-      Data: 15|DM.Systems.Gameplay.CardInputEvent, Assembly-CSharp
+      Data: 15|DuelMasters.Systems.Gameplay.CardInputEvent, Assembly-CSharp
     - Name: m_PersistentCalls
       Entry: 7
       Data: 16|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
@@ -6707,14 +6707,14 @@ MonoBehaviour:
       Data: 
     - Name: m_TypeName
       Entry: 1
-      Data: DM.Systems.Gameplay.CardInputEvent, Assembly-CSharp, Version=0.0.0.0,
+      Data: DuelMasters.Systems.Gameplay.CardInputEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     - Name: 
       Entry: 8
       Data: 
     - Name: confirmPressedEvent
       Entry: 7
-      Data: 18|DM.Systems.Gameplay.CardInputEventNoArg, Assembly-CSharp
+      Data: 18|DuelMasters.Systems.Gameplay.CardInputEventNoArg, Assembly-CSharp
     - Name: m_PersistentCalls
       Entry: 7
       Data: 19|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
@@ -6736,14 +6736,14 @@ MonoBehaviour:
       Data: 
     - Name: m_TypeName
       Entry: 1
-      Data: DM.Systems.Gameplay.CardInputEventNoArg, Assembly-CSharp, Version=0.0.0.0,
+      Data: DuelMasters.Systems.Gameplay.CardInputEventNoArg, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     - Name: 
       Entry: 8
       Data: 
     - Name: cancelledPressedEvent
       Entry: 7
-      Data: 21|DM.Systems.Gameplay.CardInputEventNoArg, Assembly-CSharp
+      Data: 21|DuelMasters.Systems.Gameplay.CardInputEventNoArg, Assembly-CSharp
     - Name: m_PersistentCalls
       Entry: 7
       Data: 22|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
@@ -6765,7 +6765,7 @@ MonoBehaviour:
       Data: 
     - Name: m_TypeName
       Entry: 1
-      Data: DM.Systems.Gameplay.CardInputEventNoArg, Assembly-CSharp, Version=0.0.0.0,
+      Data: DuelMasters.Systems.Gameplay.CardInputEventNoArg, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     - Name: 
       Entry: 8

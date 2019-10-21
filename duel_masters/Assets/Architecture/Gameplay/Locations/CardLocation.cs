@@ -1,5 +1,5 @@
 ﻿
-namespace DM.Systems.Gameplay.Locations
+namespace DuelMasters.Systems.Gameplay.Locations
 {
     public enum CardLocation : int
     {

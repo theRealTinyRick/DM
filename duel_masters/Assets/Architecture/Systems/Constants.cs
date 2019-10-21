@@ -3,7 +3,7 @@
  Description: central location for constant strings used in code
 */
 
-namespace DM.Systems
+namespace DuelMasters.Systems
 {
     class Constants
     {

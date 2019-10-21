@@ -7,7 +7,7 @@ using Sirenix.OdinInspector;
 
 using GameFramework.Actors.Components;
 
-namespace DM.Systems.Cards
+namespace DuelMasters.Systems.Cards
 {
     public class CardComponent : ActorComponent
     {

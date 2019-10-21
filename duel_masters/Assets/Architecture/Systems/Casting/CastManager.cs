@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 using UnityEngine;
 using Photon.Pun;
@@ -7,13 +6,13 @@ using Sirenix.OdinInspector;
 
 using GameFramework.Phases;
 
-using DM.Systems.Turns;
-using DM.Systems.Players;
-using DM.Systems.Cards;
-using DM.Systems.Actions;
-using DM.Systems.Selection;
+using DuelMasters.Systems.Turns;
+using DuelMasters.Systems.Players;
+using DuelMasters.Systems.Cards;
+using DuelMasters.Systems.Actions;
+using DuelMasters.Systems.Selection;
 
-namespace DM.Systems.Casting
+namespace DuelMasters.Systems.Casting
 {
     public class CastManager : Singleton_SerializedMonobehaviour<CastManager>
     {
@@ -154,16 +153,16 @@ namespace DM.Systems.Casting
                 ActionManager.instance.TapMana( _card );
             }
 
-            if(currentlyCastingCard.cardType == CType.Creature)
+            if(currentlyCastingCard.cardType.Equal(CType.Creature))
             {
                 ActionManager.instance.Summon( currentlyCastingCard );
             }
-            else if(currentlyCastingCard.cardType == CType.Spell)
+            else if(currentlyCastingCard.cardType.Equal(CType.Spell))
             {
+                // cast
             }
-            else if(currentlyCastingCard.cardType == CType.Spell)
-            {
-            }
+
+            // TODO: add all card types here
 
             currentlyCastingCard = null;
         }

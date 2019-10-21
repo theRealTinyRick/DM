@@ -7,7 +7,7 @@ using UnityEngine;
 using Photon.Pun;
 using TMPro;
 
-namespace DM.Systems.Networking.UI
+namespace DuelMasters.Systems.Networking.UI
 {
     public class RoomButton : MonoBehaviour
     {

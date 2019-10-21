@@ -1,7 +1,7 @@
-﻿using DM.Systems.Cards;
+﻿using DuelMasters.Systems.Cards;
 using System.Collections.Generic;
 
-namespace DM.Systems.Selection
+namespace DuelMasters.Systems.Selection
 {
     public class MeetsManaRequirements : ISelectionRequirements
     {

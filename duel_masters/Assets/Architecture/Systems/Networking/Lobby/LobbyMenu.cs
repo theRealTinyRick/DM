@@ -12,7 +12,7 @@ using Sirenix.OdinInspector;
 
 using GameFramework.Networking;
 
-namespace DM.Systems.Networking.UI
+namespace DuelMasters.Systems.Networking.UI
 {
 
     public class LobbyMenu : MonoBehaviour

@@ -15,20 +15,32 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 2100000, guid: db22be96ae8845c469647319fbc9397b, type: 2}
+    ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
+    - Name: castRequirements
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[DM.Systems.Casting.ICastRequirements,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: mechanics
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[DM.Systems.CardMechanics.IMechanicTrigger,
+      Data: 1|System.Collections.Generic.Dictionary`2[[DM.Systems.CardMechanics.IMechanicTrigger,
         Assembly-CSharp],[DM.Systems.CardMechanics.Effect, Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[DM.Systems.CardMechanics.IMechanicTrigger,
+      Data: 2|System.Collections.Generic.ObjectEqualityComparer`1[[DM.Systems.CardMechanics.IMechanicTrigger,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 8
@@ -41,16 +53,16 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 7
-      Data: 2|DM.Systems.CardMechanics.Triggers.OnSummonTrigger, Assembly-CSharp
+      Data: 3|DM.Systems.CardMechanics.Triggers.OnSummonTrigger, Assembly-CSharp
     - Name: 
       Entry: 8
       Data: 
     - Name: $v
       Entry: 7
-      Data: 3|DM.Systems.CardMechanics.Effect, Assembly-CSharp
+      Data: 4|DM.Systems.CardMechanics.Effect, Assembly-CSharp
     - Name: mechanics
       Entry: 7
-      Data: 4|System.Collections.Generic.List`1[[DM.Systems.CardMechanics.ICardMechanic,
+      Data: 5|System.Collections.Generic.List`1[[DM.Systems.CardMechanics.ICardMechanic,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -63,19 +75,7 @@ MonoBehaviour:
       Data: 
     - Name: card
       Entry: 7
-      Data: 5|DM.Systems.Cards.Card, Assembly-CSharp
-    - Name: _id
-      Entry: 2
-      Data: 26f2896f83634eb8920be1e346233fe1
-    - Name: _cardName
-      Entry: 1
-      Data: Urth Purifying Elemental
-    - Name: cardImage
-      Entry: 6
-      Data: 
-    - Name: cardMaterial
-      Entry: 10
-      Data: 0
+      Data: 6|DM.Systems.Cards.Card, Assembly-CSharp
     - Name: _tapped
       Entry: 5
       Data: false
@@ -84,7 +84,7 @@ MonoBehaviour:
       Data: 0
     - Name: cardIndex
       Entry: 3
-      Data: 37
+      Data: 39
     - Name: 
       Entry: 8
       Data: 
@@ -100,16 +100,17 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  cardImage: {fileID: 21300000, guid: fe5843a427b3cfd4ba7a99bce8a68ff0, type: 3}
+  cardSprite: {fileID: 0}
   cardMaterial: {fileID: 2100000, guid: 794d97f1262471a47a5e26b7c35affc6, type: 2}
   set: {fileID: 11400000, guid: c20a34133cd60a749a0af7a5c95e8b0a, type: 2}
   cardName: Urth Purifying Elemental
   cardId: DM-01_S2-S10
-  cardType: 0
+  cardType:
+    cardTypes: 00000000
   power: 6000
   numberOfShieldsBroken: 1
   civilization:
-    civilitations: 00000000
+    civs: 00000000
   manaCost: 6
   creatureRace:
   - {fileID: 11400000, guid: 88f87ffa030ea38498b770ab0ed425d5, type: 2}

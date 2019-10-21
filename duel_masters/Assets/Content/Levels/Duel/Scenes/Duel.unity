@@ -590,7 +590,7 @@ MonoBehaviour:
       Data: 5
     - Name: 
       Entry: 7
-      Data: 10|DM.Systems.Duel.Phases.StartPhase, Assembly-CSharp
+      Data: 10|DuelMasters.Systems.Duel.Phases.StartPhase, Assembly-CSharp
     - Name: delayTime
       Entry: 4
       Data: 1
@@ -602,7 +602,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 11|DM.Systems.Duel.Phases.DrawPhase, Assembly-CSharp
+      Data: 11|DuelMasters.Systems.Duel.Phases.DrawPhase, Assembly-CSharp
     - Name: delayTime
       Entry: 4
       Data: 1
@@ -614,10 +614,10 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 12|DM.Systems.Duel.Phases.ManaPhase, Assembly-CSharp
+      Data: 12|DuelMasters.Systems.Duel.Phases.ManaPhase, Assembly-CSharp
     - Name: delayTime
       Entry: 4
-      Data: 1
+      Data: 0.5
     - Name: _phaseIdentifier
       Entry: 10
       Data: 2
@@ -626,10 +626,10 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 13|DM.Systems.Duel.Phases.MainPhase, Assembly-CSharp
+      Data: 13|DuelMasters.Systems.Duel.Phases.MainPhase, Assembly-CSharp
     - Name: delayTime
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: _phaseIdentifier
       Entry: 10
       Data: 3
@@ -638,7 +638,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 14|DM.Systems.Duel.Phases.EndPhase, Assembly-CSharp
+      Data: 14|DuelMasters.Systems.Duel.Phases.EndPhase, Assembly-CSharp
     - Name: delayTime
       Entry: 4
       Data: 1
@@ -825,113 +825,113 @@ MonoBehaviour:
   gameStartedEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: DM.Systems.GameEvents.GameStartedEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+    m_TypeName: DuelMasters.Systems.GameEvents.GameStartedEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   gameEndedEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: DM.Systems.GameEvents.GameEndedEvent, Assembly-CSharp, Version=0.0.0.0,
+    m_TypeName: DuelMasters.Systems.GameEvents.GameEndedEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   turnChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: DM.Systems.GameEvents.TurnChangedEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+    m_TypeName: DuelMasters.Systems.GameEvents.TurnChangedEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   startPhaseEnteredEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: DM.Systems.GameEvents.StartPhaseEvent, Assembly-CSharp, Version=0.0.0.0,
+    m_TypeName: DuelMasters.Systems.GameEvents.StartPhaseEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   startPhaseExitedEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: DM.Systems.GameEvents.StartPhaseEvent, Assembly-CSharp, Version=0.0.0.0,
+    m_TypeName: DuelMasters.Systems.GameEvents.StartPhaseEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   drawPhaseEnteredEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: DM.Systems.GameEvents.DrawPhaseEvent, Assembly-CSharp, Version=0.0.0.0,
+    m_TypeName: DuelMasters.Systems.GameEvents.DrawPhaseEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   drawPhaseExitedEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: DM.Systems.GameEvents.DrawPhaseEvent, Assembly-CSharp, Version=0.0.0.0,
+    m_TypeName: DuelMasters.Systems.GameEvents.DrawPhaseEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   manaPhaseEnteredEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: DM.Systems.GameEvents.ManaPhaseEvent, Assembly-CSharp, Version=0.0.0.0,
+    m_TypeName: DuelMasters.Systems.GameEvents.ManaPhaseEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   manaPhaseExitedEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: DM.Systems.GameEvents.ManaPhaseEvent, Assembly-CSharp, Version=0.0.0.0,
+    m_TypeName: DuelMasters.Systems.GameEvents.ManaPhaseEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   mainPhaseEnteredEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: DM.Systems.GameEvents.MainPhaseEvent, Assembly-CSharp, Version=0.0.0.0,
+    m_TypeName: DuelMasters.Systems.GameEvents.MainPhaseEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   mainPhaseExitedEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: DM.Systems.GameEvents.MainPhaseEvent, Assembly-CSharp, Version=0.0.0.0,
+    m_TypeName: DuelMasters.Systems.GameEvents.MainPhaseEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   battlePhaseEnteredEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: DM.Systems.GameEvents.BattlePhaseEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+    m_TypeName: DuelMasters.Systems.GameEvents.BattlePhaseEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   battlePhaseExitedEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: DM.Systems.GameEvents.BattlePhaseEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+    m_TypeName: DuelMasters.Systems.GameEvents.BattlePhaseEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   endPhaseEnteredEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: DM.Systems.GameEvents.EndPhaseEvent, Assembly-CSharp, Version=0.0.0.0,
+    m_TypeName: DuelMasters.Systems.GameEvents.EndPhaseEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   endPhaseExitedEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: DM.Systems.GameEvents.EndPhaseEvent, Assembly-CSharp, Version=0.0.0.0,
+    m_TypeName: DuelMasters.Systems.GameEvents.EndPhaseEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   creatureSummonedEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: DM.Systems.GameEvents.CreatureSummonedEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+    m_TypeName: DuelMasters.Systems.GameEvents.CreatureSummonedEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   cardDrawnEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: DM.Systems.GameEvents.CardDrawnEvent, Assembly-CSharp, Version=0.0.0.0,
+    m_TypeName: DuelMasters.Systems.GameEvents.CardDrawnEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   shieldAddedEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: DM.Systems.GameEvents.ShieldAddedEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+    m_TypeName: DuelMasters.Systems.GameEvents.ShieldAddedEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   shieldBrokenEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: DM.Systems.GameEvents.ShieldBrokenEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+    m_TypeName: DuelMasters.Systems.GameEvents.ShieldBrokenEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   manaAddedEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: DM.Systems.GameEvents.ManaAddedEvent, Assembly-CSharp, Version=0.0.0.0,
+    m_TypeName: DuelMasters.Systems.GameEvents.ManaAddedEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   cardTappedEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: DM.Systems.GameEvents.CardTappedEvent, Assembly-CSharp, Version=0.0.0.0,
+    m_TypeName: DuelMasters.Systems.GameEvents.CardTappedEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   cardUntappedEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: DM.Systems.GameEvents.CardUntappedEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+    m_TypeName: DuelMasters.Systems.GameEvents.CardUntappedEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &1652276680
 MonoBehaviour:
   m_ObjectHideFlags: 0

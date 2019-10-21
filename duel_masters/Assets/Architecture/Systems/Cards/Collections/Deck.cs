@@ -7,9 +7,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-using DM.Systems.Players;
+using DuelMasters.Systems.Players;
 
-namespace DM.Systems.Cards
+namespace DuelMasters.Systems.Cards
 {
     [CreateAssetMenu( fileName = "New Deck", menuName = Constants.CREATE_NEW_DECK, order = 1 )]
     public class Deck : SerializedScriptableObject

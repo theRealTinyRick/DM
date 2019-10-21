@@ -6,11 +6,11 @@ using UnityEngine;
 
 using GameFramework.Phases;
 
-using DM.Systems.Cards;
-using DM.Systems.Players;
-using DM.Systems.Turns;
+using DuelMasters.Systems.Cards;
+using DuelMasters.Systems.Players;
+using DuelMasters.Systems.Turns;
 
-namespace DM.Systems.Duel.Phases
+namespace DuelMasters.Systems.Duel.Phases
 {
     public class ManaPhase : IPhase
     {

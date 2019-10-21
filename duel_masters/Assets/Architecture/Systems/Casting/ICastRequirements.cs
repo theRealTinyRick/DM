@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DM.Systems.Cards;
+using DuelMasters.Systems.Cards;
 
-namespace DM.Systems.Casting
+namespace DuelMasters.Systems.Casting
 {
     public interface ICastRequirements
     {

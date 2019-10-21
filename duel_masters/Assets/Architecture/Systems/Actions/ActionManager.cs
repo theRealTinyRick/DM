@@ -3,18 +3,18 @@
  Edits By: 
  Description: Defines general actions that can be done in a game. This is more related to moveing cards around
  */
+using System;
 using System.Collections;
 
 using UnityEngine;
 using Photon.Pun;
 using Sirenix.OdinInspector;
 
-using DM.Systems.Cards;
-using DM.Systems.Players;
-using DM.Systems.Gameplay.Locations;
-using System;
+using DuelMasters.Systems.Cards;
+using DuelMasters.Systems.Players;
+using DuelMasters.Systems.Gameplay.Locations;
 
-namespace DM.Systems.Actions
+namespace DuelMasters.Systems.Actions
 {
     public class ActionManager : Singleton_SerializedMonobehaviour<ActionManager>
     {
@@ -45,7 +45,7 @@ namespace DM.Systems.Actions
             StartCoroutine( AddShieldsRoutine( _player, amount, waitForResponse ) );
         }
 
-        IEnumerator AddShieldsRoutine( PlayerComponent targetPlayer, int amount, bool waitForResponse )
+        private IEnumerator AddShieldsRoutine( PlayerComponent targetPlayer, int amount, bool waitForResponse )
         {
             for ( int i = 0; i < amount; i++ )
             {
@@ -56,9 +56,12 @@ namespace DM.Systems.Actions
         #endregion
 
         #region DRAW
-        public void TriggerDraw( PlayerComponent targetPlayer, int amount = 1, bool waitForResponse = true )
+        public void Draw( PlayerComponent targetPlayer, int amount = 1, bool waitForResponse = true )
         {
-            photonView.RPC( "DrawRPC", RpcTarget.All, targetPlayer.playerNumber, amount, waitForResponse );
+            if(photonView.IsMine)
+            {
+                photonView.RPC( "DrawRPC", RpcTarget.All, targetPlayer.playerNumber, amount, waitForResponse );
+            }
         }
 
         [PunRPC]
@@ -68,7 +71,7 @@ namespace DM.Systems.Actions
             StartCoroutine( DrawRoutine( _player, amount, waitForResponse ) );
         }
 
-        IEnumerator DrawRoutine( PlayerComponent targetPlayer, int amount = 1, bool waitForResponse = true )
+        private IEnumerator DrawRoutine( PlayerComponent targetPlayer, int amount = 1, bool waitForResponse = true )
         {
             for( int i = 0; i < amount; i++ )
             {

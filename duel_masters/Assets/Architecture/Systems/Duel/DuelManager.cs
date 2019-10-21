@@ -13,12 +13,12 @@ using Sirenix.OdinInspector;
 using GameFramework.Networking;
 using GameFramework.Phases;
 
-using DM.Systems.Players;
-using DM.Systems.GameEvents;
-using DM.Systems.Actions;
-using DM.Systems.Turns;
+using DuelMasters.Systems.Players;
+using DuelMasters.Systems.GameEvents;
+using DuelMasters.Systems.Actions;
+using DuelMasters.Systems.Turns;
 
-namespace DM.Systems
+namespace DuelMasters.Systems
 {
     public class DuelManager : Singleton_MonobehaviourPunCallbacks<DuelManager>
     {
@@ -143,6 +143,14 @@ namespace DM.Systems
         [SerializeField]
         public CreatureSummonedEvent creatureSummonedEvent = new CreatureSummonedEvent();
 
+        [TabGroup(Tabs.EVENTS)]
+        [SerializeField]
+        public SpellCastEvent spellCastEvent = new SpellCastEvent();
+
+        [TabGroup(Tabs.EVENTS)]
+        [SerializeField]
+        public CardPlayedEvent cardPlayedEvent = new CardPlayedEvent();
+
         [TabGroup( Tabs.EVENTS )]
         [SerializeField]
         public CardDrawnEvent cardDrawnEvent = new CardDrawnEvent();
@@ -262,12 +270,14 @@ namespace DM.Systems
                 actionManager.TriggerAddShieldsFromDeck( _player, 5, false );
             }
 
-            yield return new WaitForSeconds( 4 );   
+           // yield return new WaitForSeconds( 3 );   
 
             foreach ( PlayerComponent _player in players )
             {
-                actionManager.TriggerDraw( _player, 5, false );
+                actionManager.Draw( _player, 5, false );
             }
+
+            yield break;
         }
 
         public void StartDuel()

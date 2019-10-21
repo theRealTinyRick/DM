@@ -4,10 +4,10 @@
 */
 using UnityEngine;
 using GameFramework.Phases;
-using DM.Systems.Turns;
-using DM.Systems.Actions;
+using DuelMasters.Systems.Turns;
+using DuelMasters.Systems.Actions;
 
-namespace DM.Systems.Duel.Phases
+namespace DuelMasters.Systems.Duel.Phases
 {
     public class DrawPhase : IPhase
     {
@@ -36,7 +36,7 @@ namespace DM.Systems.Duel.Phases
 
             if( phaseManager.GetComponent<Photon.Pun.PhotonView>().IsMine )
             {
-                ActionManager.instance.TriggerDraw( TurnManager.instance.currentTurnPlayer, 1, false );
+                ActionManager.instance.Draw( TurnManager.instance.currentTurnPlayer, 1, false );
             }
         }
 

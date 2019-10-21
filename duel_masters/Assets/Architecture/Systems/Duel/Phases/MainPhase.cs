@@ -3,18 +3,14 @@
  Description: defines the main phase of a players turn
 */
 using UnityEngine;
-using DM.Systems.Cards;
-using DM.Systems.Players;
+using DuelMasters.Systems.Cards;
+using DuelMasters.Systems.Players;
 using GameFramework.Phases;
 
-namespace DM.Systems.Duel.Phases
+namespace DuelMasters.Systems.Duel.Phases
 {
     public class MainPhase : IPhase
     {
-        [SerializeField]
-        private float delayTime = 0;
-        private float currentTime = 0;
-
         public PhaseManager phaseManager
         {
             get;
@@ -31,24 +27,16 @@ namespace DM.Systems.Duel.Phases
 
         public void EnterPhase()
         {
+            Debug.Log("Main Phase Started");
         }
 
         public void RunPhase( float deltaTime )
         {
-            //currentTime += deltaTime;
-            //if ( currentTime >= delayTime )
-            //{
-            //    phaseManager.MoveToNextPhase();
-            //}
-
-            if(Input.GetKeyDown(KeyCode.F))
-            {
-                phaseManager.MoveToNextPhase();
-            }
         }
 
         public void ExitPhase()
         {
+            Debug.Log("Main Phase Ended, move to end");
         }
     }
 }

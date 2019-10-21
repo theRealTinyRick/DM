@@ -4,7 +4,7 @@
 */
 using System.Collections.Generic;
 
-namespace DM.Systems.Cards
+namespace DuelMasters.Systems.Cards
 {
     public enum Civ
     {
@@ -46,31 +46,9 @@ namespace DM.Systems.Cards
     [System.Serializable]
     public class Civilization
     {
-        public Civilization() { }
-
-        public Civilization(Civ civ1)
+        public Civilization()
         {
-            civs = new List<Civ>() { civ1 };
-        }
-
-        public Civilization(Civ civ1, Civ civ2)
-        {
-            civs = new List<Civ>() { civ1, civ2 };
-        }
-
-        public Civilization(Civ civ1, Civ civ2, Civ civ3)
-        {
-            civs = new List<Civ>() { civ1, civ2, civ3 };
-        }
-
-        public Civilization(Civ civ1, Civ civ2, Civ civ3, Civ civ4)
-        {
-            civs = new List<Civ>() { civ1, civ2, civ3, civ4 };
-        }
-
-        public Civilization(Civ civ1, Civ civ2, Civ civ3, Civ civ4, Civ civ5)
-        {
-            civs = new List<Civ>() { civ1, civ2, civ3, civ4, civ5 };
+            civs = new List<Civ>();
         }
 
         public List<Civ> civs = new List<Civ>();
@@ -89,11 +67,21 @@ namespace DM.Systems.Cards
             return _result;
         }
 
-        public static bool operator ==(Civilization obj1, Civilization obj2)
+        public bool Equal(Civ rhs)
         {
-            foreach (Civ _civ in obj1.civs)
+            if (!civs.Contains(rhs))
             {
-                if(!obj2.civs.Contains(_civ))
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool Equal(Civilization rhs)
+        {
+            foreach (Civ _civ in rhs.civs)
+            {
+                if (!rhs.civs.Contains(_civ))
                 {
                     return false;
                 }
@@ -101,19 +89,5 @@ namespace DM.Systems.Cards
 
             return true;
         }
-
-        public static bool operator !=(Civilization obj1, Civilization obj2)
-        {
-            foreach (Civ _civ in obj1.civs)
-            {
-                if (!obj2.civs.Contains(_civ))
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
     }
 }

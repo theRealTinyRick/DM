@@ -11,10 +11,10 @@ using Sirenix.OdinInspector;
 using GameFramework;
 using GameFramework.Actors;
 
-using DM.Systems.Cards;
+using DuelMasters.Systems.Cards;
 using GameFramework.Actors.Components;
 
-namespace DM.Systems.Players
+namespace DuelMasters.Systems.Players
 {
     public class PlayerComponent : ActorComponent
     {

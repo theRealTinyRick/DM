@@ -1,6 +1,6 @@
-﻿using DM.Systems.Cards;
+﻿using DuelMasters.Systems.Cards;
 
-namespace DM.Systems.Casting
+namespace DuelMasters.Systems.Casting
 {
     public interface ICastCondition
     {

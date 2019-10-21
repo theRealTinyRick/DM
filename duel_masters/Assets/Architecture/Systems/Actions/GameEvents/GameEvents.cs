@@ -4,10 +4,10 @@
 */
 using UnityEngine.Events;
 
-using DM.Systems.Cards;
-using DM.Systems.Players;
+using DuelMasters.Systems.Cards;
+using DuelMasters.Systems.Players;
 
-namespace DM.Systems.GameEvents
+namespace DuelMasters.Systems.GameEvents
 {
     [System.Serializable]
     public class GameStartedEvent : UnityEvent { }
@@ -37,9 +37,14 @@ namespace DM.Systems.GameEvents
     [System.Serializable]
     public class EndPhaseEvent : UnityEvent<PlayerComponent> { }
 
-
     [System.Serializable]
     public class CreatureSummonedEvent : UnityEvent<PlayerComponent, Card> { }
+
+    [System.Serializable]
+    public class SpellCastEvent : UnityEvent<Card> { }
+
+    [System.Serializable]
+    public class CardPlayedEvent : UnityEvent<Card> { }
 
     [System.Serializable]
     public class CardDrawnEvent : UnityEvent<PlayerComponent, Card> { }

@@ -21,13 +21,26 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
+    - Name: castRequirements
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[DM.Systems.Casting.ICastRequirements,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: mechanics
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[DM.Systems.CardMechanics.IMechanicTrigger,
+      Data: 1|System.Collections.Generic.Dictionary`2[[DM.Systems.CardMechanics.IMechanicTrigger,
         Assembly-CSharp],[DM.Systems.CardMechanics.Effect, Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[DM.Systems.CardMechanics.IMechanicTrigger,
+      Data: 2|System.Collections.Generic.ObjectEqualityComparer`1[[DM.Systems.CardMechanics.IMechanicTrigger,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 8
@@ -41,16 +54,17 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  cardImage: {fileID: 21300000, guid: ff6b960b2a419e945ad92076e46f4126, type: 3}
+  cardSprite: {fileID: 0}
   cardMaterial: {fileID: 2100000, guid: d3e13fcba65503c4696110422e7ae550, type: 2}
   set: {fileID: 11400000, guid: c20a34133cd60a749a0af7a5c95e8b0a, type: 2}
   cardName: Terror Pit
   cardId: DM-01_63-110
-  cardType: 1
+  cardType:
+    cardTypes: 00000000
   power: 6
   numberOfShieldsBroken: 1
   civilization:
-    civilitations: 02000000
+    civs: 02000000
   manaCost: 6
   creatureRace:
   - {fileID: 11400000, guid: 405e8bb84e7ab6244b637c5bba485b05, type: 2}

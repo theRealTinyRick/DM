@@ -1,10 +1,10 @@
-﻿using DM.Systems.Cards;
-using DM.Systems.Gameplay.Locations;
-using DM.Systems.Players;
+﻿using DuelMasters.Systems.Cards;
+using DuelMasters.Systems.Gameplay.Locations;
+using DuelMasters.Systems.Players;
 
 using UnityEngine;
 
-namespace DM.Systems.Actions
+namespace DuelMasters.Systems.Actions
 { 
     public class Action
     {
@@ -185,6 +185,8 @@ namespace DM.Systems.Actions
             cardCollection.Transfer( card, card.owner.battleZone );
             card.UpdateCardLocation( CardLocation.BattleZone );
             DuelManager.instance.creatureSummonedEvent.Invoke( card.owner, card );
+            DuelManager.instance.cardPlayedEvent.Invoke( card );
+
         }
 
         public static void SummonFromHand(PlayerComponent targetPlayer, Card card)

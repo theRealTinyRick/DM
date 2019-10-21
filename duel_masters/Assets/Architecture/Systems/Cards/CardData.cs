@@ -5,13 +5,12 @@
 using System.Collections.Generic;
 
 using UnityEngine;
-using UnityEngine.UI;
 using Sirenix.OdinInspector;
 
-using DM.Systems.CardMechanics;
-using DM.Systems.Casting;
+using DuelMasters.Systems.Effects;
+using DuelMasters.Systems.Casting;
 
-namespace DM.Systems.Cards
+namespace DuelMasters.Systems.Cards
 {
 
     [CreateAssetMenu(fileName = "New Card", menuName = Constants.CREATE_NEW_CARD_DATA, order = 1)]
@@ -41,7 +40,7 @@ namespace DM.Systems.Cards
 
         [TabGroup(Tabs.PROPERTIES)]
         [SerializeField]
-        public CardType cardType;
+        public CardType cardType = new CardType();
 
         [ShowIf( "IsCreature" )]
         [TabGroup(Tabs.PROPERTIES)]
@@ -72,7 +71,12 @@ namespace DM.Systems.Cards
 
         [TabGroup(Tabs.PROPERTIES)]
         [SerializeField]
-        public Dictionary<IMechanicTrigger, Effect> mechanics = new Dictionary<IMechanicTrigger, Effect>();
+        public List<Effect> effects = new List<Effect>();
+
+        public bool IsCreature()
+        {
+            return cardType.cardTypes.Contains(CType.Creature) || cardType.cardTypes.Contains(CType.EvolutionCreature) | cardType.cardTypes.Contains(CType.PsychicCreature);
+        }
     }
 }
 

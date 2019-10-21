@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
-using DM.Systems.Cards;
+using DuelMasters.Systems.Cards;
 
-namespace DM.Systems.Selection
+namespace DuelMasters.Systems.Selection
 {
     public class UntappedSelectionFilter : ISelectionFilter
     {

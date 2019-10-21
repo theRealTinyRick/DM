@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-using DM.Systems.Cards;
-using DM.Systems.Players;
-using DM.Systems.Gameplay;
+using DuelMasters.Systems.Cards;
+using DuelMasters.Systems.Players;
+using DuelMasters.Systems.Gameplay;
 
-namespace DM.Systems.Selection
+namespace DuelMasters.Systems.Selection
 {
     public class SelectionFinishedEvent : UnityEngine.Events.UnityEvent<List<Card>> { }
     public class UseSelectionPopupEvent: UnityEngine.Events.UnityEvent<List<Card>> { }

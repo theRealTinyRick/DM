@@ -8,12 +8,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-using DM.Systems.Players;
-using DM.Systems.CardMechanics;
-using DM.Systems.Gameplay.Locations;
-using DM.Systems.Casting;
+using DuelMasters.Systems.Players;
+using DuelMasters.Systems.Effects;
+using DuelMasters.Systems.Gameplay.Locations;
+using DuelMasters.Systems.Casting;
 
-namespace DM.Systems.Cards
+namespace DuelMasters.Systems.Cards
 {
     public enum CardStatus
     {
@@ -173,11 +173,8 @@ namespace DM.Systems.Cards
             get;
         } = new List<ICastRequirements>();
 
-        public Dictionary<IMechanicTrigger, Effect> mechanics
-        {
-            get;
-            private set;
-        } 
+        [SerializeField]
+        public List<Effect> effects = new List<Effect>();
 
         public Sprite sprite
         {
@@ -231,12 +228,20 @@ namespace DM.Systems.Cards
                 _req.card = this;
             }
 
-            mechanics = data.mechanics;
+            SetupEffects();
+        }
 
-            foreach (var _pair in mechanics)
+        private void SetupEffects()
+        {
+            effects = new List<Effect>();
+            foreach(var _eff in data.effects)
             {
-                _pair.Key.Initialize(this);
-                _pair.Value.Initialize(this);
+                effects.Add(new Effect(_eff));
+            }
+
+            foreach (var _effect in effects)
+            {
+                _effect.Initialize(this);
             }
         }
 
