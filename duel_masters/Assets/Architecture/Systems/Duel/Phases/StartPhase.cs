@@ -4,7 +4,9 @@
 */
 using UnityEngine;
 using GameFramework.Phases;
+
 using DuelMasters.Systems.Turns;
+using DuelMasters.Systems.Actions;
 
 namespace DuelMasters.Systems.Duel.Phases
 {
@@ -45,6 +47,11 @@ namespace DuelMasters.Systems.Duel.Phases
 
         public void ExitPhase()
         {
+            if(TurnManager.instance.currentTurnPlayer.isLocal)
+            {
+                ActionManager.instance.UntapAllCards(TurnManager.instance.currentTurnPlayer);
+            }
+
             currentTime = 0;
             DuelManager.instance.startPhaseExitedEvent.Invoke( TurnManager.instance.currentTurnPlayer );
         }

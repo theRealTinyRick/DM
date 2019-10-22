@@ -58,10 +58,7 @@ namespace DuelMasters.Systems.Actions
         #region DRAW
         public void Draw( PlayerComponent targetPlayer, int amount = 1, bool waitForResponse = true )
         {
-            if(photonView.IsMine)
-            {
-                photonView.RPC( "DrawRPC", RpcTarget.All, targetPlayer.playerNumber, amount, waitForResponse );
-            }
+            photonView.RPC( "DrawRPC", RpcTarget.All, targetPlayer.playerNumber, amount, waitForResponse );
         }
 
         [PunRPC]
@@ -122,6 +119,21 @@ namespace DuelMasters.Systems.Actions
             {
                 Action.Summon( _player.hand, _card );
             }
+        }
+        #endregion
+
+        #region Untap
+        public void UntapAllCards(PlayerComponent player)
+        {
+            photonView.RPC("UntapAllCardsRPC", RpcTarget.All, player.playerNumber);
+        }
+
+        [PunRPC]
+        public void UntapAllCardsRPC(int playerNumber)
+        {
+            PlayerComponent _player = DuelManager.instance.GetPlayer(playerNumber);
+            Action.UntapAll(_player.battleZone);
+            Action.UntapAll(_player.manaZone);
         }
         #endregion
     }

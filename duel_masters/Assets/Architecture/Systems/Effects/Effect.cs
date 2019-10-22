@@ -95,8 +95,6 @@ namespace DuelMasters.Systems.Effects
 
         public void Trigger(object source)
         {
-            Debug.Log("try trigger");
-
             // TODO: this needs to be more elegant and passed to a manager to carry out
             if ( card.owner.isLocal && triggerableLocations.Contains(card.currentLocation))
             {

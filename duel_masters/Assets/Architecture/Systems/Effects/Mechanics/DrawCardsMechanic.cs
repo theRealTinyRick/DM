@@ -35,7 +35,6 @@ namespace DuelMasters.Systems.Effects.Mechanics
 
         public void Use()
         {
-            Debug.Log("draw card use");
             ActionManager.instance.Draw(player);
         }
     }

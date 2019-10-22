@@ -1,8 +1,13 @@
-﻿using UnityEngine.Events;
+﻿/*
+ Author: Aaron Hines
+ Description: Events invoked by the GameStateManager
+*/
+using UnityEngine.Events;
 
 namespace GameFramework.GameState
 {
-    class GameStateEvents : UnityEvent
+    [System.Serializable]
+    public class GameStateChangedEvent : UnityEvent<GameStateIdentifier>
     {
     }
 }

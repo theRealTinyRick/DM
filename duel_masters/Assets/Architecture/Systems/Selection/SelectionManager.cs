@@ -33,8 +33,26 @@ namespace DuelMasters.Systems.Selection
 
         [SerializeField]
         private List<Card> currentPossibleSelection = new List<Card>();
+
         [SerializeField]
-        private List<Card> currentSelection = new List<Card>();
+        private List<Card> _currentSelection = new List<Card>();
+        public List<Card> currentSelection
+        {
+            get
+            {
+                if(_currentSelection == null)
+                {
+                    _currentSelection = new List<Card>();
+                }
+
+                return _currentSelection;
+            }
+            private set
+            {
+                _currentSelection = value;
+            }
+        }
+
         private List<ISelectionRequirements> reqs = new List<ISelectionRequirements>();
 
         private Action<List<Card>> currentCallback;

@@ -30,7 +30,6 @@ namespace DuelMasters.Systems.Effects.Triggers
 
         public void Initialize(Card card, Effect effect)
         {
-            Debug.Log("init trigger");
 
             this.card = card;
             this.effect = effect;
@@ -44,7 +43,6 @@ namespace DuelMasters.Systems.Effects.Triggers
 
         public void OnTrigger(PlayerComponent player, Card card)
         {
-            Debug.Log("on summon try trigger");
             if(this.card == card)
             {
                 Trigger(card);
