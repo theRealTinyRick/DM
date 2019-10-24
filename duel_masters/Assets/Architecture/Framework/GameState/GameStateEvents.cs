@@ -7,7 +7,7 @@ using UnityEngine.Events;
 namespace GameFramework.GameState
 {
     [System.Serializable]
-    public class GameStateChangedEvent : UnityEvent<GameStateIdentifier>
+    public class GameStateChangedEvent : UnityEvent<State>
     {
     }
 }

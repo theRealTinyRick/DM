@@ -30,7 +30,6 @@ namespace GameFramework.GameState
 
     class GameStateManager : Singleton_SerializedMonobehaviour<GameStateManager>
     {
-
         public State currentState
         {
             get
@@ -51,49 +50,73 @@ namespace GameFramework.GameState
 
         } = new Stack<State>();
 
-        public GameStateChangedEvent gameStateChangedEvent
+        public Stack<State> popQueue
+        {
+            get;
+            private set;
+
+        } = new Stack<State>();
+
+        public GameStateChangedEvent gameStatePushedEvent
+        {
+            get;
+            private set;
+
+        } = new GameStateChangedEvent();
+
+        public GameStateChangedEvent gameStatePoppedEvent
         {
             get;
             private set;
         } = new GameStateChangedEvent();
 
-        public void PushState(string owner, GameStateIdentifier gameState, StatePriority statePriority = StatePriority.Low)
+        public bool PushState(string owner, GameStateIdentifier gameState, StatePriority statePriority = StatePriority.Low)
         {
+            List<State> _states = new List<State>(gameStates.ToList());
             State _state = new State(owner, gameState, statePriority);
+            if (gameStates.Contains(_state))
+            {
+                Debug.Log("Tried to push a state that already exists");
+                return false;
+            }
+
             if (currentState != null)
             {
-                if(statePriority < currentState.priority)
+                if(_state.priority < currentState.priority)
                 {
-                    // insert below all of the other ones
-                    Stack<State> _states = new Stack<State>(gameStates);
-                    while(_states.Peek().priority > statePriority && _states.Count > 0)
-                    {
-                        _states.Pop();
-                    }
+                    int _index = _states.IndexOf(_states.Find(_elem => _elem.priority < currentState.priority));
+                    _states.Insert(_index, _state);
+                    _states.Reverse();
 
-                    _states.Push( _state );
-                    return;
+                    gameStates = new Stack<State>(_states);
+                    return true;
                 }
             }
 
             gameStates.Push( _state );
+            return false;
         }
 
-        /// <summary>
-        /// End this state and return to default
-        /// </summary>
-        /// <param name="gameState"></param>
-        public bool PopState(GameStateIdentifier gameState)
+        public bool PopState(GameStateIdentifier gameState, bool queueForPop = false)
         {
             if(currentState.gameState == gameState)
             {
+                gameStates.Pop();
+
+
+
                 return true;
             }
             else
             {
-                Debug.LogWarning("Tried to pop a state that is not the current state");
-                return false;
+                if(queueForPop)
+                {
+
+                    Debug.LogWarning("Tried to pop a state that is not the current state");
+                    return true;
+                }
             }
+            return false;
         }
     }
 }
