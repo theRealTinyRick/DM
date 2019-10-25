@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿/*
+ Author: Aaron Hines
+ Description: Starts the current manifest
+*/
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace GameFramework.Manifest

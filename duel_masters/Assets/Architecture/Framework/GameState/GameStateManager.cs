@@ -1,13 +1,14 @@
-﻿using System;
+﻿/*
+ Author: Aaron Hines
+ Description: Manages game states.
+*/
 using System.Collections.Generic;
 using System.Linq;
 
 using UnityEngine;
-using Sirenix.OdinInspector;
 
 namespace GameFramework.GameState
 {
-    // TODO: make states take a priority
     public enum StatePriority : int
     {
         Low,
@@ -16,7 +17,7 @@ namespace GameFramework.GameState
 
     public class State
     {
-        public State(string owner, GameStateIdentifier gameState, StatePriority priority)
+        public State( string owner, GameStateIdentifier gameState, StatePriority priority = StatePriority.Low )
         {
             this.owner = owner;
             this.gameState = gameState;
@@ -26,9 +27,34 @@ namespace GameFramework.GameState
         public string owner = "unidentified";
         public GameStateIdentifier gameState;
         public StatePriority priority;
+
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return owner + "_" + gameState.name;
+        }
+
+        public static bool operator ==(State rhs, State lhs)
+        {
+            return rhs.owner == lhs.owner && rhs.gameState == lhs.gameState;
+        }
+
+        public static bool operator !=(State rhs, State lhs)
+        {
+            return rhs.owner != lhs.owner || rhs.gameState != lhs.gameState;
+        }
     }
 
-    class GameStateManager : Singleton_SerializedMonobehaviour<GameStateManager>
+    public class GameStateManager : Singleton_SerializedMonobehaviour<GameStateManager>
     {
         public State currentState
         {
@@ -72,46 +98,58 @@ namespace GameFramework.GameState
 
         public bool PushState(string owner, GameStateIdentifier gameState, StatePriority statePriority = StatePriority.Low)
         {
-            List<State> _states = new List<State>(gameStates.ToList());
             State _state = new State(owner, gameState, statePriority);
-            if (gameStates.Contains(_state))
+
+            if(gameStates.Contains(_state))
             {
-                Debug.Log("Tried to push a state that already exists");
+                Debug.LogWarning("Tried to push a state that is already in the the game state stack");
                 return false;
             }
 
             if (currentState != null)
             {
-                if(_state.priority < currentState.priority)
+                if (_state.priority < currentState.priority)
                 {
+                    List<State> _states = new List<State>(gameStates.ToList());
                     int _index = _states.IndexOf(_states.Find(_elem => _elem.priority < currentState.priority));
                     _states.Insert(_index, _state);
                     _states.Reverse();
 
                     gameStates = new Stack<State>(_states);
+                    gameStatePushedEvent.Invoke(_state);
                     return true;
                 }
             }
 
             gameStates.Push( _state );
-            return false;
+            gameStatePushedEvent.Invoke(_state);
+            return true;
         }
 
-        public bool PopState(GameStateIdentifier gameState, bool queueForPop = false)
+        public bool PopState(string owner, GameStateIdentifier gameState, bool queueForPop = false)
         {
-            if(currentState.gameState == gameState)
+            State _state = new State(owner, gameState);
+
+            if( currentState == _state )
             {
                 gameStates.Pop();
+                gameStatePoppedEvent.Invoke(_state);
 
-
+                while (currentState == popQueue.Peek())
+                {
+                    State _nextState = gameStates.Peek();
+                    gameStates.Pop();
+                    popQueue.Pop();
+                    gameStatePoppedEvent.Invoke(_nextState);
+                }
 
                 return true;
             }
             else
             {
-                if(queueForPop)
+                if( queueForPop )
                 {
-
+                    popQueue.Push(_state);
                     Debug.LogWarning("Tried to pop a state that is not the current state");
                     return true;
                 }

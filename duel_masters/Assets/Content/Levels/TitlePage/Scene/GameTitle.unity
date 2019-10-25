@@ -631,10 +631,11 @@ MonoBehaviour:
   autoStartGame: 1
   closeRoomWhenGameStarts: 0
   repopenRoomWhenPlayersLeave: 0
-  gameSceneName: Duel
-  lobbyScene: Duel_Lobby
   maxPlayerCount: 2
   minPlayerCount: 2
+  gameSceneName: Duel
+  lobbyScene: Duel_Lobby
+  connectingState: {fileID: 11400000, guid: 18de0a5fde27695439f57200bcdadab7, type: 2}
   connectedToMasterEvent:
     m_PersistentCalls:
       m_Calls:

@@ -12,6 +12,8 @@ using Photon.Realtime;
 using Sirenix.OdinInspector;
 using UnityEngine.SceneManagement;
 
+using GameFramework.GameState;
+
 namespace GameFramework.Networking
 {
     public class NetworkManager : Singleton_MonobehaviourPunCallbacks<NetworkManager>, ILobbyCallbacks
@@ -41,6 +43,14 @@ namespace GameFramework.Networking
         [SerializeField]
         private bool repopenRoomWhenPlayersLeave;
 
+        [TabGroup(Tabs.PROPERTIES)]
+        [SerializeField]
+        private int maxPlayerCount = 2;
+
+        [TabGroup( Tabs.PROPERTIES )]
+        [SerializeField]
+        private int minPlayerCount = 2;
+
         [TabGroup( "Scenes" )]
         [SerializeField]
         private string gameSceneName = "";
@@ -49,13 +59,9 @@ namespace GameFramework.Networking
         [SerializeField]
         private string lobbyScene = "";
 
-        [TabGroup(Tabs.PROPERTIES)]
+        [TabGroup("Game States")]
         [SerializeField]
-        private int maxPlayerCount = 2;
-
-        [TabGroup( Tabs.PROPERTIES )]
-        [SerializeField]
-        private int minPlayerCount = 2;
+        private GameStateIdentifier connectingState;
         #endregion
 
         #region NETWORK EVENTS
@@ -202,9 +208,6 @@ namespace GameFramework.Networking
         {
             GetComponent<PhotonView>().RPC( "RegisterLevelLoadedRPC", RpcTarget.All );
         }
-        #endregion
-
-        #region PRIVATE FUNCTIONS
         #endregion
 
         #region PUN CALLBACKS
